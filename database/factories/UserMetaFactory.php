@@ -29,7 +29,7 @@ class UserMetaFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'role' => fake()->name(),
-            'image' => $imageURL,
+            'image' =>'default-avatar.png',
             'user_id' => User::factory(),
             'created_at' => now(),
             'updated_at' => now(),

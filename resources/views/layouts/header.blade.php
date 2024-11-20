@@ -20,6 +20,7 @@
     <meta name="website" content="https://shreethemes.in/" />
     <meta name="email" content="support@shreethemes.in" />
     <meta name="version" content="2.2.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -42,8 +43,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.min.css') }}" />
 </head>
 
+<<<<<<< HEAD
 <body
     class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
+=======
+<body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900 bg-gray-100">
+>>>>>>> 81eeebc95ad79786098f226d0f62d1cac343bf89
     <!-- Loader Start -->
     <div id="preloader">
         <div id="status">
@@ -55,8 +60,9 @@
     </div>
     <!-- Loader End -->
 
+
     <!-- Start Navbar -->
-    <nav id="topnav" class="defaultscroll is-sticky bg-white dark:bg-slate-900">
+    <nav id="topnav" class="defaultscroll is-sticky bg-gray-100 dark:bg-slate-900">
         <div class="container relative">
             <!-- Logo container-->
             <a class="logo" href="index.html">
@@ -221,13 +227,47 @@
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
+<<<<<<< HEAD
                     <li><a href="{{ route('home') }}" class="sub-menu-item">Home</a></li>
 
+=======
+                    <li><a href="{{ route('home') }}" class="sub-menu-item">Trang chủ</a></li>
+                    <li class="has-submenu parent-menu-item">
+                        <a href="javascript:void(0)">Danh mục</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            @foreach($chunkedCategories as $categoryGroup)
+                                <div class="category-group">
+                                    @foreach($categoryGroup as $index => $category)
+                                        <li>
+                                            <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
+                                            @if($loop->last)
+                                                <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
+                                                <a href="{{ route('shop.index') }}" class="sub-menu-item">
+                                                    <p>Xem thêm danh mục</p>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                                    class="sub-menu-item">
+                                                    <p>{{ $category->name }}</p>
+                                                </a>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('blog') }}" class="sub-menu-item">Blogs</a>
+                    </li>
+>>>>>>> 81eeebc95ad79786098f226d0f62d1cac343bf89
                     <li>
                         <a href="{{ route('about') }}" class="sub-menu-item">About Us</a>
                     </li>
 
                     <li>
+<<<<<<< HEAD
                         <a href="{{ route('products.grid') }}" class="sub-menu-item">Shop</a>
                     </li>
 
@@ -237,6 +277,9 @@
 
                     <li>
                         <a href="{{ route('contact') }}" class="sub-menu-item">Contact</a>
+=======
+                        <a href="#" class="sub-menu-item">Liên hệ</a>
+>>>>>>> 81eeebc95ad79786098f226d0f62d1cac343bf89
                     </li>
                 </ul>
                 <!--end navigation menu-->

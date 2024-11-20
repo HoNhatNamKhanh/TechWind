@@ -2,15 +2,12 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Product;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Variant>
- */
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Variant;
 class VariantFactory extends Factory
 {
-    protected $model = \App\Models\Variant::class;
+    protected $model = Variant::class;
 
     /**
      * Define the model's default state.
@@ -20,7 +17,8 @@ class VariantFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => $this->faker->imageUrl(),
+            'product_id' => Product::factory(),  // Sử dụng factory của Product để gán product_id
+            'image' => 'default-product.png',
             'color' => $this->faker->colorName(),
             'size' => $this->faker->randomElement(['S', 'M', 'L', 'XL']),
             'price' => $this->faker->randomFloat(2, 10, 100),

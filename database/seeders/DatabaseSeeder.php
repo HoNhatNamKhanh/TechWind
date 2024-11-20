@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\UserMeta;
+use App\Models\Variant;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,14 +21,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        Category::factory(10)->create();
         UserMeta::factory(10)->create();
+        Category::factory(10)->create();
         Order::factory(10)->create();
         OrderItem::factory(10)->create();
         Blog::factory(10)->create();
         Product::factory()
             ->count(10)
-            ->hasVariants(3)
+            ->has(Variant::factory()->count(3), 'variants') 
             ->create();
     }
 }

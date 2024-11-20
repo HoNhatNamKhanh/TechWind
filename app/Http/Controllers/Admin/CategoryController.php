@@ -87,7 +87,7 @@ class CategoryController extends Controller
                 }
             } else {
                 // Nếu không có ảnh, đặt thumbnail thành giá trị mặc định
-                $categoryData['thumbnail'] = 'default-thumbnail.jpg';
+                $categoryData['thumbnail'] = 'default-category.png';
                 Log::info('No image uploaded. Using default thumbnail.');
             }
 

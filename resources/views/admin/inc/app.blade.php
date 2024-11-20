@@ -29,6 +29,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
     />
+    <link href="{{ asset('assets/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet"
+        type="text/css" />
     
     <!-- Chart.js JS -->
     <script
@@ -41,15 +43,14 @@
     <script src="{{ asset('admin/assets/js/charts-pie.js') }}" defer></script>
 </head>
 <body>
-    <div class="flex bg-white dark:bg-gray-800 min-h-screen	">
-        @include('admin.inc.sidebar') 
-        <div class="flex flex-col flex-1 w-full">
+  <div class="flex bg-gray-50 dark:bg-gray-900">
+    @include('admin.inc.sidebar') 
+    <div class="flex flex-col flex-1">
             @include('admin.inc.header')
-            
             @yield('content')
         </div>
-          
-    
+  </div>
+        
     @include('admin.inc.footer')
 </body>
 

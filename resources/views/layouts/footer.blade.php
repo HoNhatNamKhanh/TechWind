@@ -1,5 +1,6 @@
 <!-- Footer Start -->
-<footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200">
+<div  class="p-10">
+ <footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200 rounded-xl ">
     <div class="container relative">
         <div class="grid grid-cols-12">
             <div class="col-span-12">
@@ -219,26 +220,16 @@
             <!--end grid-->
         </div>
         <!--end container-->
-    </div>
+   </div>
 </footer>
+ </div>
+
+
 <!--end footer-->
 <!-- Footer End -->
 
 <!-- Start Cookie Popup -->
-<div
-    class="cookie-popup fixed max-w-lg bottom-3 end-3 start-3 sm:start-0 mx-auto bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md py-5 px-6 z-50">
-    <p class="text-slate-400">
-        This website uses cookies to provide you with a great user experience.
-        By using it, you accept our
-        <a href="https://shreethemes.in/" target="_blank"
-            class="text-emerald-600 dark:text-emerald-500 font-semibold">use of cookies</a>
-    </p>
-    <div class="cookie-popup-actions text-end">
-        <button class="absolute border-none bg-none p-0 cursor-pointer font-semibold top-2 end-2">
-            <i class="uil uil-times text-dark dark:text-slate-200 text-2xl"></i>
-        </button>
-    </div>
-</div>
+
 <!--Note: Cookies Js including in plugins.init.js (path like; assets/js/plugins.init.js) and Cookies css including in _helper.scss (path like; scss/_helper.scss)-->
 <!-- End Cookie Popup -->
 
@@ -299,10 +290,10 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    // Cập nhật số lượng giỏ hàng hoặc hiển thị thông báo
-                    alert(data.message); // hoặc cập nhật biểu tượng giỏ hàng
+                    // Hiển thị pop-up thông báo
+                    showPopUp('Thông báo', data.message); // Tùy chỉnh tiêu đề và nội dung
                 })
-                .catch(error => alert('Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng. Xin vui lòng thử lại.'));
+                .catch(error => showPopUp('Lỗi', 'Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng. Xin vui lòng thử lại.'));
         });
     });
 
@@ -311,23 +302,28 @@
         $('form[action^="{{ route('cart.remove', '') }}"]').submit(function (event) {
             event.preventDefault(); // Ngăn chặn việc gửi form mặc định
             var form = $(this);
-            if (confirm('Bạn chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?')) {
-                $.ajax({
-                    type: 'DELETE',
-                    url: form.attr('action'),
-                    data: form.serialize(),
-                    success: function (response) {
-                        // Xử lý thành công
-                        alert('Sản phẩm đã được xóa khỏi giỏ hàng.');
-                        form.closest('tr').remove(); // Xóa hàng trong bảng
-                        updateTotals(); // Cập nhật lại tổng
-                    },
-                    error: function (xhr) {
-                        // Xử lý lỗi
-                        alert('Có lỗi xảy ra khi xóa sản phẩm. Xin vui lòng thử lại.');
-                    }
-                });
-            }
+
+            // Hiển thị pop-up xác nhận xóa
+            showConfirmPopUp('Xác nhận xóa sản phẩm', 'Bạn chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?', function (confirmed) {
+                if (confirmed) {
+                    // Nếu người dùng xác nhận, thực hiện xóa sản phẩm
+                    $.ajax({
+                        type: 'DELETE',
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        success: function (response) {
+                            // Xử lý thành công
+                            showPopUp('Thông báo', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
+                            form.closest('tr').remove(); // Xóa hàng trong bảng
+                            updateTotals(); // Cập nhật lại tổng
+                        },
+                        error: function (xhr) {
+                            // Xử lý lỗi
+                            showPopUp('Lỗi', 'Có lỗi xảy ra khi xóa sản phẩm. Xin vui lòng thử lại.');
+                        }
+                    });
+                }
+            });
         });
 
         // Cập nhật số lượng sản phẩm
@@ -340,16 +336,17 @@
                 data: form.serialize(),
                 success: function (response) {
                     // Cập nhật giao diện sau khi thành công
-                    alert('Giỏ hàng đã được cập nhật thành công!');
+                    showPopUp('Thông báo', 'Giỏ hàng đã được cập nhật thành công!');
                     updateTotals(); // Cập nhật lại tổng
                 },
                 error: function (xhr) {
                     // Xử lý lỗi
-                    alert('Có lỗi xảy ra khi cập nhật sản phẩm. Xin vui lòng thử lại.');
+                    showPopUp('Lỗi', 'Có lỗi xảy ra khi cập nhật sản phẩm. Xin vui lòng thử lại.');
                 }
             });
         });
 
+        // Cập nhật tổng giỏ hàng
         function updateTotals() {
             let subtotal = 0;
             $('tbody tr').each(function () {
@@ -381,7 +378,7 @@
         // Cập nhật giá trị của trường quantity
         document.getElementById('quantity').value = this.value;
     });
-
+    
 
 </script>
 

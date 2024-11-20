@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
@@ -34,37 +36,6 @@ class CartController extends Controller
         // Truyền tất cả các biến vào view
         return view('cart', compact('cartItems', 'subtotal', 'taxes', 'total'));
     }
-
-
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'quantity' => 'required|integer|min:1',
-        ]);
-
-        $user = auth()->user();
-        $cartItem = Cart::where('user_id', $user->id)
-            ->where('id', $id)
-            ->first();
-
-        if (!$cartItem) {
-            return response()->json(['message' => 'Sản phẩm không có trong giỏ hàng!'], 404);
-        }
-
-        // Kiểm tra số lượng không vượt quá tồn kho
-        $variant = $cartItem->variant;
-        if ($request->quantity > $variant->stock) {
-            return response()->json(['message' => 'Số lượng yêu cầu vượt quá hàng tồn kho!'], 400);
-        }
-
-        // Cập nhật số lượng
-        $cartItem->quantity = $request->quantity;
-        $cartItem->save();
-
-        return response()->json(['message' => 'Giỏ hàng đã được cập nhật!']);
-    }
-
 
     public function add(Request $request, $id)
     {
@@ -100,25 +71,15 @@ class CartController extends Controller
 
         // Nếu sản phẩm đã có trong giỏ hàng
         if ($cartItem) {
-            // Giới hạn số lượng tối đa trong giỏ hàng
-            $maxQuantity = 10;
-
-            // Kiểm tra và cập nhật số lượng
-            if ($cartItem->quantity < $maxQuantity) {
-                $cartItem->quantity++;
-                $cartItem->save();
-
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Sản phẩm đã được thêm vào giỏ hàng.',
-                    'cart_quantity' => $cartItem->quantity
-                ]);
-            }
+            // **Loại bỏ giới hạn số lượng** - không cần kiểm tra maxQuantity nữa
+            $cartItem->quantity++;
+            $cartItem->save();
 
             return response()->json([
-                'success' => false,
-                'message' => 'Sản phẩm đã đạt giới hạn số lượng trong giỏ hàng.'
-            ], 400);
+                'success' => true,
+                'message' => 'Sản phẩm đã được thêm vào giỏ hàng.',
+                'cart_quantity' => $cartItem->quantity
+            ]);
         }
 
         // Nếu sản phẩm chưa có trong giỏ, thêm sản phẩm mới vào giỏ hàng
@@ -131,6 +92,7 @@ class CartController extends Controller
 
         return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
+
 
     public function remove($id)
     {
@@ -146,4 +108,102 @@ class CartController extends Controller
 
         return response()->json(['message' => 'Sản phẩm đã được xóa khỏi giỏ hàng!']);
     }
+<<<<<<< HEAD
+=======
+
+    // Phương thức tăng số lượng
+    public function increase(Request $request, $id)
+    {
+        $user = auth()->user();
+
+        // Tìm sản phẩm trong giỏ hàng của người dùng
+        $cartItem = Cart::where('user_id', $user->id)
+            ->where('id', $id)
+            ->first();
+
+        // Nếu không tìm thấy sản phẩm trong giỏ hàng, trả về lỗi
+        if (!$cartItem) {
+            \Log::error("Cart item not found for user {$user->id}, item ID: {$id}");
+            return response()->json(['error' => true, 'message' => 'Sản phẩm không có trong giỏ hàng!'], 404);
+        }
+
+        // Tăng số lượng sản phẩm trong giỏ hàng
+        $cartItem->quantity++;
+        $cartItem->save();
+
+        // Tính lại subtotal (tổng giá trị giỏ hàng trước thuế)
+        $subtotal = Cart::where('user_id', $user->id)
+            ->join('variants', 'carts.variant_id', '=', 'variants.id')
+            ->sum(DB::raw('carts.quantity * variants.price'));
+
+        // Giả sử thuế là 10%
+        $taxes = $subtotal * 0.1;
+
+        // Tính tổng giỏ hàng sau thuế
+        $total = $subtotal + $taxes;
+
+        // Tính lại giá của sản phẩm hiện tại (item price = unit price * quantity)
+        $itemPrice = $cartItem->variant->price * $cartItem->quantity;
+
+        \Log::info("Increase successful for item ID: {$id}. New subtotal: {$subtotal}, taxes: {$taxes}, total: {$total}");
+
+        // Trả về thông tin giỏ hàng đã được cập nhật
+        return response()->json([
+            'error' => false,
+            'quantity' => $cartItem->quantity,    // Số lượng mới
+            'itemPrice' => $itemPrice,             // Giá sản phẩm sau khi thay đổi số lượng
+            'subtotal' => $subtotal,              // Tổng giỏ hàng (trước thuế)
+            'taxes' => $taxes,                     // Thuế
+            'total' => $total,                     // Tổng sau thuế
+        ], 200);
+    }
+
+    // Phương thức giảm số lượng
+    public function decrease(Request $request, $id)
+    {
+        $user = auth()->user();
+
+        // Tìm sản phẩm trong giỏ hàng của người dùng
+        $cartItem = Cart::where('user_id', $user->id)
+            ->where('id', $id)
+            ->first();
+
+        // Nếu không tìm thấy sản phẩm trong giỏ hàng, trả về lỗi
+        if (!$cartItem) {
+            \Log::error("Cart item not found for user {$user->id}, item ID: {$id}");
+            return response()->json(['error' => true, 'message' => 'Sản phẩm không có trong giỏ hàng!'], 404);
+        }
+
+        // Giảm số lượng sản phẩm trong giỏ hàng
+        $cartItem->quantity--;
+        $cartItem->save();
+
+        // Tính lại subtotal (tổng giá trị giỏ hàng trước thuế)
+        $subtotal = Cart::where('user_id', $user->id)
+            ->join('variants', 'carts.variant_id', '=', 'variants.id')
+            ->sum(DB::raw('carts.quantity * variants.price'));
+
+        // Giả sử thuế là 10%
+        $taxes = $subtotal * 0.1;
+
+        // Tính tổng giỏ hàng sau thuế
+        $total = $subtotal + $taxes;
+
+        // Tính lại giá của sản phẩm hiện tại (item price = unit price * quantity)
+        $itemPrice = $cartItem->variant->price * $cartItem->quantity;
+
+        \Log::info("Increase successful for item ID: {$id}. New subtotal: {$subtotal}, taxes: {$taxes}, total: {$total}");
+
+        // Trả về thông tin giỏ hàng đã được cập nhật
+        return response()->json([
+            'error' => false,
+            'quantity' => $cartItem->quantity,    // Số lượng mới
+            'itemPrice' => $itemPrice,             // Giá sản phẩm sau khi thay đổi số lượng
+            'subtotal' => $subtotal,              // Tổng giỏ hàng (trước thuế)
+            'taxes' => $taxes,                     // Thuế
+            'total' => $total,                     // Tổng sau thuế
+        ], 200);
+    }
+
+>>>>>>> 81eeebc95ad79786098f226d0f62d1cac343bf89
 }

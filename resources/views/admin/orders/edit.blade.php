@@ -2,7 +2,6 @@
 @section('title', 'Chỉnh sửa đơn hàng #' . $order->id)
 
 @section('content')
-<div class="flex flex-col flex-1 w-full">
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
             <div class="col-12">
@@ -121,7 +120,7 @@
                                             lý</option>
                                         <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Đã
                                             hoàn thành</option>
-                                        <option value="canceled" {{ $order->status == 'canceled' ? 'selected' : '' }}>Đã
+                                        <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Đã
                                             hủy</option>
                                     </select>
                                 </label>
@@ -144,5 +143,4 @@
 
         </div>
     </main>
-</div>
 @endsection

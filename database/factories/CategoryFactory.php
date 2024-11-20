@@ -21,6 +21,7 @@ class CategoryFactory extends Factory
             'name' => fake()->name(),
             'description' => fake()->sentence(),
             'parent_id' => $this->faker->optional(0.3, null)->randomElement(Category::pluck('id')->toArray()),
+            'thumbnail' =>'default-category.png'
         ];
     }
 }   

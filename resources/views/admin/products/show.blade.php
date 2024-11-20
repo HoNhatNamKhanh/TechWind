@@ -59,8 +59,8 @@
                                     alt="{{ $product->name }}">
                             </div>
                         </div>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit Product</a>
-                        <a href="{{ route('products.index') }}" class="btn btn-secondary">Back to Products</a>
+                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary">Edit Product</a>
+                        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Back to Products</a>
                     </div>
                 </div>
             </div>
