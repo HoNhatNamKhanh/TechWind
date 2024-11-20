@@ -9,7 +9,7 @@
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 ">
                 <div
                     class="w-56 text-center  create-button px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 ">
-                    <a class="custom-border" href="{{ route('admin.products.create') }}">Tạo danh mục mới</a>
+                    <a class="custom-border" href="{{ route('admin.products.create') }}">Tạo sản phẩm mới</a>
                 </div>
             </h4>
 
