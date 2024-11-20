@@ -117,7 +117,7 @@
                                 <li>
                                     <a href="{{ route('users.show', Auth::user()->id) }}"
                                         class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-user align-middle me-1"></i> Account
+                                        <i class="uil uil-user align-middle me-1"></i> Tài khoản
                                     </a>
                                 </li>
 
@@ -126,7 +126,7 @@
                                     <form action="{{ route('logout') }}" method="POST" class="inline">
                                         @csrf
                                         <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
-                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
+                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng xuất
                                         </button>
                                     </form>
                                 </li>
@@ -136,12 +136,12 @@
                                 <!-- Show these links if the user is not logged in -->
                                 <li>
                                     <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Login
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Nhập
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Register
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
                                     </a>
                                 </li>
                             @endguest
@@ -186,7 +186,7 @@
                         <a href="{{ route('blog') }}" class="sub-menu-item">Blogs</a>
                     </li>
                     <li>
-                        <a href="{{ route('about') }}" class="sub-menu-item">About Us</a>
+                        <a href="{{ route('about') }}" class="sub-menu-item">Giới thiệu</a>
                     </li>
 
                     <li>
@@ -207,7 +207,7 @@
         class="rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <div class="relative h-auto md:w-[480px] w-300px">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 dark:border-gray-700">
-                <h3 class="font-bold text-lg"> Wishlist</h3>
+                <h3 class="font-bold text-lg"> Danh Sách yêu thích</h3>
                 <form method="dialog">
                     <button
                         class="size-6 flex justify-center items-center shadow dark:shadow-gray-800 rounded-md btn-ghost">
