@@ -3,14 +3,13 @@
 
 @section('content')
 
-<div class="flex flex-col flex-1 w-full">
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
             <!-- Tạo sản phẩm mới -->
-            <h4
-                class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600 ">
-                <div class="px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 ">
-                    <a class="w-full custom-border" href="{{ route('admin.products.create') }}">Tạo sản phẩm mới</a>
+            <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 ">
+                <div
+                    class="w-56 text-center  create-button px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 ">
+                    <a class="custom-border" href="{{ route('admin.products.create') }}">Tạo danh mục mới</a>
                 </div>
             </h4>
 
@@ -39,7 +38,7 @@
                         <tbody>
                             @foreach($products as $product)
                                 @foreach($product->variants as $variant)
-                                    <tr class="border">
+                                    <tr class="border text-center">
                                         @if ($loop->first)
                                             <td class="align-middle text-center border" rowspan="{{ $product->variants->count() }}">
                                                 {{ $product->id }}
@@ -51,7 +50,7 @@
                                                 {{ $product->category ? $product->category->name : 'N/A' }}
                                             </td>
                                         @endif
-                                        <td class="align-middle text-center border">
+                                        <td class="align-middle text-center border px-4 py-3">
                                             @if ($variant->image)
                                                 <img src="{{ asset('storage/' . $variant->image) }}" alt="Variant Image"
                                                     style="width: 75px; height: auto;">
@@ -59,14 +58,14 @@
                                                 <span>No Image</span>
                                             @endif
                                         </td>
-                                        <td class="align-middle text-center border">{{ number_format($variant->price, 2) }}</td>
-                                        <td class="align-middle text-center border">{{ $variant->color }}</td>
-                                        <td class="align-middle text-center border">{{ $variant->size }}</td>
-                                        <td class="align-middle text-center border">{{ $variant->stock }}</td>
-                                        <td class="align-middle text-center border">
+                                        <td class="align-middle text-center border px-4 py-3">{{ number_format($variant->price, 2) }}</td>
+                                        <td class="align-middle text-center border px-4 py-3">{{ $variant->color }}</td>
+                                        <td class="align-middle text-center border px-4 py-3">{{ $variant->size }}</td>
+                                        <td class="align-middle text-center border px-4 py-3">{{ $variant->stock }}</td>
+                                        <td class="align-middle text-center border px-4 py-3">
                                             {{ $variant->stock > 0 ? 'Còn hàng' : 'Hết hàng' }}
                                         </td>
-                                        <td class="align-middle text-center border">
+                                        <td class="align-middle text-center border px-4 py-3">
                                             <div class="flex items-center space-x-4 text-sm">
                                                 <a href="{{ route('admin.products.edit', $product->id) }}"
                                                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none">
@@ -158,7 +157,6 @@
 
         </div>
     </main>
-</div>
 
 
 <script>

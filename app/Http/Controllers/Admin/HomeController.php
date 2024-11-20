@@ -31,6 +31,9 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(5); // Hiển thị 5 đơn hàng mỗi trang
 
+        // Lấy danh sách user
+        $users = User::orderBy('created_at', 'desc')->paginate(10);
+
         // Lấy tất cả sản phẩm và danh mục
         $products = Product::orderBy('created_at', 'desc')->get();
         $categories = Category::all();
@@ -44,10 +47,11 @@ class HomeController extends Controller
         })->sum(DB::raw('price * quantity'));
 
         // Lấy số lượng đơn hàng mới trong tháng vừa qua
-        $newSalesCount = Order::where('status', 'completed')->where('created_at', '>', now()->subMonth())->count();
+        $newSalesCount = Order::where('status', 'pending')->count();
+        $completedSalesCount = Order::where('status', 'completed')->count();
+
 
         // Lấy số lượng đơn hàng đang chờ xử lý
-        $pendingContacts = Order::where('status', 'pending')->count();
 
         // Tính doanh thu và số lượng đơn hàng theo tháng (chỉ lấy trong năm hiện tại hoặc năm trước)
         $monthlySales = Order::where('status', 'completed')
@@ -76,10 +80,11 @@ class HomeController extends Controller
             'usersCount',
             'accountBalance',
             'newSalesCount',
-            'pendingContacts',
+            'completedSalesCount',
             'orders',
             'months',
-            'earningsData'
+            'earningsData',
+            'users'
         ));
     }
 

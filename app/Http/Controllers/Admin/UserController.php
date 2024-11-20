@@ -77,11 +77,15 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/users', 'public');
             $userMeta->image = $imagePath;  // Store image in user_meta
-        }
+        }else {
+                // Nếu không có ảnh, đặt thumbnail thành giá trị mặc định
+                $userMeta['image'] = 'default-avatar.png';
+                Log::info('No image uploaded. Using default thumbnail.');}
+        
 
         $userMeta->save(); // Save the user meta (including role and image)
 
-        \Log::info('UserMeta created successfully.', ['user_id' => $user->id]);
+        Log::info('UserMeta created successfully.', ['user_id' => $user->id]);
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }

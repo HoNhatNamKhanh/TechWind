@@ -7,6 +7,8 @@ use App\Models\Variant;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Log;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -41,6 +43,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         // Validate the request
@@ -60,6 +63,14 @@ class ProductController extends Controller
         $totalStock = array_sum($request->variant_stock);
         $status = $totalStock > 0 ? 'in stock' : 'out of stock';
 
+        // Log product creation start
+        Log::info('Creating new product:', [
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'total_stock' => $totalStock,
+            'status' => $status
+        ]);
+
         // Create the product
         $product = Product::create([
             'name' => $request->name,
@@ -70,23 +81,53 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
         ]);
 
+        Log::info('Product created successfully.', ['product_id' => $product->id]);
+
         // Handle each variant
         foreach ($request->variant_color as $index => $color) {
             $variant = new Variant();
             $variant->product_id = $product->id;
 
-            // Store variant image if exists
-            if ($request->hasFile(key: 'variant_image.' . $index)) {
+            // Log variant processing
+            Log::info('Processing variant:', [
+                'color' => $color,
+                'size' => $request->variant_size[$index],
+                'price' => $request->variant_price[$index],
+                'stock' => $request->variant_stock[$index],
+            ]);
+            Log::info('Request data:', [
+                'has_variant_image' => $request->hasFile('variant_image.*'),
+                'variant_image' => $request->file('variant_image') // Log tất cả các file ảnh gửi lên
+            ]);
+
+            // Handle variant image upload if present
+            if ($request->hasFile('variant_image.' . $index)) {
+                // Log image processing
+                Log::info('Variant image uploaded for variant index ' . $index);
+
+                // Xóa ảnh cũ nếu tồn tại
+                if ($variant->image && \Storage::exists('public/' . $variant->image)) {
+                    \Storage::delete('public/' . $variant->image);
+                    Log::info('Old variant image deleted for variant index ' . $index);
+                }
+
+                // Lưu ảnh mới cho variant
                 $variant->image = $request->file('variant_image.' . $index)->store('images/variants', 'public');
+                Log::info('New variant image stored for variant index ' . $index, ['image_path' => $variant->image]);
             }
 
+            // Update variant details (color, size, price, stock)
             $variant->color = $color;
             $variant->size = $request->variant_size[$index];
             $variant->price = $request->variant_price[$index];
             $variant->stock = $request->variant_stock[$index];
-            $variant->save();
+
+            $variant->save(); // Save variant
+            Log::info('Variant saved successfully.', ['variant_id' => $variant->id]);
         }
 
+        // Return to the product list with success message
+        Log::info('Product creation process completed successfully.');
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
     }
 
@@ -175,9 +216,6 @@ class ProductController extends Controller
 
                 // Store new image for the variant
                 $variant->image = $request->file('variant_image.' . $index)->store('images/variants', 'public');
-            } elseif (!$variantId) {
-                // If variant is new and no image provided, we clear the image field
-                $variant->image = null;
             }
 
             // Update variant details (color, size, price, stock)

@@ -46,7 +46,7 @@ class RegisterController extends Controller
             'phone' => $request->input('phone'), // Lấy thông tin từ request
             'address' => $request->input('address'), // Lấy thông tin từ request
             'role' => 'user',
-            'image' => $request->input('image'), // Lấy thông tin từ request
+            'image' => 'default-avatar.png', // Lấy thông tin từ request
         ]);
         $user->sendEmailVerificationNotification();
 

@@ -29,4 +29,6 @@ body.dark-mode select, body.dark-mode .variant-option {
 #userImage:hover + #uploadOverlay {
     opacity: 1;
 }
-    
+.bg-banner{
+    background-image: url(../images/banners/banner.jpg);
+}

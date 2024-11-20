@@ -2,7 +2,6 @@
 @section('title', 'Edit ' . $category->name)
 
 @section('content')
-<div class="flex flex-col flex-1 w-full">
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
 
@@ -79,8 +78,6 @@
 
         </div>
     </main>
-    
-</div>
 
 <script>
     // JavaScript to preview the uploaded image

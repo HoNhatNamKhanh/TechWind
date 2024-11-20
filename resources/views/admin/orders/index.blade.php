@@ -4,7 +4,6 @@
 @section('title', 'Danh sách đơn hàng')
 
 @section('content')
-<div class="flex flex-col flex-1 w-full">
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
@@ -119,5 +118,4 @@
             </div>
         </div>
     </main>
-</div>
 @endsection

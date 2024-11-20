@@ -2,7 +2,6 @@
 @section('title', 'Create Product')
 
 @section('content')
-<div class="flex flex-col flex-1 w-full">
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
             <div class="col-12">
@@ -138,5 +137,4 @@
             }
         });
     </script>
-</div>
 @endsection
