@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="light scroll-smooth" dir="ltr">
 <!-- Mirrored from shreethemes.in/techwind/landing/index-shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 25 Mar 2024 01:43:09 GMT -->
@@ -7,7 +6,7 @@
     <meta charset="UTF-8" />
     <title>@yield('title', 'TechWind')
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Tailwind CSS Multipurpose Landing & Admin Dashboard Template" />
     <meta name="keywords"
         content="agency, application, business, clean, creative, cryptocurrency, it solutions, modern, multipurpose, nft marketplace, portfolio, saas, software, tailwind css" />
@@ -42,7 +41,7 @@
         </div>
     </div> -->
     <!-- Loader End -->
-     
+
 
     <!-- Start Navbar -->
     <nav id="topnav" class="defaultscroll is-sticky bg-gray-100 dark:bg-slate-900">
@@ -157,15 +156,28 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
                     <li><a href="{{ route('home') }}" class="sub-menu-item">Trang chủ</a></li>
-
                     <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)   ">Danh mục</a><span class="menu-arrow"></span>
+                        <a href="javascript:void(0)">Danh mục</a><span class="menu-arrow"></span>
                         <ul class="submenu">
-                            @foreach($categories as $category)
-                                <li>
-                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                        class="sub-menu-item">{{ $category->name }}</a>
-                                </li>
+                            @foreach($chunkedCategories as $categoryGroup)
+                                <div class="category-group">
+                                    @foreach($categoryGroup as $index => $category)
+                                        <li>
+                                            <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
+                                            @if($loop->last)
+                                                <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
+                                                <a href="{{ route('shop.index') }}" class="sub-menu-item">
+                                                    <p>Xem thêm danh mục</p>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                                    class="sub-menu-item">
+                                                    <p>{{ $category->name }}</p>
+                                                </a>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </div>
                             @endforeach
                         </ul>
                     </li>
@@ -178,7 +190,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('contact')}}" class="sub-menu-item">Liên hệ</a>
+                        <a href="#" class="sub-menu-item">Liên hệ</a>
                     </li>
                 </ul>
                 <!--end navigation menu-->

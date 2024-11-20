@@ -169,7 +169,7 @@
         <!--end grid-->
 
         <div class="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 mt-8 gap-[30px] bg-white rounded-xl">
-            @foreach($categories as $category)
+            @foreach($topCategories as $category)
             <div
                 class="group relative overflow-hidden hover:shadow-lg hover:dark:shadow-gray-800 rounded-md duration-500 p-6 text-center">
                 <img src="{{ asset('storage/' . $category->thumbnail) }}"

@@ -48,11 +48,14 @@ class HomeController extends Controller
         }
 
         // Lấy 6 danh mục đầu tiên
-        $categories = Category::withCount('products')  // Đếm số lượng sản phẩm trong mỗi danh mục
+
+
+
+        $topCategories = Category::withCount('products')  // Đếm số lượng sản phẩm trong mỗi danh mục
             ->orderByDesc('products_count')  // Sắp xếp theo số lượng sản phẩm giảm dần
             ->take(6)  // Lấy 6 danh mục có nhiều sản phẩm nhất
             ->get();
-        
+
 
         // Lấy 4 sản phẩm cap nhap mới nhất với variants
         $recentProducts = Product::with('variants', 'reviews')
@@ -97,12 +100,12 @@ class HomeController extends Controller
         // Trả về view với dữ liệu
         return view('home', compact(
             'products',
-            'categories',
             'ratingProducts',
             'recentProducts',
             'months',
             'earningsData',
-            'banners'
+            'banners',
+            'topCategories'
         ));
     }
 }
