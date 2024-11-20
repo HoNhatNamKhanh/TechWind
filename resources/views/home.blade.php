@@ -4,11 +4,12 @@
 
 @section('content')
 <!-- Start Home -->
-<section class="relative mt-20">
-    <div class="container-fluid relative">
-        <div class="relative py-48 table w-full shadow-md overflow-hidden">
-            <div
-                class="absolute inset-0 bg-[url('../../assets/images/shop/bg.html')] bg-no-repeat md:bg-left bg-center bg-cover">
+<section class="relative py-10 px-6 mt-10 ">
+    <div class="container-fluid relative px-6 ">
+        <div class="relative py-48 table w-full shadow-md overflow-hidden rounded-xl">
+            <!-- Phần ảnh nền banner -->
+            <div class="absolute inset-0  ">
+                <img src="https://business.ee.co.uk/content/dam/eeb-site/large-business-miscellaneous/product/apple-release-new-device-hero-banner-desktop-2880x1260.jpg" alt="Banner" class="w-full h-full object-cover">
             </div>
             <!-- Overlay màu tối -->
             <div class=""></div>
