@@ -8,14 +8,14 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-body px-0 pt-0 pb-2">
-                    <h3 class="text-lg py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Tạo danh mục mới
-                    </h3>
+                    <h1 class="text-2xl	py-3 font-semibold text-gray-800 dark:text-gray-200">Tạo danh mục mới
+                    </h1>
                     <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="variant px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                             <!-- Parent Category -->
                             <label class="block text-sm mb-4">
-                                <span class="text-gray-700 dark:text-gray-400">Danh mục cha (Không bắt buộc)</span>
+                                <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Danh mục cha (Không bắt buộc)</span>
                                 <select
                                     class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                     name="parent_id">
@@ -27,7 +27,7 @@
                             </label>
                             <!-- Category Name -->
                             <label class="block text-sm mb-4">
-                                <span class="text-gray-700 dark:text-gray-400">Tên danh mục</span>
+                                <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Tên danh mục</span>
                                 <input type="text"
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="Enter category name" name="name" required />
@@ -35,14 +35,14 @@
 
                             <!-- Description -->
                             <label class="block text-sm mb-4">
-                                <span class="text-gray-700 dark:text-gray-400">Mô tả</span>
+                                <span class="text-xl py-3 py-3 text-gray-700 dark:text-gray-400">Mô tả</span>
                                 <textarea
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea"
                                     rows="3" placeholder="Enter a description for the category"
                                     name="description"></textarea>
                             </label>
                             <label class="block text-sm mb-4">
-                                <span class="text-gray-700 dark:text-gray-400">Ảnh</span>
+                                <span class="text-xl py-3 py-3 text-gray-700 dark:text-gray-400">Ảnh</span>
                                 <input type="file" name="thumbnail" accept="image/*" id="thumbnail"
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input" />
                             </label>

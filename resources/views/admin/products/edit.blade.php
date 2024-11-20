@@ -80,7 +80,8 @@
                                                         <div class="image-container flex justify-center"
                                                             style="position: relative;">
                                                             <!-- Hiển thị ảnh hiện tại nếu có -->
-                                                            <img src="{{ asset('storage/' . $variant->image) }}"
+                                                            <img id="variant-image-{{ $variant->id }}"
+                                                                src="{{ asset('storage/' . $variant->image) }}"
                                                                 class="flex justify-center" alt="Variant Image"
                                                                 style="width: 75px; height: auto; cursor: pointer;"
                                                                 onclick="triggerFileInput({{ $variant->id }})">
@@ -92,17 +93,12 @@
                                                                 onchange="previewImage(event, {{ $variant->id }})">
                                                         </div>
                                                     @else
-                                                        <!-- Nếu không có ảnh, hiển thị input để chọn tệp -->
-                                                        <input type="file" name="variant_image[]" accept="image/*"
-                                                            class="form-control"
-                                                            onchange="previewImage(event, '{{ $variant->id }}')">
-
-                                                        <div class="image-container"
-                                                            style="position: relative; width: 100px; height: 100px; overflow: hidden;">
-                                                            <img id="variant-image-{{ $variant->id }}"
-                                                                src="{{ asset('storage/' . $variant->image) }}"
-                                                                alt="Variant Image" class="variant-image"
-                                                                style="object-fit: cover; width: 100%; height: 100%;">
+                                                        <div class="image-container flex justify-center"
+                                                            style="position: relative;">
+                                                            <!-- Không có ảnh, chỉ hiển thị input file -->
+                                                            <input type="file" name="variant_image[]" accept="image/*"
+                                                                class="form-control mt-2" id="file-input-{{ $variant->id }}"
+                                                                onchange="previewImage(event, {{ $variant->id }})">
                                                         </div>
                                                     @endif
                                                 </td>
@@ -145,21 +141,23 @@
                     </div>
 
                     <!-- Thêm biến thể mới -->
-                    <div
-                        class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
+                    <div class="grid-cols-4 gap-4">
                         <div
-                            class="create-button px-2 py-4 text-center w-20 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <button type="button" class=" custom-border" id="addVariant">Thêm
-                                biến
-                                thể</button>
+                            class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
+                            <div
+                                class="create-button px-2 py-4 text-center transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                <button type="button" class=" custom-border" id="addVariant">Thêm
+                                    biến
+                                    thể</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Nút submit -->
-                    <div
-                        class="mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
+                        <!-- Nút submit -->
                         <div
-                            class="px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <button type="submit" class="w-full custom-border">Cập nhật sản phẩm</button>
+                            class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
+                            <div
+                                class="create-button px-2 py-4 text-center transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                <button type="submit" class=" custom-border">Cập nhật sản phẩm</button>
+                            </div>
                         </div>
                     </div>
 
@@ -171,31 +169,39 @@
 
 <script>
     // Kích hoạt input file khi nhấn vào ảnh
+    // Hàm để kích hoạt input file
     function triggerFileInput(variantId) {
-        // Lấy id của input file ẩn
+        // Kích hoạt input file ẩn
         document.getElementById('file-input-' + variantId).click();
     }
 
-    // Khi người dùng chọn ảnh, cập nhật ảnh và ẩn input file
+    // Hàm để hiển thị ảnh khi người dùng chọn ảnh
     function previewImage(event, variantId) {
         const file = event.target.files[0];
         const reader = new FileReader();
 
-        // Đọc ảnh và hiển thị ngay lập tức
+        // Khi file được đọc xong
         reader.onload = function (e) {
+            // Lấy phần tử hình ảnh và cập nhật src mới
             const imagePreview = document.getElementById('variant-image-' + variantId);
-            imagePreview.src = e.target.result;  // Cập nhật ảnh
-            imagePreview.style.objectFit = 'cover';  // Đảm bảo ảnh không bị méo
+            if (imagePreview) {
+                imagePreview.src = e.target.result;  // Cập nhật ảnh mới
+                imagePreview.style.objectFit = 'cover';  // Đảm bảo ảnh không bị méo
+            }
 
             // Ẩn input file để chỉ hiển thị ảnh
             const fileInput = document.getElementById('file-input-' + variantId);
-            fileInput.classList.add('hidden');
+            if (fileInput) {
+                fileInput.classList.add('hidden');
+            }
         };
 
+        // Nếu có file được chọn, đọc ảnh dưới dạng URL
         if (file) {
             reader.readAsDataURL(file); // Đọc file dưới dạng URL để hiển thị
         }
     }
+
 
     document.getElementById('addVariant').addEventListener('click', function () {
         const variantContainer = document.getElementById('variantContainer');

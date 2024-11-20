@@ -43,7 +43,7 @@
     <script src="{{ asset('admin/assets/js/charts-pie.js') }}" defer></script>
 </head>
 <body>
-  <div class="flex bg-gray-50 dark:bg-gray-900">
+  <div class="flex bg-gray-50 dark:bg-gray-900 min-h-screen">
     @include('admin.inc.sidebar') 
     <div class="flex flex-col flex-1">
             @include('admin.inc.header')

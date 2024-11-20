@@ -4,12 +4,11 @@
 
 @section('content')
 <!-- Start Home -->
-<section class="relative py-10 px-6 mt-10 ">
-    <div class="container-fluid relative px-6 ">
-        <div class="relative py-48 table w-full shadow-md overflow-hidden rounded-xl">
-            <!-- Phần ảnh nền banner -->
-            <div class="absolute inset-0  ">
-                <img src="https://business.ee.co.uk/content/dam/eeb-site/large-business-miscellaneous/product/apple-release-new-device-hero-banner-desktop-2880x1260.jpg" alt="Banner" class="w-full h-full object-cover">
+<section class="relative mt-20">
+    <div class="container-fluid relative">
+        <div class="relative py-48 table w-full shadow-md overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[url('../../assets/images/shop/bg.html')] bg-no-repeat md:bg-left bg-center bg-cover">
             </div>
             <!-- Overlay màu tối -->
             <div class=""></div>
@@ -45,111 +44,122 @@
 <!-- Start -->
 <section class="relative py-10 p-6">
     <div class="container relative ">
-        <div id="grid" class="md:flex w-full justify-center mx-auto mt-4 bg-white rounded-xl p-5">
-            @if ($banners->count() == 1)
-            <!-- Hiển thị 1 banner và 2 cái mặc định -->
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('storage/' . $banners[0]->thumbnail) }}"
-                        class="group-hover:scale-110 duration-500" alt="{{ $banners[0]->name }}" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#"
-                            class="text-xl font-semibold hover:text-indigo-600 duration-500">{{ $banners[0]->name }}</a>
+        <div class="relative w-full max-w-4xl mx-auto mt-10">
+            <!-- Slider Wrapper -->
+            <div id="grid" class="md:flex w-full justify-center mx-auto mt-4 bg-white rounded-xl p-5">
+                @if ($banners->count() == 1)
+                <!-- Hiển thị 1 banner và 2 cái mặc định -->
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('storage/' . $banners[0]->thumbnail) }}"
+                            class="group-hover:scale-110 duration-500" alt="{{ $banners[0]->name }}" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#"
+                                class="text-xl font-semibold hover:text-indigo-600 duration-500">{{ $banners[0]->name }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Banner mặc định 1 -->
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('assets/images/shop/hoodie.jpg') }}" class="group-hover:scale-110 duration-500"
-                        alt="Hoodies" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Hoodies</a>
+                <!-- Banner mặc định 1 -->
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('assets/images/shop/hoodie.jpg') }}" class="group-hover:scale-110 duration-500"
+                            alt="Hoodies" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Hoodies</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Banner mặc định 2 -->
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('assets/images/shop/beanie.jpg') }}" class="group-hover:scale-110 duration-500"
-                        alt="Beanies" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Beanies for Man &
-                            Women</a>
+                <!-- Banner mặc định 2 -->
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('assets/images/shop/beanie.jpg') }}" class="group-hover:scale-110 duration-500"
+                            alt="Beanies" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Beanies for Man &
+                                Women</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @elseif ($banners->count() == 2)
-            <!-- Hiển thị 2 banner từ database và 1 cái mặc định -->
-            @foreach ($banners as $banner)
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('storage/' . $banner->thumbnail) }}" class="group-hover:scale-110 duration-500"
-                        alt="{{ $banner->name }}" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#"
-                            class="text-xl font-semibold hover:text-indigo-600 duration-500">{{ $banner->name }}</a>
+                @elseif ($banners->count() == 2)
+                <!-- Hiển thị 2 banner từ database và 1 cái mặc định -->
+                @foreach ($banners as $banner)
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('storage/' . $banner->thumbnail) }}" class="group-hover:scale-110 duration-500"
+                            alt="{{ $banner->name }}" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#"
+                                class="text-xl font-semibold hover:text-indigo-600 duration-500">{{ $banner->name }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-            <!-- Banner mặc định -->
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('assets/images/shop/glasses.jpg') }}" class="group-hover:scale-110 duration-500"
-                        alt="Glasses" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Glasses</a>
+                @endforeach
+                <!-- Banner mặc định -->
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('assets/images/shop/glasses.jpg') }}" class="group-hover:scale-110 duration-500"
+                            alt="Glasses" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Glasses</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @elseif ($banners->count() == 3)
-            <!-- Hiển thị tất cả 3 banner từ database -->
-            @foreach ($banners as $banner)
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('storage/' . $banner->thumbnail) }}" class="group-hover:scale-110 duration-500"
-                        alt="{{ $banner->name }}" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#"
-                            class="text-xl font-semibold hover:text-indigo-600 duration-500">{{ $banner->name }}</a>
+                @elseif ($banners->count() == 3)
+                <!-- Hiển thị tất cả 3 banner từ database -->
+                @foreach ($banners as $banner)
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('storage/' . $banner->thumbnail) }}" class="group-hover:scale-110 duration-500"
+                            alt="{{ $banner->name }}" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#"
+                                class="text-xl font-semibold hover:text-indigo-600 duration-500">{{ $banner->name }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-            @else
-            <!-- Hiển thị các banner mặc định nếu không có banner nào -->
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('assets/images/shop/hoodie.jpg') }}" class="group-hover:scale-110 duration-500"
-                        alt="Hoodies" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Hoodies</a>
+                @endforeach
+                @else
+                <!-- Hiển thị các banner mặc định nếu không có banner nào -->
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('assets/images/shop/hoodie.jpg') }}" class="group-hover:scale-110 duration-500"
+                            alt="Hoodies" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Hoodies</a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('assets/images/shop/beanie.jpg') }}" class="group-hover:scale-110 duration-500"
+                            alt="Beanies" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Beanies for Man &
+                                Women</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 p-3 picture-item">
+                    <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img src="{{ asset('assets/images/shop/glasses.jpg') }}" class="group-hover:scale-110 duration-500"
+                            alt="Glasses" />
+                        <div class="absolute bottom-4 start-4">
+                            <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Glasses</a>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
 
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('assets/images/shop/beanie.jpg') }}" class="group-hover:scale-110 duration-500"
-                        alt="Beanies" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Beanies for Man &
-                            Women</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="md:w-1/2 p-3 picture-item">
-                <div class="group relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img src="{{ asset('assets/images/shop/glasses.jpg') }}" class="group-hover:scale-110 duration-500"
-                        alt="Glasses" />
-                    <div class="absolute bottom-4 start-4">
-                        <a href="#" class="text-xl font-semibold hover:text-indigo-600 duration-500">Glasses</a>
-                    </div>
-                </div>
-            </div>
-            @endif
+            <!-- Controls -->
+            <button onclick="moveSlider(-1)" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg text-lg">
+                &#10094;
+            </button>
+            <button onclick="moveSlider(1)" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg text-lg">
+                &#10095;
+            </button>
         </div>
     </div>
     <div class="container relative mt-10">
@@ -159,7 +169,7 @@
         <!--end grid-->
 
         <div class="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 mt-8 gap-[30px] bg-white rounded-xl">
-            @foreach($categories as $category)
+            @foreach($topCategories as $category)
             <div
                 class="group relative overflow-hidden hover:shadow-lg hover:dark:shadow-gray-800 rounded-md duration-500 p-6 text-center">
                 <img src="{{ asset('storage/' . $category->thumbnail) }}"
@@ -190,7 +200,7 @@
                     <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
                         class=" max-h-300px object-cover" />
                     @else
-                    <img src="{{ asset('images/default-thumbnail.jpg') }} "
+                    <img src="https://didongviet.vn/_next/image?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fproducts%2F2023%2F8%2F29%2F1%2F1695953606803_thumb_iphone_15_pro_didongviet.jpg&w=1080&q=75" alt="{{ $product->name }}"
                         class=" max-h-300px object-cover" />
                     @endif
 
@@ -306,14 +316,14 @@
 
         <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px] bg-white rounded-xl p-5   ">
             @foreach($ratingProducts as $product)
-            <div class="group transform lg:scale-105 border-2 p-1 border-blue-500 rounded-xl  ">
+            <div class="group transform lg:scale-105 border-2 p-1 border-blue-500 rounded-xl">
                 <div
                     class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
                     @if ($product->variants->isNotEmpty())
                     <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
                         class=" max-h-300px object-cover" />
                     @else
-                    <img src="{{ asset('images/default-thumbnail.jpg') }} "
+                    <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}"
                         class=" max-h-300px object-cover" />
                     @endif
 
@@ -346,11 +356,6 @@
                             <form action="{{ route('wishlist.add', $product->id) }}" method="POST"
                                 class="inline-flex items-center">
                                 @csrf
-                                <!-- Thêm input ẩn để gửi variant_id -->
-                                @if ($product->variants->isNotEmpty())
-                                <input type="hidden" name="variant_id" class="variant-id"
-                                    value="{{ $product->variants[0]->id }}">
-                                @endif
                                 <button type="submit"
                                     class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
                                     aria-label="Add to wishlist">
@@ -468,7 +473,7 @@
 
     <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px] bg-white rounded-xl p-5">
         @foreach($recentProducts as $product)
-        <div class="group transform lg:scale-105 border-2 p-1 border-blue-500 rounded-xl ">
+        <div class="group transform lg:scale-105 border-2 p-1 border-blue-500 rounded-xl">
             <div
                 class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
                 @if ($product->variants->isNotEmpty())
@@ -508,11 +513,6 @@
                         <form action="{{ route('wishlist.add', $product->id) }}" method="POST"
                             class="inline-flex items-center">
                             @csrf
-                            <!-- Thêm input ẩn để gửi variant_id -->
-                            @if ($product->variants->isNotEmpty())
-                            <input type="hidden" name="variant_id" class="variant-id"
-                                value="{{ $product->variants[0]->id }}">
-                            @endif
                             <button type="submit"
                                 class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
                                 aria-label="Add to wishlist">
