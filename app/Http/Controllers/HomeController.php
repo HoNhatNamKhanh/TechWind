@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
@@ -52,14 +53,13 @@ class HomeController extends Controller
             ->orderByDesc('products_count')  // Sắp xếp theo số lượng sản phẩm giảm dần
             ->take(6)  // Lấy 6 danh mục có nhiều sản phẩm nhất
             ->get();
-        
+
 
         // Lấy 4 sản phẩm cap nhap mới nhất với variants
         $recentProducts = Product::with('variants', 'reviews')
             ->orderBy('updated_at', 'desc')  // Sắp xếp theo ngày cập nhật (hoặc có thể theo lượt xem)
             ->take(4)  // Lấy 4 sản phẩm có hoạt động gần đây
-            ->get();
-        ;
+            ->get();;
 
         // Tính toán trung bình rating cho sản phẩm gần đây
         foreach ($recentProducts as $product) {

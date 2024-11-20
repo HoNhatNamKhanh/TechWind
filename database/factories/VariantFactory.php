@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,6 +25,7 @@ class VariantFactory extends Factory
             'size' => $this->faker->randomElement(['S', 'M', 'L', 'XL']),
             'price' => $this->faker->randomFloat(2, 10, 100),
             'stock' => $this->faker->numberBetween(0, 100),
+            'product_id' => Product::factory(), // Liên kết với một sản phẩm ngẫu nhiên
         ];
     }
 }

@@ -84,7 +84,6 @@ class CartController extends Controller
         $variantId = $request->input('variant_id');
         $variant = $product->variants()->findOrFail($variantId); // Kiểm tra và lấy biến thể
 
-
         // Kiểm tra xem sản phẩm còn hàng không
         if ($variant->stock <= 0) {
             return response()->json([
@@ -130,11 +129,7 @@ class CartController extends Controller
             'quantity' => 1,
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Sản phẩm đã được thêm vào giỏ hàng.',
-            'cart_quantity' => 1
-        ]);
+        return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
 
     public function remove($id)
@@ -151,5 +146,4 @@ class CartController extends Controller
 
         return response()->json(['message' => 'Sản phẩm đã được xóa khỏi giỏ hàng!']);
     }
-
 }

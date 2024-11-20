@@ -29,6 +29,5 @@ class DatabaseSeeder extends Seeder
             ->count(10)
             ->hasVariants(3)
             ->create();
-
     }
 }

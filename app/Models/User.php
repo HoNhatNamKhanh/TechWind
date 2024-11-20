@@ -11,32 +11,17 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -44,21 +29,31 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
     public function blogs()
     {
         return $this->hasMany(Blog::class);
     }
+
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
+
     public function userMeta()
     {
         return $this->hasOne(UserMeta::class);
     }
+
     // Quan hệ với bảng Cart
     public function cart()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    // Quan hệ với bảng Product thông qua wishlist_user
+    public function wishlist()
+    {
+        return $this->belongsToMany(Product::class, 'wishlist_user', 'user_id', 'product_id');
     }
 }
