@@ -12,6 +12,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 
@@ -48,8 +49,15 @@ Route::post('/cart/increase/{id}', [CartController::class, 'increase'])->name('c
 Route::post('/cart/decrease/{id}', [CartController::class, 'decrease'])->name('cart.decrease');
 
 
-//route cho wishlist
+// Route cho wishlist
 Route::post('wishlist/add/{id}', [WishlistController::class, 'add'])->name('wishlist.add');
+// Route xóa sản phẩm khỏi wishlist
+Route::delete('/wishlist/remove/{id}', [WishlistController::class, 'remove'])->name('wishlist.remove');
+//lưu vào database khi người dung dang nhap
+Route::get('/wishlist/migrate', [WishlistController::class, 'migrateWishlistToDatabase'])->name('wishlist.migrate');
+
+// route contact
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
 //route cho blog
 Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
@@ -61,8 +62,7 @@ class HomeController extends Controller
         $recentProducts = Product::with('variants', 'reviews')
             ->orderBy('updated_at', 'desc')  // Sắp xếp theo ngày cập nhật (hoặc có thể theo lượt xem)
             ->take(4)  // Lấy 4 sản phẩm có hoạt động gần đây
-            ->get();
-        ;
+            ->get();;
 
         // Tính toán trung bình rating cho sản phẩm gần đây
         foreach ($recentProducts as $product) {

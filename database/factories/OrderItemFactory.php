@@ -20,14 +20,18 @@ class OrderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'quantity' => $this->faker->numberBetween(1, 10),
-            'price' => $this->faker->randomFloat(2, 50, 500),
+            'quantity' => $this->faker->numberBetween(1, 10), // Số lượng sản phẩm trong đơn hàng
+            'price' => $this->faker->randomFloat(2, 50, 500), // Giá sản phẩm
             'total_price' => function (array $attributes) {
-                return $attributes['quantity'] * $attributes['price'];
+                return $attributes['quantity'] * $attributes['price']; // Tính tổng giá trị
             },
-            'order_id' => Order::factory(),
-            'product_id' => Product::factory(),
-            'variant_id' => Variant::factory(),
+            'order_id' => Order::factory(), // Liên kết với một đơn hàng ngẫu nhiên
+            'product_id' => Product::factory(), // Liên kết với sản phẩm ngẫu nhiên
+            'variant_id' => Variant::factory(), // Liên kết với biến thể sản phẩm ngẫu nhiên
+            'size' => $this->faker->randomElement(['S', 'M', 'L', 'XL']), // Kích thước sản phẩm
+            'color' => $this->faker->colorName(), // Màu sắc sản phẩm (được sinh ra ngẫu nhiên)
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
