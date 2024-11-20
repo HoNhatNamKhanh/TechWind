@@ -44,6 +44,8 @@ Route::get('/cart/view', [CartController::class, 'view']);
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::patch('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/increase/{id}', [CartController::class, 'increase'])->name('cart.increase');
+Route::post('/cart/decrease/{id}', [CartController::class, 'decrease'])->name('cart.decrease');
 
 
 //route cho wishlist

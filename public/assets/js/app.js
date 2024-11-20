@@ -427,8 +427,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div><strong>Email:</strong> ${order.email || "N/A"}</div>
                 <div><strong>Phone:</strong> ${order.phone || "N/A"}</div>
                 <div><strong>Address:</strong> ${order.address || "N/A"}</div>
-                <h4 class="text-sm mt-2">Status: ${order.status || "N/A"}</h4>
-                <h5>Items:</h5>
+                <h4 class="text-sm mt-2"><strong>Status:</strong> ${
+                    order.status || "N/A"
+                }</h4>
+                <h5><strong>Items:</strong></h5>
                 <table class="w-full text-start text-slate-500 dark:text-slate-400">
                     <thead class="text-sm uppercase bg-slate-50 dark:bg-slate-800">
                         <tr>
@@ -496,3 +498,50 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("order-modal").classList.add("hidden");
         });
 });
+// Hàm hiển thị pop-up thông báo
+function showPopUp(title, message) {
+    const popUp = document.createElement("div");
+    popUp.classList.add("popup");
+    popUp.innerHTML = `
+        <div class="popup-content">
+            <h2>${title}</h2>
+            <p>${message}</p>
+            <button onclick="closePopUp()">Đóng</button>
+        </div>
+    `;
+    document.body.appendChild(popUp);
+}
+
+// Hàm hiển thị pop-up xác nhận
+function showConfirmPopUp(title, message, callback) {
+    const popUp = document.createElement("div");
+    popUp.classList.add("popup");
+    popUp.innerHTML = `
+        <div class="popup-content">
+            <h2>${title}</h2>
+            <p>${message}</p>
+            <button id="confirmYesButton">Có</button>
+            <button id="confirmNoButton">Không</button>
+        </div>
+    `;
+    document.body.appendChild(popUp);
+
+    // Đảm bảo callback được gọi khi nhấn "Có" hoặc "Không"
+    document.getElementById("confirmYesButton").onclick = function () {
+        callback(true); // Xác nhận xóa
+        closePopUp();
+    };
+
+    document.getElementById("confirmNoButton").onclick = function () {
+        callback(false); // Hủy bỏ xóa
+        closePopUp();
+    };
+}
+
+// Hàm đóng pop-up
+function closePopUp() {
+    const popUp = document.querySelector(".popup");
+    if (popUp) {
+        popUp.remove();
+    }
+}

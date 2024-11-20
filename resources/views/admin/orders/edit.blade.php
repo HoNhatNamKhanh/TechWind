@@ -120,7 +120,7 @@
                                             lý</option>
                                         <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Đã
                                             hoàn thành</option>
-                                        <option value="canceled" {{ $order->status == 'canceled' ? 'selected' : '' }}>Đã
+                                        <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Đã
                                             hủy</option>
                                     </select>
                                 </label>
