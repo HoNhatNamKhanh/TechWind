@@ -4,24 +4,25 @@
 
 @section('content')
 <!-- Start Hero -->
-<section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800">
+<section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800 bg-cover bg-center"
+         style="background-image: url('https://cdn.shopify.com/s/files/1/0808/0067/files/category_banner_ip14pro_promax_desktop_1.jpg?v=1662594151');">
     <div class="container relative">
-        <div class="grid grid-cols-1 mt-14">
-            <h3 class="text-3xl leading-normal font-semibold"> sản phẩm</h3>
+        <div class="grid grid-cols-1 mt-14 ">
+            <h3 class="text-3xl leading-normal font-semibold text-black">SẢN PHẨM</h3>
         </div>
         <div class="relative mt-3">
             <ul class="tracking-[0.5px] mb-0 inline-block">
-                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600">
-                    <a href="index-shop.html">Techwind</a>
+                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-200">
+                    <a href="index-shop.html" class="text-black">Techwind</a>
                 </li>
-                </li>
-                <li class="inline-block uppercase text-[13px] font-bold text-indigo-600" aria-current="page">
-
+                <li class="inline-block uppercase text-[13px] font-bold text-indigo-200" aria-current="page">
+                    <!-- Breadcrumb current page (Optional) -->
                 </li>
             </ul>
         </div>
     </div>
 </section>
+
 <!--end section-->
 <!-- End Hero -->
 
@@ -116,7 +117,7 @@
                         <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
                             class="w-full h-auto" />
                         @else
-                          <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}"/>
+                        <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}" />
                         @endif
 
                         <div class="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
@@ -216,12 +217,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-
-                            <p class="p-1"><label class="bg-red-500 rounded-sm p-1  ">KM</label> Trả góp 0% - Không phí</p>
-                            <p class="p-1"><label class="bg-red-500 rounded-sm p-1 ">KM</label> Ưu Đãi cho HSSV,Thầy cô</p>
-                        </div>
-                        <ul class="border-2 rounded-xl text-center">
+                       
+                        <ul class="border-2 rounded-xl text-center mt-2 ">
                             <li>
                                 <a href="{{ route('product.show', $product->id) }}">Xem thêm</a>
                             </li>
