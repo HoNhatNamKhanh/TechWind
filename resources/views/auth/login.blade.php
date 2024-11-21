@@ -44,7 +44,7 @@
                 <div
                     class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
                     <a href="index.html"><img src="assets/images/logo-icon-64.png" class="mx-auto" alt="" /></a>
-                    <h5 class="my-6 text-center text-xl font-semibold">Login</h5>
+                    <h5 class="my-6 text-center text-xl font-semibold">Đăng nhập</h5>
                     <form action="{{ route('login') }}" method="POST" class="text-start">
                         @csrf
                         <div class="grid grid-cols-1">
@@ -69,17 +69,17 @@
                             @endif
 
                             <div class="mb-4">
-                                <label class="font-semibold" for="LoginEmail">Email Address:</label>
+                                <label class="font-semibold" for="LoginEmail">Nhập địa chỉ Email:</label>
                                 <input id="LoginEmail" name="email" type="email"
                                     class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                     placeholder="name@example.com" required />
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-semibold" for="LoginPassword">Password:</label>
+                                <label class="font-semibold" for="LoginPassword">Mật Khẩu:</label>
                                 <input id="LoginPassword" name="password" type="password"
                                     class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                    placeholder="Password" required />
+                                    placeholder="Mật khẩu" required />
                             </div>
 
                             <div class="flex justify-between mb-4">
@@ -87,12 +87,12 @@
                                     <input
                                         class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-indigo-600 focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50 me-2"
                                         type="checkbox" value="1" id="RememberMe" name="remember" />
-                                    <label class="form-checkbox-label text-slate-400" for="RememberMe">Remember
-                                        me</label>
+                                    <label class="form-checkbox-label text-slate-400" for="RememberMe">Nhớ Tài khoản
+                                        Tôi</label>
                                 </div>
                                 <p class="text-slate-400 mb-0">
-                                    <a href="{{ route('password.request') }}" class="text-slate-400">Forgot
-                                        password?</a>
+                                    <a href="{{ route('password.request') }}" class="text-slate-400">Quên
+                                        mật khẩu?</a>
                                 </p>
                             </div>
 
@@ -103,9 +103,9 @@
                             </div>
 
                             <div class="text-center">
-                                <span class="text-slate-400 me-2">Don't have an account?</span>
+                                <span class="text-slate-400 me-2">Bạn không có tài khoản?</span>
                                 <a href="{{ route('register') }}"
-                                    class="text-black dark:text-white font-bold inline-block">Sign Up</a>
+                                    class="text-black dark:text-white font-bold inline-block">Đăng ký</a>
                             </div>
                         </div>
                     </form>
