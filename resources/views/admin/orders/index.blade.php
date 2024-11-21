@@ -6,7 +6,7 @@
 @section('content')
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
-            <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
+            <h4 class="mb-4 text-2xl py-3 px-4 font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
                 Đơn hàng mới
             </h4>
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -23,6 +23,9 @@
                                     <a href="{{ route('admin.orders.index', ['sort' => 'user_id', 'direction' => ($sortField === 'user_id' && $sortDirection === 'asc') ? 'desc' : 'asc']) }}">
                                         <span>Người dùng</span>
                                     </a>
+                                </th>
+                                <th class="px-4 py-3">
+                                  Mã đơn hàng
                                 </th>
                                 <th class="px-4 py-3">Giá</th>
                                 <th class="px-4 py-3">Trạng thái</th>
@@ -43,6 +46,7 @@
                                             <span class="font-semibold text-sm">{{ $order->user->name }}</span>
                                         </a>
                                     </td>
+                                    <td class="px-4 py-3">{{ $order->code }}</td>
                                     <td class="px-4 py-3 text-sm">
                                         $ {{ number_format($order->orderItems->sum('price'), 2) }}
                                     </td>
@@ -87,35 +91,55 @@
             </div>
 
             <!-- Pagination -->
-            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                <span class="flex items-center col-span-3">
-                    Showing {{ $orders->firstItem() }}-{{ $orders->lastItem() }} of {{ $orders->total() }}
-                </span>
-                <span class="col-span-2"></span>
-                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                    <nav aria-label="Table navigation">
-                        <ul class="inline-flex items-center">
-                            <!-- Previous Page Link -->
-                            <li>
-                                <a href="{{ $orders->previousPageUrl() }}" class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous" @if(!$orders->previousPageUrl()) disabled @endif>
-                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                                        <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"></path>
-                                    </svg>
-                                </a>
-                            </li>
+            <div
+            class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+            <span class="flex items-center col-span-3">
+                Showing {{ $orders->firstItem() }}-{{ $orders->lastItem() }} of {{ $orders->total() }}
+            </span>
+            <span class="col-span-2"></span>
 
-                            <!-- Next Page Link -->
+            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                <nav aria-label="Table navigation">
+                    <ul class="inline-flex items-center">
+                        <!-- Previous Button -->
+                        <li>
+                            <a href="{{ $orders->previousPageUrl() }}"
+                                class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                                aria-label="Previous" {{ $orders->onFirstPage() ? 'disabled' : '' }}>
+                                <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                    <path
+                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" fill-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <!-- Page Numbers -->
+                        @foreach ($orders->getUrlRange(1, $orders->lastPage()) as $page => $url)
                             <li>
-                                <a href="{{ $orders->nextPageUrl() }}" class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next" @if(!$orders->nextPageUrl()) disabled @endif>
-                                    <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                                        <path d="M7.293 5.293a1 1 0 011.414 0L11 8.586l-2.293 2.293a1 1 0 11-1.414-1.414L9.586 9 7.293 6.707a1 1 0 010-1.414z"></path>
-                                    </svg>
+                                <a href="{{ $url }}"
+                                    class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple {{ $page == $orders->currentPage() ? 'bg-purple-600 text-white' : '' }}">
+                                    {{ $page }}
                                 </a>
                             </li>
-                        </ul>
-                    </nav>
-                </span>
-            </div>
+                        @endforeach
+
+                        <!-- Next Button -->
+                        <li>
+                            <a href="{{ $orders->nextPageUrl() }}"
+                                class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                                aria-label="Next" {{ $orders->hasMorePages() ? '' : 'disabled' }}>
+                                <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
+                                    <path
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" fill-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </span>
+        </div>
         </div>
     </main>
 @endsection

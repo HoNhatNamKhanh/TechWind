@@ -131,7 +131,7 @@
                              <span class="px-2 py-1 font-semibold leading-tight 
                             @if($order->status == 'pending') bg-pending 
                             @elseif($order->status == 'processing') bg-processing
-                            @elseif($order->status == 'canceled') bg-canceled
+                            @elseif($order->status == 'cancelled') bg-canceled
                             @elseif($order->status == 'completed') bg-completed
                             @else bg-default 
                             @endif rounded-full dark:bg-gray-700 dark:text-gray-100 bg-status">

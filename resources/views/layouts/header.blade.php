@@ -192,7 +192,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('contact')}}" class="sub-menu-item">Liên hệ</a>
+                        <a href="#" class="sub-menu-item">Liên hệ</a>
                     </li>
                 </ul>
                 <!--end navigation menu-->
