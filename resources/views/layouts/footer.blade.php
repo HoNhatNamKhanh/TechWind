@@ -130,7 +130,7 @@
 
                                     <button type="submit" id="submitsubscribe" name="send"
                                         class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">
-                                        Subscribe
+                                        Đăng kí
                                     </button>
                                 </div>
                             </form>
@@ -149,25 +149,25 @@
                 <div class="grid lg:grid-cols-4 md:grid-cols-2">
                     <div class="flex items-center lg:justify-center">
                         <i class="uil uil-truck align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Free delivery</h6>
+                        <h6 class="mb-0 font-medium">Giao hàng miễn phí</h6>
                     </div>
                     <!--end content-->
 
                     <div class="flex items-center lg:justify-center">
                         <i class="uil uil-archive align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Non-contact shipping</h6>
+                        <h6 class="mb-0 font-medium">Giao hàng không tiếp xúc</h6>
                     </div>
                     <!--end content-->
 
                     <div class="flex items-center lg:justify-center">
                         <i class="uil uil-transaction align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Money-back quarantee</h6>
+                        <h6 class="mb-0 font-medium">Đảm bảo hoàn tiền</h6>
                     </div>
                     <!--end content-->
 
                     <div class="flex items-center lg:justify-center">
                         <i class="uil uil-shield-check align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Secure payments</h6>
+                        <h6 class="mb-0 font-medium">Thanh toán an toàn</h6>
                     </div>
                     <!--end content-->
                 </div>
@@ -190,7 +190,7 @@
                         </script>
                         Techwind. Design with
                         <i class="mdi mdi-heart text-red-600"></i> by
-                        <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.
+                        <a href="https://shreethemes.in/" target="_blank" class="text-reset">kietkhanhhoang</a>.
                     </p>
                 </div>
 
