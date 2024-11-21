@@ -74,14 +74,16 @@
                         <i class="uil uil-search align-middle"></i>
                     </button>
                     <!-- Dropdown menu -->
-                    <div class="dropdown-menu absolute overflow-hidden end-0 m-0 mt-4 z-10 w-52 rounded-md bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden"
-                        onclick="event.stopPropagation();">
-                        <div class="relative">
-                            <i class="uil uil-search text-lg absolute top-[3px] end-3"></i>
-                            <input type="text" class="form-input h-9 pe-10 sm:w-44 w-36 border-0 focus:ring-0" name="s"
-                                id="searchItem" placeholder="Search..." />
+                    <form action="{{ route('search') }} method="GET" >
+                        <div class="dropdown-menu absolute overflow-hidden end-0 m-0 mt-4 z-10 w-52 rounded-md bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden"
+                            onclick="event.stopPropagation();">
+                            <div class="relative">
+                                <i class="uil uil-search text-lg absolute top-[3px] end-3"></i>
+                                <input type="text" class="form-input h-9 pe-10 sm:w-44 w-36 border-0 focus:ring-0" name="s"
+                                    id="searchItem" placeholder="Search..."  />
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </li>
 
                 <li class="dropdown inline-block relative">
@@ -113,37 +115,37 @@
                         onclick="event.stopPropagation();">
                         <ul class="py-2 text-start" aria-labelledby="dropdownDefault">
                             @auth
-                                <!-- Show these links if the user is logged in -->
-                                <li>
-                                    <a href="{{ route('users.show', Auth::user()->id) }}"
-                                        class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-user align-middle me-1"></i> Tài khoản
-                                    </a>
-                                </li>
+                            <!-- Show these links if the user is logged in -->
+                            <li>
+                                <a href="{{ route('users.show', Auth::user()->id) }}"
+                                    class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-user align-middle me-1"></i> Tài khoản
+                                </a>
+                            </li>
 
-                                <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST" class="inline">
-                                        @csrf
-                                        <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
-                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng xuất
-                                        </button>
-                                    </form>
-                                </li>
+                            <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" class="inline">
+                                    @csrf
+                                    <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng xuất
+                                    </button>
+                                </form>
+                            </li>
                             @endauth
 
                             @guest
-                                <!-- Show these links if the user is not logged in -->
-                                <li>
-                                    <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Nhập
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
-                                    </a>
-                                </li>
+                            <!-- Show these links if the user is not logged in -->
+                            <li>
+                                <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Nhập
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
+                                </a>
+                            </li>
                             @endguest
                         </ul>
                     </div>
@@ -160,24 +162,24 @@
                         <a href="javascript:void(0)">Danh mục</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             @foreach($chunkedCategories as $categoryGroup)
-                                <div class="category-group">
-                                    @foreach($categoryGroup as $index => $category)
-                                        <li>
-                                            <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
-                                            @if($loop->last)
-                                                <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
-                                                <a href="{{ route('shop.index') }}" class="sub-menu-item">
-                                                    <p>Xem thêm danh mục</p>
-                                                </a>
-                                            @else
-                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                                    class="sub-menu-item">
-                                                    <p>{{ $category->name }}</p>
-                                                </a>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                </div>
+                            <div class="category-group">
+                                @foreach($categoryGroup as $index => $category)
+                                <li>
+                                    <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
+                                    @if($loop->last)
+                                    <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
+                                    <a href="{{ route('shop.index') }}" class="sub-menu-item">
+                                        <p>Xem thêm danh mục</p>
+                                    </a>
+                                    @else
+                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                        class="sub-menu-item">
+                                        <p>{{ $category->name }}</p>
+                                    </a>
+                                    @endif
+                                </li>
+                                @endforeach
+                            </div>
                             @endforeach
                         </ul>
                     </li>
@@ -190,7 +192,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="sub-menu-item">Liên hệ</a>
+                        <a href="{{route('contact')}}" class="sub-menu-item">Liên hệ</a>
                     </li>
                 </ul>
                 <!--end navigation menu-->
