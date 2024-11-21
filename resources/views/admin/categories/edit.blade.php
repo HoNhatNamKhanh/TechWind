@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="card mb-4 ">
                     <div class="card-body px-0 pt-0 pb-2 ">
-                        <h3 class="text-2xl	 py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chỉnh sửa danh mục</h3>
+                        <h3 class="text-2xl py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chỉnh sửa danh mục</h3>
                         <form action="{{ route('categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

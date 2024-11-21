@@ -74,7 +74,7 @@
                         <i class="uil uil-search align-middle"></i>
                     </button>
                     <!-- Dropdown menu -->
-                    <form action="{{ route('search') }} method="GET" >
+                    <form action="#" method="GET" >
                         <div class="dropdown-menu absolute overflow-hidden end-0 m-0 mt-4 z-10 w-52 rounded-md bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden"
                             onclick="event.stopPropagation();">
                             <div class="relative">
@@ -192,7 +192,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('contact')}}" class="sub-menu-item">Liên hệ</a>
+                        <a href="#" class="sub-menu-item">Liên hệ</a>
                     </li>
                 </ul>
                 <!--end navigation menu-->

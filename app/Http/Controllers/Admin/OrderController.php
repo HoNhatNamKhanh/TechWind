@@ -16,10 +16,11 @@ class OrderController extends Controller
         $sortField = $request->get('sort', 'created_at');  // mặc định sort theo ngày tạo
         $sortDirection = $request->get('direction', 'desc');  // mặc định theo thứ tự giảm dần
 
-        // Lấy danh sách đơn hàng với phân trang và sắp xếp
-        $orders = Order::with('user')  // Giả sử mỗi order có liên kết với bảng users
+        $perPage = $request->get('per_page', 10);  // Allow dynamic per page selection
+        $orders = Order::with('user')
             ->orderBy($sortField, $sortDirection)
-            ->paginate(10);
+            ->paginate($perPage);
+
 
         return view('admin.orders.index', compact('orders', 'sortField', 'sortDirection'));
     }
