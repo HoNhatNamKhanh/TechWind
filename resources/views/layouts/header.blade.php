@@ -74,7 +74,7 @@
                         <i class="uil uil-search align-middle"></i>
                     </button>
                     <!-- Dropdown menu -->
-                    <form action="{{ route('search') }} method="GET" >
+                    <form action="{{ route('shop.index') }} method="GET" >
                         <div class="dropdown-menu absolute overflow-hidden end-0 m-0 mt-4 z-10 w-52 rounded-md bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden"
                             onclick="event.stopPropagation();">
                             <div class="relative">
@@ -159,7 +159,7 @@
                 <ul class="navigation-menu">
                     <li><a href="{{ route('home') }}" class="sub-menu-item">Trang chủ</a></li>
                     <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)">Danh mục</a><span class="menu-arrow"></span>
+                        <a href="{{route('shop.index')}}">Danh mục</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             @foreach($chunkedCategories as $categoryGroup)
                             <div class="category-group">

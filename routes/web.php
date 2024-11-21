@@ -47,7 +47,7 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::patch('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/increase/{id}', [CartController::class, 'increase'])->name('cart.increase');
 Route::post('/cart/decrease/{id}', [CartController::class, 'decrease'])->name('cart.decrease');
-Route::get('/search', [ProductGridController::class, 'search'])->name('search');
+
 
 // Route cho wishlist
 Route::post('wishlist/add/{id}', [WishlistController::class, 'add'])->name('wishlist.add');

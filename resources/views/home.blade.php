@@ -271,7 +271,7 @@
                         class="hover:text-indigo-600 text-lg font-semibold">{{ $product->name }}</a>
                     <div class="flex justify-between items-center mt-1">
                         @if ($product->variants->isNotEmpty())
-                        <p class="text-green-600">${{ number_format($product->variants[0]->price, 2) }}</p>
+                        <p class="text-green-600">{{ number_format($product->variants[0]->price, 2) }}đ</p>
                         @else
                         <p class="text-red-600">Price not available</p>
                         @endif
