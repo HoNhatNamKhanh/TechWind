@@ -9,7 +9,9 @@ use App\Models\User;
 use App\Models\UserMeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Log;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
@@ -77,11 +79,12 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/users', 'public');
             $userMeta->image = $imagePath;  // Store image in user_meta
-        }else {
-                // Nếu không có ảnh, đặt thumbnail thành giá trị mặc định
-                $userMeta['image'] = 'default-avatar.png';
-                Log::info('No image uploaded. Using default thumbnail.');}
-        
+        } else {
+            // Nếu không có ảnh, đặt thumbnail thành giá trị mặc định
+            $userMeta['image'] = 'default-avatar.png';
+            Log::info('No image uploaded. Using default thumbnail.');
+        }
+
 
         $userMeta->save(); // Save the user meta (including role and image)
 
@@ -91,57 +94,74 @@ class UserController extends Controller
     }
     public function update(UpdateUserRequest $request, $id)
     {
-        // Validate the request
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id, // Exclude current user's email from uniqueness check
-            'password' => 'nullable|string|min:8|confirmed',
-            'role' => 'required|string|in:admin,user', // Validate role
-            'phone' => 'nullable|string|max:15',
-            'address' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image
-        ]);
+        Log::info('Start updating user.', ['user_id' => $id]);
 
-        \Log::info('Start updating user.', ['user_id' => $id]);
-
-        // Find the user by ID
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-
-        // If password is provided, hash and update it
-        if ($request->password) {
-            $user->password = Hash::make($request->password);
+        // Tìm người dùng theo ID
+        try {
+            $user = User::findOrFail($id);
+            Log::info('User found.', ['user_id' => $user->id, 'user_email' => $user->email]);
+        } catch (\Exception $e) {
+            Log::error('User not found.', ['user_id' => $id, 'error' => $e->getMessage()]);
+            return redirect()->route('admin.users.index')->with('error', 'User not found.');
         }
 
-        $user->save(); // Save the user data
+        // Cập nhật tên người dùng nếu thay đổi
+        if ($request->name !== $user->name) {
+            Log::info('Name updated.', ['user_id' => $user->id, 'old_name' => $user->name, 'new_name' => $request->name]);
+            $user->name = $request->name;
+        }
 
-        \Log::info('User updated successfully.', ['user_id' => $user->id]);
+        // Nếu có mật khẩu mới, hash và lưu vào cơ sở dữ liệu
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+            Log::info('Password updated for user.', ['user_id' => $user->id]);
+        }
 
-        // Update user meta (phone, address, role)
-        $userMeta = $user->userMeta;
-        $userMeta->phone = $request->phone;
-        $userMeta->address = $request->address;
-        $userMeta->role = $request->role;  // Update role in user_meta
-
-        // Handle image upload if provided
+        // Xử lý hình ảnh nếu có
         if ($request->hasFile('image')) {
-            // Delete old image if exists
+            Log::info('Image uploaded for user.', ['user_id' => $user->id]);
+
+            // Xóa ảnh cũ nếu có
+            $userMeta = $user->userMeta;
             if ($userMeta->image && \Storage::exists('public/' . $userMeta->image)) {
+                Log::info('Deleting old image.', ['user_id' => $user->id, 'image' => $userMeta->image]);
                 \Storage::delete('public/' . $userMeta->image);
             }
 
-            // Store the new image in 'images/users'
+            // Lưu ảnh mới
             $imagePath = $request->file('image')->store('images/users', 'public');
-            $userMeta->image = $imagePath;  // Update image in user_meta
+            $userMeta->image = $imagePath;
+
+            Log::info('New image saved.', ['user_id' => $user->id, 'image_path' => $imagePath]);
         }
 
-        $userMeta->save(); // Save the updated user meta (including role and image)
+        // Lưu thông tin người dùng
+        $user->save();
+        Log::info('User saved successfully.', ['user_id' => $user->id]);
 
-        \Log::info('UserMeta updated successfully.', ['user_id' => $user->id]);
+        // Cập nhật thông tin người dùng meta (phone, address, role)
+        $userMeta = $user->userMeta;
+        Log::info('UserMeta found.', ['user_id' => $user->id, 'current_phone' => $userMeta->phone, 'current_address' => $userMeta->address, 'current_role' => $userMeta->role]);
 
+        // Cập nhật thông tin meta
+        $userMeta->phone = $request->phone;
+        $userMeta->address = $request->address;
+        $userMeta->role = $request->role;
+        Log::info('UserMeta updated.', [
+            'user_id' => $user->id,
+            'new_phone' => $userMeta->phone,
+            'new_address' => $userMeta->address,
+            'new_role' => $userMeta->role
+        ]);
+
+        // Lưu thông tin người dùng meta
+        $userMeta->save();
+        Log::info('UserMeta saved successfully.', ['user_id' => $user->id]);
+
+        // Quay lại trang danh sách người dùng với thông báo thành công
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -181,7 +201,7 @@ class UserController extends Controller
         if ($userMeta) {
             // Delete associated image from storage if it exists
             if ($userMeta->image && \Storage::exists('public/' . $userMeta->image)) {
-                \Storage::delete('public/' . $userMeta->image);
+                Storage::delete('public/' . $userMeta->image);
             }
 
             // Delete the associated user meta

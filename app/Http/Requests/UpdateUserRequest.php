@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -19,18 +20,28 @@ class UpdateUserRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
     public function rules(): array
     {
         return [
             'name' => ['nullable', 'regex:/^[\pL\s]+$/u', 'max:255'],
-            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users,email,' . $this->user()->id],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-            'phone' => ['nullable', 'regex:/^(0|\+84)[1-9][0-9]{8}$/'],
+            'phone' => [
+                'nullable',
+                'regex:/^(0|\+84)[1-9][0-9]{8,10}$/' // Điều chỉnh để cho phép 9-11 chữ số
+            ],
             'address' => ['nullable', 'string', 'max:255'],
             'role' => ['nullable', 'in:user,admin'],
-            'image' => ['nullable', 'string'],
+            'image' => [
+                'nullable', // Cho phép trường này là rỗng (không bắt buộc)
+                'image', // Kiểm tra tệp có phải là ảnh không
+                'mimes:jpeg,png,jpg,gif', // Kiểm tra định dạng tệp ảnh (JPEG, PNG, JPG, GIF)
+                'max:2048' // Giới hạn kích thước tệp tối đa là 2MB
+            ],
         ];
     }
+
+
 
     /**
      * Get the validation messages.

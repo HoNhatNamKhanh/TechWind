@@ -6,12 +6,12 @@
 <main class="h-full pb-16">
     <div class="container px-6 mx-auto grid">
         <div class="card-body px-0 pt-0 pb-2 overflow-auto">
-            <h3 class="text-lg py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chi tiết sản phẩm</h3>
+            <h3 class="text-2xl py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chi tiết sản phẩm</h3>
 
             <div class="variant px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <!-- Tên sản phẩm -->
                 <label class="block text-sm mb-4">
-                    <span class="text-gray-700 dark:text-gray-400">Tên sản phẩm</span>
+                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Tên sản phẩm</span>
                     <input type="text" name="name" id="name"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         value="{{ $product->name }}" disabled />
@@ -19,7 +19,7 @@
 
                 <!-- Mô tả -->
                 <label class="block text-sm mb-4">
-                    <span class="text-gray-700 dark:text-gray-400">Mô tả</span>
+                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Mô tả</span>
                     <textarea name="description" id="description" rows="3"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea"
                         disabled>{{ $product->description }}</textarea>
@@ -27,14 +27,14 @@
 
                 <!-- Danh mục -->
                 <label class="block text-sm mb-4">
-                    <span class="text-gray-700 dark:text-gray-400">Danh mục</span>
+                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Danh mục</span>
                     <input type="text" name="category" id="category"
                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                         value="{{ $product->category->name }}" disabled />
                 </label>
 
                 <!-- Biến thể sản phẩm -->
-                <h5 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Biến thể sản phẩm</h5>
+                <h5 class="text-xl py-3 font-semibold text-gray-800 dark:text-gray-200 mb-4">Biến thể sản phẩm</h5>
                 <div>
                     <div class="w-full mb-8 overflow-auto rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
