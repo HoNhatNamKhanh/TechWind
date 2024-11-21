@@ -224,11 +224,11 @@
                         <i class="uil uil-heart-break"></i>
                     </div>
                 </div>
-                <h4 class="text-xl font-semibold mt-6">Your wishlist is empty.</h4>
-                <p class="text-slate-400 my-3">Create your first wishlist request...</p>
+                <h4 class="text-xl font-semibold mt-6">Danh sách yêu thích của bạn đang trống.</h4>
+                <p class="text-slate-400 my-3">Tạo yêu cầu danh sách yêu thích đầu tiên của bạn...</p>
                 <a href="#"
-                    class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Create
-                    a new wishlist</a>
+                    class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Tạo
+                    1 danh sách yêu thích mới</a>
             </div>
         </div>
     </dialog>
