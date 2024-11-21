@@ -201,7 +201,7 @@
                     <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
                         class=" max-h-300px object-cover" />
                     @else
-                    <img src="https://didongviet.vn/_next/image?url=https%3A%2F%2Fcdn-v2.didongviet.vn%2Ffiles%2Fproducts%2F2023%2F8%2F29%2F1%2F1695953606803_thumb_iphone_15_pro_didongviet.jpg&w=1080&q=75" alt="{{ $product->name }}"
+                    <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}"
                         class=" max-h-300px object-cover" />
                     @endif
 
