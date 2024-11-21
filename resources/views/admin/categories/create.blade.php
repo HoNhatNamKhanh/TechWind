@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-body px-0 pt-0 pb-2">
-                    <h1 class="text-2xl	py-3 font-semibold text-gray-800 dark:text-gray-200">Tạo danh mục mới
+                    <h1 class="text-2xl py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Tạo danh mục mới
                     </h1>
                     <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
