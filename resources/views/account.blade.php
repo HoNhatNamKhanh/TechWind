@@ -4,24 +4,23 @@
 
 @section('content')
 <!-- Start Hero -->
-<section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800">
+<section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800 bg-cover bg-center"
+         style="background-image: url('https://cdn.shopify.com/s/files/1/0808/0067/files/category_banner_ip14pro_promax_desktop_1.jpg?v=1662594151');">
     <div class="container relative">
-        <div class="grid grid-cols-1 mt-14">
-            <h3 class="text-3xl leading-normal font-semibold">Tài khoản của tôi</h3>
-        </div><!--end grid-->
-
+        <div class="grid grid-cols-1 mt-14 ">
+            <h3 class="text-3xl leading-normal font-semibold text-black">TÀI KHOẢN</h3>
+        </div>
         <div class="relative mt-3">
             <ul class="tracking-[0.5px] mb-0 inline-block">
-                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600">
-                    <a href="index-shop.html">Techwind</a>
+                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-200">
+                    <a href="index-shop.html" class="text-black">Techwind</a>
                 </li>
-                <li class="inline-block text-base text-slate-950 dark:text-white mx-0.5 ltr:rotate-0 rtl:rotate-180"><i
-                        class="uil uil-angle-right-b"></i></li>
-                <li class="inline-block uppercase text-[13px] font-bold text-indigo-600" aria-current="page">My Account
+                <li class="inline-block uppercase text-[13px] font-bold text-indigo-200" aria-current="page">
+                    <!-- Breadcrumb current page (Optional) -->
                 </li>
             </ul>
         </div>
-    </div><!--end container-->
+    </div>
 </section><!--end section-->
 <!-- End Hero -->
 
@@ -34,7 +33,7 @@
                     <img src=""
                         alt="User Avatar" class="size-16 rounded-2xl shadow dark:shadow-gray-800" alt="User Image">
                     <div class="ms-2 display-ruby">
-                        <p class="font-semibold text-slate-400">Hello,</p>
+                        <p class="font-semibold text-slate-400">Xin Chào,</p>
                         <h5 class="text-lg font-semibold">{{ $user->name }}</h5>
                     </div>
                 </div>
@@ -54,14 +53,14 @@
                                 class="px-4 py-2 text-start text-base font-semibold rounded-md w-full hover:text-indigo-600 duration-500"
                                 id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
                                 aria-controls="dashboard" aria-selected="true"><i
-                                    class="uil uil-dashboard text-[20px] me-2 align-middle"></i> Dashboard</button>
+                                    class="uil uil-dashboard text-[20px] me-2 align-middle"></i> Bảng điều khiển</button>
                         </li>
                         <li role="presentation">
                             <button
                                 class="px-4 py-2 text-start text-base font-semibold rounded-md w-full mt-3 duration-500"
                                 id="order-tab" data-tabs-target="#order" type="button" role="tab" aria-controls="order"
                                 aria-selected="false"><i class="uil uil-list-ul text-[20px] me-2 align-middle"></i>
-                                Orders</button>
+                                Đơn Hàng</button>
                         </li>
 
                         <li role="presentation">
@@ -69,14 +68,14 @@
                                 class="px-4 py-2 text-start text-base font-semibold rounded-md w-full mt-3 duration-500"
                                 id="address-tab" data-tabs-target="#address" type="button" role="tab"
                                 aria-controls="address" aria-selected="false"><i
-                                    class="uil uil-map-marker text-[20px] me-2 align-middle"></i> Addresses</button>
+                                    class="uil uil-map-marker text-[20px] me-2 align-middle"></i> Địa chỉ</button>
                         </li>
                         <li role="presentation">
                             <button
                                 class="px-4 py-2 text-start text-base font-semibold rounded-md w-full mt-3 duration-500"
                                 id="accountdetail-tab" data-tabs-target="#accountdetail" type="button" role="tab"
                                 aria-controls="accountdetail" aria-selected="false"><i
-                                    class="uil uil-user text-[20px] me-2 align-middle"></i> Account Details</button>
+                                    class="uil uil-user text-[20px] me-2 align-middle"></i> Chi tiết tài khoản</button>
                         </li>
                         <li role="presentation">
 
@@ -84,7 +83,7 @@
                                 @csrf
                                 <button type="submit"
                                     class="px-4 py-2 text-start text-base font-semibold rounded-md w-full mt-3 duration-500 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-white">
-                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Xuất
                                 </button>
                             </form>
                         </li>
@@ -95,12 +94,12 @@
             <div class="lg:col-span-9 md:col-span-7">
                 <div id="myTabContent" class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md">
                     <div class="" id="dashboard" role="tabpanel" aria-labelledby="profile-tab">
-                        <p class="text-slate-400 font-semibold">Hello <span
+                        <p class="text-slate-400 font-semibold">Xin chào</p> <span
                                 class="text-slate-900 dark:text-white">{{ $user->name }}.</span>
 
                         </p>
                         <span class="text-sm text-slate-500 dark:text-slate-300">
-                            Thank you for being a part of our community.
+                        Cảm ơn bạn đã trở thành một phần trong cộng đồng của chúng tôi.
                         </span>
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -116,11 +115,11 @@
         <table class="w-full text-start text-slate-500 dark:text-slate-400">
             <thead class="text-sm uppercase bg-slate-50 dark:bg-slate-800">
                 <tr class="text-start">
-                    <th scope="col" class="px-2 py-3 text-start">Order no.</th>
-                    <th scope="col" class="px-2 py-3 text-start">Date</th>
-                    <th scope="col" class="px-2 py-3 text-start">Status</th>
-                    <th scope="col" class="px-2 py-3 text-start">Total</th>
-                    <th scope="col" class="px-2 py-3 text-start">Action</th>
+                    <th scope="col" class="px-2 py-3 text-start">Mã đơn Hàng</th>
+                    <th scope="col" class="px-2 py-3 text-start">Ngày</th>
+                    <th scope="col" class="px-2 py-3 text-start">Trạng thái</th>
+                    <th scope="col" class="px-2 py-3 text-start">Tổng Tiền</th>
+                    <th scope="col" class="px-2 py-3 text-start">hoạt động</th>
                 </tr>
             </thead>
             <tbody>
@@ -193,7 +192,7 @@
                             <div class="max-w-full md:px-3">
                                 <!-- Hiển thị thông tin địa chỉ -->
                                 <div class="flex items-center mb-4 justify-between">
-                                    <h5 class="text-xl font-semibold">Address:</h5>
+                                    <h5 class="text-xl font-semibold">Địa chỉ:</h5>
                                     <a href="#" class="text-indigo-600 text-lg" id="edit-address-button"><i
                                             class="uil uil-edit align-middle"></i></a>
                                 </div>
@@ -246,7 +245,7 @@
 
                                     <!-- Phone -->
                                     <div class="mb-4">
-                                        <label for="phone" class="font-semibold">Your Phone:</label>
+                                        <label for="phone" class="font-semibold">Số điện thoại bạn :</label>
                                         <input type="text" name="phone" id="phone"
                                             value="{{ old('phone', $user->userMeta->phone ?? '') }}"
                                             class="form-input w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2"
@@ -256,8 +255,8 @@
                                     <!-- Submit Button -->
                                     <div class="mt-4">
                                         <button type="submit"
-                                            class="bg-indigo-600 text-white px-5 py-2 rounded-md w-full">Save
-                                            Address</button>
+                                            class="bg-indigo-600 text-white px-5 py-2 rounded-md w-full">Lưu
+                                            địa chỉ</button>
                                     </div>
                                 </form>
 
@@ -267,7 +266,7 @@
 
 
                     <div class="hidden" id="accountdetail" role="tabpanel" aria-labelledby="accountdetail-tab">
-                        <h5 class="text-lg font-semibold mb-4">Personal Detail:</h5>
+                        <h5 class="text-lg font-semibold mb-4">Chi tiết cá nhân:</h5>
                         <form action="{{ route('users.update.profile', ['id' => $user->id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
@@ -276,7 +275,7 @@
                             <!-- Name -->
                             <div class="grid grid-cols-1 gap-5">
                                 <div>
-                                    <label class="form-label font-medium">Name:</label>
+                                    <label class="form-label font-medium">Tên:</label>
                                     <div class="form-icon relative mt-2">
                                         <i data-feather="user" class="size-4 absolute top-3 start-4"></i>
                                         <input type="text"
@@ -291,7 +290,7 @@
 
                                 <!-- Email -->
                                 <div>
-                                    <label class="form-label font-medium">Your Email:</label>
+                                    <label class="form-label font-medium">Email của bạn:</label>
                                     <div class="form-icon relative mt-2">
                                         <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
                                         <input type="email"
@@ -305,7 +304,7 @@
 
                                 <!-- Password -->
                                 <div>
-                                    <label class="form-label font-medium">New Password:</label>
+                                    <label class="form-label font-medium">Mật khẩu:</label>
                                     <div class="form-icon relative mt-2">
                                         <i data-feather="key" class="size-4 absolute top-3 start-4"></i>
                                         <input type="password"
@@ -319,7 +318,7 @@
 
                                 <!-- Password Confirmation -->
                                 <div>
-                                    <label class="form-label font-medium">Confirm New Password:</label>
+                                    <label class="form-label font-medium">Xác nhận mật khẩu mới:</label>
                                     <div class="form-icon relative mt-2">
                                         <i data-feather="key" class="size-4 absolute top-3 start-4"></i>
                                         <input type="password"
@@ -333,7 +332,7 @@
 
                                 <!-- Avatar Upload -->
                                 <div>
-                                    <label class="form-label font-medium">Profile Picture (Avatar):</label>
+                                    <label class="form-label font-medium">Ảnh đại diện (Avatar):</label>
                                     <div class="form-icon relative mt-2">
                                         <!-- Avatar Image Preview -->
                                         @if($user->userMeta && $user->userMeta->avatar)

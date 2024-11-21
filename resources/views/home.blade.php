@@ -271,7 +271,7 @@
                         class="hover:text-indigo-600 text-lg font-semibold">{{ $product->name }}</a>
                     <div class="flex justify-between items-center mt-1">
                         @if ($product->variants->isNotEmpty())
-                        <p class="text-green-600">${{ number_format($product->variants[0]->price, 2) }}</p>
+                        <p class="text-green-600">{{ number_format($product->variants[0]->price, 2) }}đ</p>
                         @else
                         <p class="text-red-600">Price not available</p>
                         @endif
@@ -288,13 +288,28 @@
                             </ul>
                         </div>
                     </div>
-                    <div>
-                        <p class="p-1"><label class="bg-red-500 p-1 rounded-sm">KM</label> Trả góp 0% - Không phí</p>
+
+                    <div class="bg-gray-100 rounded-xl p-1">
+                        <div class="flex ">
+                            <div class="flex-1 text-left text-xs">
+                                <!-- Cột bên trái -->
+                                <span>CPU: A18</span><br>
+                                <span>RAM: 8G</span><br>
+                                <span>Bộ Nhớ: 256G</span><br>
+                            </div>
+
+                            <div class="flex-1 text-right text-xs">
+                                <!-- Cột bên phải -->
+                                <span>Tỉ lệ: 6.9"</span><br>
+                                <span>Tần số quét: 120z"</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-100 rounded-xl text-xs p-1 text-center">
-                        <p class="">Giảm 500k qua cổng thanh toán<br>
-                            Trả góp | Lãi suất 0đ</p>
-                    </div>
+                    <ul class="border-2 rounded-xl text-center mt-2 ">
+                        <li>
+                            <a href="{{ route('product.show', $product->id) }}">Xem thêm</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             @endforeach
@@ -404,13 +419,27 @@
                             </ul>
                         </div>
                     </div>
-                    <div>
-                        <p class="p-1"><label class="bg-red-500 p-1 rounded-sm">KM</label> Trả góp 0% - Không phí</p>
+                    <div class="bg-gray-100 rounded-xl p-1">
+                        <div class="flex ">
+                            <div class="flex-1 text-left text-xs">
+                                <!-- Cột bên trái -->
+                                <span>CPU: A18</span><br>
+                                <span>RAM: 8G</span><br>
+                                <span>Bộ Nhớ: 256G</span><br>
+                            </div>
+
+                            <div class="flex-1 text-right text-xs">
+                                <!-- Cột bên phải -->
+                                <span>Tỉ lệ: 6.9"</span><br>
+                                <span>Tần số quét: 120z"</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-100 rounded-xl text-xs p-1 text-center">
-                        <p class="">Giảm 500k qua cổng thanh toán<br>
-                            Trả góp | Lãi suất 0đ</p>
-                    </div>
+                    <ul class="border-2 rounded-xl text-center mt-2 ">
+                        <li>
+                            <a href="{{ route('product.show', $product->id) }}">Xem thêm</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             @endforeach
@@ -560,13 +589,28 @@
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <p class="p-1"><label class="bg-red-500 p-1 rounded-sm">KM</label> Trả góp 0% - Không phí</p>
+                <div class="bg-gray-100 rounded-xl p-1">
+                    <div class="flex ">
+                        <div class="flex-1 text-left text-xs">
+                            <!-- Cột bên trái -->
+                            <span>CPU: A18</span><br>
+                            <span>RAM: 8G</span><br>
+                            <span>Bộ Nhớ: 256G</span><br>
+                        </div>
+
+                        <div class="flex-1 text-right text-xs">
+                            <!-- Cột bên phải -->
+                            <span>Tỉ lệ: 6.9"</span><br>
+                            <span>Tần số quét: 120z"</span>
+                        </div>
+                    </div>
                 </div>
-                <div lss="bg-gray-100 rounded-xl text-xs p-1 text-center">
-                    <p class="">Giảm 500k qua cổng thanh toán<br>
-                        Trả góp | Lãi suất 0đ</p>
-                </div>
+
+                <ul class="border-2 rounded-xl text-center mt-2 ">
+                    <li>
+                        <a href="{{ route('product.show', $product->id) }}">Xem thêm</a>
+                    </li>
+                </ul>
             </div>
         </div>
         @endforeach
