@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,17 +16,27 @@ class CategoryController extends Controller
         // Lấy tham số search từ URL (nếu có)
         $search = $request->input('search');
 
+        // Lấy tham số giá (min_price và max_price)
+        $minPriceInDb = Variant::min('price');  // Lấy giá thấp nhất từ variant
+        $maxPriceInDb = Variant::max('price');  // Lấy giá cao nhất từ variant
+
+        // Làm tròn minPrice xuống và maxPrice lên chia hết cho 10
+        $minPriceInDb = floor($minPriceInDb / 10) * 10;  // Làm tròn xuống bội số của 10
+        $maxPriceInDb = ceil($maxPriceInDb / 10) * 10;  // Làm tròn lên bội số của 10
+
+        // Nếu không có giá trị min_price hoặc max_price, sử dụng giá trị trong request hoặc giá trị mặc định
+        $minPrice = $request->input('min_price', $minPriceInDb);  // Mặc định là minPrice từ DB nếu không có trong request
+        $maxPrice = $request->input('max_price', $maxPriceInDb);  // Mặc định là maxPrice từ DB nếu không có trong request
+
         // Khởi tạo category và products mặc định
         $category = null;
         $productsQuery = Product::query();
 
         // Nếu có category_id, lọc sản phẩm theo category_id
         if ($categoryIds) {
-            // Kiểm tra xem $categoryIds có phải là mảng hay không
             if (is_array($categoryIds)) {
                 $productsQuery = $productsQuery->whereIn('category_id', $categoryIds);
             } else {
-                // Nếu là giá trị đơn, chỉ lọc theo category_id đó
                 $productsQuery = $productsQuery->where('category_id', $categoryIds);
             }
         }
@@ -33,6 +44,18 @@ class CategoryController extends Controller
         // Nếu có tìm kiếm từ khóa, lọc sản phẩm theo tên
         if ($search) {
             $productsQuery = $productsQuery->where('name', 'like', '%' . $search . '%');
+        }
+
+        // Lọc theo giá (nếu có)
+        if ($minPrice || $maxPrice) {
+            $productsQuery = $productsQuery->whereHas('variants', function ($query) use ($minPrice, $maxPrice) {
+                if ($minPrice) {
+                    $query->where('price', '>=', $minPrice);
+                }
+                if ($maxPrice) {
+                    $query->where('price', '<=', $maxPrice);
+                }
+            });
         }
 
         // Phân trang kết quả, sử dụng paginate thay vì get
@@ -50,7 +73,8 @@ class CategoryController extends Controller
         $categories = Category::all();
 
         // Trả về view với các sản phẩm, danh mục và ratings
-        return view('grid', compact('products', 'categories', 'category', 'search'));
+        return view('grid', compact('products', 'categories', 'category', 'search', 'minPriceInDb', 'maxPriceInDb', 'minPrice', 'maxPrice'));
     }
+
 
 }

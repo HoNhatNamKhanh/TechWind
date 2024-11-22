@@ -43,7 +43,36 @@
                                 placeholder="Tìm kiếm" value="{{ request()->input('search') }}" />
                         </div>
                     </div>
-                    
+                    <div class="mt-4">
+                        <label class="font-semibold">Lọc theo giá</label>
+                        <div class="flex justify-between flex-col">
+                            <!-- Minimum Price Slider -->
+                            <div class="flex flex-col">
+                                <p>Giá thấp nhất:</p>
+                                <div class="flex">
+                                    <div class="w-25">
+                                        <span id="min_price_label" class="px-2">{{ request()->input('min_price', $minPriceInDb) }}</span>
+                                    </div>
+                                    <input type="range" id="min_price_slider" name="min_price" min="{{ $minPriceInDb }}" max="{{ $maxPriceInDb }}"
+                                        step="10" value="{{ request()->input('min_price', $minPriceInDb) }}" class="w-1/2"
+                                        oninput="updatePriceDisplay()">
+                                </div>
+                            </div>
+                            
+                            <!-- Thanh trượt Giá cao nhất -->
+                            <div class="flex flex-col">
+                                <p>Giá cao nhất:</p>
+                                <div class="flex">
+                                    <div class="w-25">
+                                        <span id="max_price_label" class="px-2">{{ request()->input('max_price', $maxPriceInDb) }}</span>
+                                    </div>
+                                    <input type="range" id="max_price_slider" name="max_price" min="{{ $minPriceInDb }}" max="{{ $maxPriceInDb }}"
+                                        step="10" value="{{ request()->input('max_price', $maxPriceInDb) }}" class="w-1/2"
+                                        oninput="updatePriceDisplay()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Lọc theo danh mục -->
                     <div class="mt-4">
                         <label class="font-semibold">Danh Mục</label>
@@ -286,4 +315,13 @@
     </div>
 </section>
 <!--end section-->
+<script>
+      function updatePriceDisplay() {
+            document.getElementById('min_price_label').innerText = document.getElementById('min_price_slider').value;
+            document.getElementById('max_price_label').innerText = document.getElementById('max_price_slider').value;
+        }
+
+        // Initialize display on page load
+        updatePriceDisplay();
+</script>
 @endsection
