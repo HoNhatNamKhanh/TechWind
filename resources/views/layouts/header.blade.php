@@ -261,7 +261,7 @@
                             <img src="{{ $item['product']->image }}" alt="{{ $item['product']->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
                             <div>
                                 <p class="font-semibold text-lg">{{ $item['product']->name }}</p>
-                                <p class="text-sm text-slate-400">Variant: {{ $item['variant']->name }}</p>
+                                <p class="text-sm text-slate-400">Variant: {{ $item['variant']->color }}</p>
                                 <p class="text-sm text-slate-400">${{ $item['variant']->price }}</p>
                             </div>
                         </div>
