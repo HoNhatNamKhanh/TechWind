@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Variant;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +12,12 @@ use Illuminate\Support\Facades\Session;
 class WishlistController extends Controller
 {
     // Thêm sản phẩm vào wishlist
-    public function add(Request $request, $id)
+    public function add($id, Request $request)
     {
+        $variantId = $request->input('variant_id');
+
         if (Auth::check()) {
             $userId = Auth::id();
-            $variantId = $request->input('variant_id'); // Lấy variant_id từ request
-
-            // Kiểm tra xem sản phẩm và biến thể đã có trong wishlist chưa
             $wishlist = Wishlist::where('user_id', $userId)
                 ->where('product_id', $id)
                 ->where('variant_id', $variantId)
@@ -29,45 +29,58 @@ class WishlistController extends Controller
                     'product_id' => $id,
                     'variant_id' => $variantId,
                 ]);
-                return back()->with('success', 'Product added to your wishlist!');
+                return redirect()->back()->with('success', 'Product with variant added to your wishlist!');
             }
 
-            return back()->with('info', 'Product is already in your wishlist.');
+            return redirect()->back()->with('info', 'Product with this variant is already in your wishlist.');
         }
 
-        return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để thêm Wishlist.');
+        // Lưu vào session nếu chưa đăng nhập
+        $wishlist = Session::get('wishlist', []);
+        $wishlistKey = $id . '-' . $variantId;
+        if (!array_key_exists($wishlistKey, $wishlist)) {
+            $wishlist[$wishlistKey] = ['product_id' => $id, 'variant_id' => $variantId];
+            Session::put('wishlist', $wishlist);
+            return redirect()->back()->with('success', 'Product with variant added to wishlist!');
+        }
+
+        return redirect()->back()->with('info', 'Product with this variant is already in your wishlist.');
     }
 
-    // Hiển thị wishlist (dành cho người dùng đã đăng nhập và chưa đăng nhập)
+    // Hiển thị wishlist
     public function showWishlist()
     {
-        // Khởi tạo danh sách wishlist trống
-        $wishlistProducts = collect();
+        $wishlistProducts = [];
 
         if (Auth::check()) {
             $userId = Auth::id();
-            $wishlistProducts = Wishlist::with(['product', 'product.variants'])
-                ->where('user_id', $userId)
-                ->get()
-                ->map(function ($wishlistItem) {
-                    return [
-                        'product' => $wishlistItem->product,
-                        'variant' => $wishlistItem->product->variants->firstWhere('id', $wishlistItem->variant_id),
+            $wishlist = Wishlist::where('user_id', $userId)->get();
+
+            foreach ($wishlist as $item) {
+                $product = Product::find($item->product_id);
+                $variant = Variant::find($item->variant_id);
+                if ($product && $variant) {
+                    $wishlistProducts[] = [
+                        'product' => $product,
+                        'variant' => $variant,
                     ];
-                });
+                }
+            }
         } else {
-            $wishlistIds = Session::get('wishlist', []);
-            $wishlistProducts = Product::with('variants')
-                ->whereIn('id', $wishlistIds)
-                ->get()
-                ->map(function ($product) {
-                    return ['product' => $product, 'variant' => null];
-                });
+            $wishlistItems = Session::get('wishlist', []);
+            foreach ($wishlistItems as $item) {
+                $product = Product::find($item['product_id']);
+                $variant = Variant::find($item['variant_id']);
+                if ($product && $variant) {
+                    $wishlistProducts[] = [
+                        'product' => $product,
+                        'variant' => $variant,
+                    ];
+                }
+            }
         }
 
-        dd($wishlistProducts); // Debugging step
-
-        return view('layouts.header', compact('wishlistProducts'));
+        return view('wishlist', compact('wishlistProducts'));
     }
 
     // Xóa sản phẩm khỏi wishlist
@@ -91,30 +104,5 @@ class WishlistController extends Controller
         }
 
         return back()->with('error', 'Product not found in your wishlist.');
-    }
-
-    public function migrateWishlistToDatabase()
-    {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $wishlistIds = Session::get('wishlist', []);
-
-            foreach ($wishlistIds as $id) {
-                // Kiểm tra xem sản phẩm đã có trong cơ sở dữ liệu chưa
-                if (!Wishlist::where('user_id', $user->id)->where('product_id', $id)->exists()) {
-                    Wishlist::create([
-                        'user_id' => $user->id,
-                        'product_id' => $id,
-                    ]);
-                }
-            }
-
-            // Xóa wishlist trong session sau khi migrate
-            Session::forget('wishlist');
-
-            return redirect()->route('wishlist.index')->with('success', 'Wishlist đã được chuyển vào tài khoản của bạn.');
-        }
-
-        return redirect()->route('login');
     }
 }

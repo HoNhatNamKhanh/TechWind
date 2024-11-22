@@ -245,42 +245,55 @@ try {
 
 try {
     function validateForm() {
-        var name = document.forms["myForm"]["name"].value;
-        var email = document.forms["myForm"]["email"].value;
-        var subject = document.forms["myForm"]["subject"].value;
-        var comments = document.forms["myForm"]["comments"].value;
+        // Lấy giá trị từ các trường đúng
+        var firstname = document.forms["myForm"]["firstname"].value.trim();
+        var lastname = document.forms["myForm"]["lastname"].value.trim();
+        var email = document.forms["myForm"]["email"].value.trim();
+        var subject = document.forms["myForm"]["subject"].value.trim();
+        var comments = document.forms["myForm"]["comments"].value.trim();
+
+        // Ẩn thông báo lỗi trước khi kiểm tra
         document.getElementById("error-msg").style.opacity = 0;
         document.getElementById("error-msg").innerHTML = "";
-        if (name == "" || name == null) {
+
+        // Kiểm tra các trường bắt buộc
+        if (firstname == "" || lastname == "") {
             document.getElementById("error-msg").innerHTML =
-                "<div class='alert alert-warning error_message'>*Please enter a Name*</div>";
+                "<div class='alert alert-warning error_message'>*Please enter your full name*</div>";
+            fadeIn(); // Hàm này cần phải định nghĩa, ví dụ làm cho nó hiển thị thông báo
+            return false;
+        }
+
+        if (email == "") {
+            document.getElementById("error-msg").innerHTML =
+                "<div class='alert alert-warning error_message'>*Please enter an Email*</div>";
             fadeIn();
             return false;
         }
-        if (email == "" || email == null) {
-            document.getElementById("error-msg").innerHTML =
-                "<div class='alert alert-warning error_message'>*Please enter a Email*</div>";
-            fadeIn();
-            return false;
-        }
-        if (subject == "" || subject == null) {
+
+        if (subject == "") {
             document.getElementById("error-msg").innerHTML =
                 "<div class='alert alert-warning error_message'>*Please enter a Subject*</div>";
             fadeIn();
             return false;
         }
-        if (comments == "" || comments == null) {
+
+        if (comments == "") {
             document.getElementById("error-msg").innerHTML =
-                "<div class='alert alert-warning error_message'>*Please enter a Comments*</div>";
+                "<div class='alert alert-warning error_message'>*Please enter your Comments*</div>";
             fadeIn();
             return false;
         }
+
+        // Nếu tất cả hợp lệ, gửi yêu cầu AJAX
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("simple-msg").innerHTML =
                     this.responseText;
-                document.forms["myForm"]["name"].value = "";
+                // Xóa form nếu gửi thành công
+                document.forms["myForm"]["firstname"].value = "";
+                document.forms["myForm"]["lastname"].value = "";
                 document.forms["myForm"]["email"].value = "";
                 document.forms["myForm"]["subject"].value = "";
                 document.forms["myForm"]["comments"].value = "";
@@ -292,8 +305,10 @@ try {
             "application/x-www-form-urlencoded"
         );
         xhttp.send(
-            "name=" +
-                name +
+            "firstname=" +
+                firstname +
+                "&lastname=" +
+                lastname +
                 "&email=" +
                 email +
                 "&subject=" +
@@ -301,7 +316,7 @@ try {
                 "&comments=" +
                 comments
         );
-        return false;
+        return false; // Ngừng gửi form mặc định
     }
 
     function fadeIn() {
