@@ -77,7 +77,7 @@ class UserController extends Controller
 
         // Handle image upload if provided
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/users', 'public');
+            $imagePath = $request->file('image')->store('avatars', 'public');
             $userMeta->image = $imagePath;  // Store image in user_meta
         } else {
             // Nếu không có ảnh, đặt thumbnail thành giá trị mặc định

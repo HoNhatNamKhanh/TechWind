@@ -74,10 +74,10 @@
                     </div>
                     <div class="mt-4">
                         <h5 class="text-lg font-semibold">Mô tả :</h5>
-                   
+
 
                         <ul class="list-none text-slate-400 mt-4 bg-white p-5 rounded-xl">
-                        <p class="text-slate-400 mt-2">{{ $product->description }}</p>
+                            <p class="text-slate-400 mt-2">{{ $product->description }}</p>
                             <li class="mb-1 flex">
                                 <i class="uil uil-check-circle text-indigo-600 text-xl me-2"></i>
                                 Giải pháp Marketing số hiện đại, giúp bạn phát triển bền vững
@@ -141,37 +141,49 @@
 
         <!--end grid-->
         <div class="max-w-4xl mx-auto my-8 p-6 bg-white rounded-lg  mt-10">
-    <div class="space-y-4">
-        <div class="flex items-center space-x-2">
-            <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-gray-700">Miễn phí vận chuyển toàn quốc</span>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-gray-700">Miễn phí vận chuyển toàn quốc</span>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-gray-700">Bảo hành 12 tháng chính hãng</span>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-gray-700">1 đổi 1 trong 30 ngày đầu nếu có lỗi phần cứng do nhà sản xuất</span>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-gray-700">Giá đã bao gồm VAT</span>
+                </div>
+            </div>
         </div>
 
-        <div class="flex items-center space-x-2">
-            <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-gray-700">Bảo hành 12 tháng chính hãng</span>
-        </div>
-
-        <div class="flex items-center space-x-2">
-            <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-gray-700">1 đổi 1 trong 30 ngày đầu nếu có lỗi phần cứng do nhà sản xuất</span>
-        </div>
-
-        <div class="flex items-center space-x-2">
-            <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 11-6 6 6 6 0 016-6zm1 9H9v-1h2v1zm0-2H9V9h2v1zm0-2H9V7h2v1z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-gray-700">Giá đã bao gồm VAT</span>
-        </div>
-    </div>
-</div>
-    
 
         <div class="grid md:grid-cols-12 grid-cols-1 mt-10 gap-[30px]">
             <div class="lg:col-span-3 md:col-span-5">
@@ -205,7 +217,6 @@
                     </ul>
                 </div>
             </div>
-            
 
             <div class="lg:col-span-9 md:col-span-7">
                 <div id="myTabContent" class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md">
@@ -265,7 +276,7 @@
                                 <div class="review-item mb-6 p-4 border-b border-gray-200">
                                     <div class="flex items-center mb-3">
                                         <!-- Ảnh đại diện người dùng -->
-                                        <img src="{{ $review->user->avatar ? asset('storage/' . $review->user->avatar) : asset('default-avatar.jpg') }}"
+                                        <img src="{{ $review->user->userMeta->image ? asset('storage/' . $review->user->userMeta->image) : asset('default-avatar.jpg') }}"
                                             class="w-12 h-12 rounded-full shadow" alt="">
 
                                         <div class="ms-3">
@@ -291,10 +302,12 @@
                                 </div>
                             @endforeach
                         @endif
-
+                        <div id="reviews-container">
+                            <!-- Các bình luận sẽ được chèn vào đây -->
+                        </div>
                         <!-- Form đánh giá chỉ hiển thị nếu người dùng đã đăng nhập -->
                         @if(Auth::check())
-                            <form id="review-form" method="POST"
+                            <form id="review-form-{{ $product->id }}" method="POST"
                                 action="{{ route('review.store', ['product' => $product->id]) }}">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -349,7 +362,6 @@
                             <p>Please log in to submit a review.</p>
                         @endif
                     </div>
-
                 </div>
             </div>
         </div>
@@ -360,153 +372,221 @@
     <section class="related-products mt-10">
         <div class="container">
             <h3 class="text-2xl font-semibold mb-6">Sản phẩm cùng danh mục</h3>
-        <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px] p-3 bg-white">
-            @foreach($relatedProducts as $product)
-                <div class="group transform lg:scale-105  border-2 rounded-xl p-2">
-                    <div
-                        class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
-                        @if ($product->variants->isNotEmpty())
-                            <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
-                                class=" max-h-300px object-cover" />
-                        @else
-                            <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}"
-                                class=" max-h-300px object-cover" />
-                        @endif
+            <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px] p-3 bg-white">
+                @foreach($relatedProducts as $product)
+                    <div class="group transform lg:scale-105  border-2 rounded-xl p-2">
+                        <div
+                            class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
+                            @if ($product->variants->isNotEmpty())
+                                <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
+                                    class=" max-h-300px object-cover" />
+                            @else
+                                <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}"
+                                    class=" max-h-300px object-cover" />
+                            @endif
 
-                        <div class="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
-                            <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-full">
-                                @csrf
-                                @if ($product->variants->isNotEmpty())
-                                    <div class="mt-4">
-                                        <select name="variant_id" id="variant"
-                                            class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-500">
-                                            @foreach ($product->variants as $variant)
-                                                <option value="{{ $variant->id }}" class="variant-option">
-                                                    {{ $variant->color }} - ${{ number_format($variant->price, 2) }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                @endif
-                                @if(auth()->check())
-                                    <button type="submit" data-product-id="{{ $product->id }}"
-                                        class="add-to-cart mt-2 py-2 px-5 inline-block font-semibold tracking-wide border border-transparent duration-500 text-base text-center bg-slate-900 hover:bg-slate-700 text-white w-full rounded-md shadow-md hover:shadow-lg transition">
-                                        Thêm Vào Giỏ Hàng
-                                    </button>
-                                @endif
-                            </form>
-                        </div>
-
-                        <ul class="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">
-                            <li>
-                                <form action="{{ route('wishlist.add', $product->id) }}" method="POST"
-                                    class="inline-flex items-center">
+                            <div class="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-full">
                                     @csrf
-                                    <button type="submit"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                                        aria-label="Add to wishlist">
-                                        <i class="mdi mdi-heart"></i>
-                                    </button>
+                                    @if ($product->variants->isNotEmpty())
+                                        <div class="mt-4">
+                                            <select name="variant_id" id="variant"
+                                                class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-500">
+                                                @foreach ($product->variants as $variant)
+                                                    <option value="{{ $variant->id }}" class="variant-option">
+                                                        {{ $variant->color }} - ${{ number_format($variant->price, 2) }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
+                                    @if(auth()->check())
+                                        <button type="submit" data-product-id="{{ $product->id }}"
+                                            class="add-to-cart mt-2 py-2 px-5 inline-block font-semibold tracking-wide border border-transparent duration-500 text-base text-center bg-slate-900 hover:bg-slate-700 text-white w-full rounded-md shadow-md hover:shadow-lg transition">
+                                            Thêm Vào Giỏ Hàng
+                                        </button>
+                                    @endif
                                 </form>
-                            </li>
+                            </div>
 
-                            <li class="mt-1">
-                                <a href="{{ route('product.show', $product->id) }}"
-                                    class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                                    aria-label="View product details">
-                                    <i class="mdi mdi-eye-outline"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                        @if($product->is_new)
-                            <ul class="list-none absolute top-[10px] start-4">
+                            <ul class="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">
                                 <li>
-                                    <a href="javascript:void(0)"
-                                        class="bg-orange-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5">New</a>
+                                    <form action="{{ route('wishlist.add', $product->id) }}" method="POST"
+                                        class="inline-flex items-center">
+                                        @csrf
+                                        <button type="submit"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
+                                            aria-label="Add to wishlist">
+                                            <i class="mdi mdi-heart"></i>
+                                        </button>
+                                    </form>
+                                </li>
+
+                                <li class="mt-1">
+                                    <a href="{{ route('product.show', $product->id) }}"
+                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
+                                        aria-label="View product details">
+                                        <i class="mdi mdi-eye-outline"></i>
+                                    </a>
                                 </li>
                             </ul>
-                        @endif
-                    </div>
 
-                    <div class="mt-4">
-                        <a href="{{ route('product.show', $product->id) }}"
-                            class="hover:text-indigo-600 text-lg font-semibold">{{ $product->name }}</a>
-                        <div class="flex justify-between items-center mt-1">
-                            @if ($product->variants->isNotEmpty())
-                                <p class="text-green-600">${{ number_format($product->variants[0]->price, 2) }}</p>
-                            @else
-                                <p class="text-red-600">Price not available</p>
-                            @endif
-                            <div class="product-rating mt-2">
-                                <ul class="list-none inline-block text-orange-400">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <li class="inline">
-                                            <i
-                                                class="mdi mdi-star {{ $i <= $product->averageRating ? 'text-yellow-500' : 'text-slate-400' }}"></i>
-                                        </li>
-                                    @endfor
+                            @if($product->is_new)
+                                <ul class="list-none absolute top-[10px] start-4">
+                                    <li>
+                                        <a href="javascript:void(0)"
+                                            class="bg-orange-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded h-5">New</a>
+                                    </li>
                                 </ul>
-                            </div>
+                            @endif
                         </div>
-                        <ul class="border-2 text-center rounded-xl">
-                            <li>
-                                <a href="">Xem thêm</a>
-                            </li>
-                        </ul>
+
+                        <div class="mt-4">
+                            <a href="{{ route('product.show', $product->id) }}"
+                                class="hover:text-indigo-600 text-lg font-semibold">{{ $product->name }}</a>
+                            <div class="flex justify-between items-center mt-1">
+                                @if ($product->variants->isNotEmpty())
+                                    <p class="text-green-600">${{ number_format($product->variants[0]->price, 2) }}</p>
+                                @else
+                                    <p class="text-red-600">Price not available</p>
+                                @endif
+                                <div class="product-rating mt-2">
+                                    <ul class="list-none inline-block text-orange-400">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <li class="inline">
+                                                <i
+                                                    class="mdi mdi-star {{ $i <= $product->averageRating ? 'text-yellow-500' : 'text-slate-400' }}"></i>
+                                            </li>
+                                        @endfor
+                                    </ul>
+                                </div>
+                            </div>
+                            <ul class="border-2 text-center rounded-xl">
+                                <li>
+                                    <a href="">Xem thêm</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
         </div>
     </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const reviewForm = document.getElementById('review-form');
-            const ratingInput = document.getElementById('rating');
-            const ratingValue = document.getElementById('rating-value');
-            const stars = document.querySelectorAll('.star');
+            const reviewForms = document.querySelectorAll('form[id^="review-form-"]'); // Lấy tất cả các form có id bắt đầu bằng 'review-form-'
 
-            // Xử lý sự kiện khi người dùng click vào sao để chọn đánh giá
-            stars.forEach(star => {
-                star.addEventListener('click', function () {
-                    const rating = this.getAttribute('data-value');
-                    ratingInput.value = rating; // Lưu giá trị rating vào hidden input
-                    ratingValue.textContent = `${rating} (0)`; // Hiển thị rating đã chọn
+            reviewForms.forEach((reviewForm) => {
+                // Lấy product_id từ hidden input trong form
+                const productId = reviewForm.querySelector('input[name="product_id"]').value;
+
+                const ratingInput = reviewForm.querySelector('#rating');
+                const ratingValue = reviewForm.querySelector('#rating-value');
+                const stars = reviewForm.querySelectorAll('.star');
+
+                // Xử lý sự kiện khi người dùng click vào sao để chọn đánh giá
+                stars.forEach(star => {
+                    star.addEventListener('click', function () {
+                        const rating = this.getAttribute('data-value');
+                        ratingInput.value = rating; // Lưu giá trị rating vào hidden input
+
+                        // Hiển thị rating đã chọn (hiện số lượng sao và số lượng đánh giá)
+                        ratingValue.textContent = `${rating} (0)`; // Bạn có thể điều chỉnh lại phần này nếu muốn hiển thị số lượt đánh giá
+
+                        // Cập nhật màu sắc sao
+                        stars.forEach(starItem => {
+                            const starValue = starItem.getAttribute('data-value');
+                            if (starValue <= rating) {
+                                starItem.classList.add('text-yellow-500');  // Tô màu vàng cho các sao đã chọn
+                            } else {
+                                starItem.classList.remove('text-yellow-500'); // Xóa màu vàng cho các sao chưa chọn
+                            }
+                        });
+                    });
                 });
-            });
 
-            // Xử lý form submit
-            reviewForm.addEventListener('submit', function (event) {
-                event.preventDefault(); // Ngừng việc gửi form theo cách mặc định
+                // Xử lý form submit
+                reviewForm.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Ngừng việc gửi form theo cách mặc định
 
-                const formData = new FormData(reviewForm);
-
-                fetch('{{ route('review.store', ['product' => $product->id]) }}', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Đảm bảo CSRF token có mặt
+                    // Kiểm tra xem rating có được chọn chưa
+                    if (ratingInput.value === '0') {
+                        showPopUp('Lỗi', 'Vui lòng chọn một mức đánh giá trước khi gửi.');
+                        return; // Ngừng gửi form nếu rating chưa được chọn
                     }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            alert(data.error);
-                        } else {
-                            alert('Your review has been submitted!');
+
+                    const formData = new FormData(reviewForm);
+                    // Đảm bảo product_id được truyền chính xác
+                    formData.append('product_id', productId);
+
+                    fetch('{{ route('review.store', ['product' => 'REPLACE_WITH_PRODUCT_ID']) }}'.replace('REPLACE_WITH_PRODUCT_ID', productId), {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Đảm bảo CSRF token có mặt
                         }
                     })
-                    .catch(error => {
-                        console.error('Error submitting review:', error);
-                        alert('There was an error submitting your review.');
-                    });
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Mạng gặp sự cố. Vui lòng thử lại.');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.error) {
+                                // Hiển thị popup lỗi
+                                showPopUp('Lỗi', `Có lỗi xảy ra: ${data.error}`);
+                            } else {
+                                // Hiển thị popup thành công
+                                showPopUp('Thành công', data.message);
+                                reviewForm.reset(); // Reset form
+                                ratingValue.textContent = '0 (0)'; // Reset giá trị rating đã hiển thị
+                                stars.forEach(starItem => {
+                                    starItem.classList.remove('text-yellow-500'); // Reset màu sao
+                                });
+
+                                // Cập nhật bình luận mới ngay lập tức
+                                const newReviewHtml = `
+                                    <div class="review-item mb-6 p-4 border-b border-gray-200">
+                                        <div class="flex items-center mb-3">
+                                            <img src="${data.review_data.avatar}" class="w-12 h-12 rounded-full shadow" alt="">
+                                            <div class="ms-3">
+                                                <p class="font-semibold">${data.review_data.name}</p>
+                                                <p class="text-sm text-slate-400">${data.review_data.created_at}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            ${generateStarsHtml(data.review_data.rating)}
+                                        </div>
+                                        <p class="mt-3 text-gray-700">${data.review_data.comment}</p>
+                                    </div>
+                                `;
+
+                                // Thêm review mới vào phần bình luận
+                                const reviewContainer = document.querySelector('#reviews-container');
+                                reviewContainer.insertAdjacentHTML('afterbegin', newReviewHtml);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Có lỗi khi gửi đánh giá:', error);
+                            showPopUp('Lỗi', 'Đã có sự cố khi gửi đánh giá. Vui lòng thử lại sau.');
+                        });
+                });
             });
         });
 
+        // Hàm tạo HTML cho sao đánh giá
+        function generateStarsHtml(rating) {
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                starsHtml += `<i class="mdi mdi-star${i <= rating ? '' : '-outline'} text-yellow-500"></i>`;
+            }
+            return starsHtml;
+        }
 
     </script>
+
 </section>
 <!--end section-->
 <!-- End -->

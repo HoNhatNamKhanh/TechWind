@@ -30,7 +30,7 @@
         <div class="grid lg:grid-cols-12 md:grid-cols-2 grid-cols-1 gap-[30px]">
             <div class="lg:col-span-3 md:col-span-5">
                 <div class="flex items-center">
-                    <img src=""
+                    <img src="{{asset('storage/'. $user->userMeta->image)}}"
                         alt="User Avatar" class="size-16 rounded-2xl shadow dark:shadow-gray-800" alt="User Image">
                     <div class="ms-2 display-ruby">
                         <p class="font-semibold text-slate-400">Xin Chào,</p>
@@ -338,7 +338,7 @@
                                         @if($user->userMeta && $user->userMeta->avatar)
                                             <div class="mb-2">
                                                 <img id="avatar-preview"
-                                                    src="{{ asset('storage/' . $user->userMeta->avatar) }}"
+                                                    src="{{ asset('storage/avatars/' . $user->userMeta->avatar) }}"
                                                     alt="Current Avatar" class="w-20 h-20 rounded-full object-cover ">
                                             </div>
                                         @else
