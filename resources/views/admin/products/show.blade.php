@@ -1,76 +1,110 @@
 @extends('admin.inc.app')
-@section('title', 'Show Product')
+@section('title', 'Chi tiết sản phẩm')
 
 @section('content')
 
-<div class="main">
+<main class="h-full pb-16">
+    <div class="container px-6 mx-auto grid">
+        <div class="card-body px-0 pt-0 pb-2 overflow-auto">
+            <h3 class="text-2xl py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chi tiết sản phẩm</h3>
 
-    <nav class="navbar navbar-expand px-3 border-bottom">
-        <button class="btn" id="sidebar-toggle" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                        <img src="{{ asset('image/profile.jpg') }}" class="avatar img-fluid rounded"
-                            alt="Profile Picture">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a href="#" class="dropdown-item">Profile</a>
-                        <a href="#" class="dropdown-item">Settings</a>
-                        <a href="#" class="dropdown-item">Logout</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <div class="variant px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <!-- Tên sản phẩm -->
+                <label class="block text-sm mb-4">
+                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Tên sản phẩm</span>
+                    <input type="text" name="name" id="name"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        value="{{ $product->name }}" disabled />
+                </label>
 
-    <main class="content p-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-body px-4 pt-4 pb-2">
-                        <h4 class="mb-4">Product Details</h4>
-                        <div class="mb-3">
-                            <label class="form-label">Product Name</label>
-                            <p class="form-control-plaintext">{{ $product->name }}</p>
+                <!-- Mô tả -->
+                <label class="block text-sm mb-4">
+                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Mô tả</span>
+                    <textarea name="description" id="description" rows="3"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea"
+                        disabled>{{ $product->description }}</textarea>
+                </label>
+
+                <!-- Danh mục -->
+                <label class="block text-sm mb-4">
+                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Danh mục</span>
+                    <input type="text" name="category" id="category"
+                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                        value="{{ $product->category->name }}" disabled />
+                </label>
+
+                <!-- Biến thể sản phẩm -->
+                <h5 class="text-xl py-3 font-semibold text-gray-800 dark:text-gray-200 mb-4">Biến thể sản phẩm</h5>
+                <div>
+                    <div class="w-full mb-8 overflow-auto rounded-lg shadow-xs">
+                        <div class="w-full overflow-x-auto">
+                            <table class="bg-white w-full min-w-max whitespace-no-wrap">
+                                <thead>
+                                    <tr
+                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                        <th class="px-4 py-3">Ảnh</th>
+                                        <th class="px-4 py-3">Màu sắc</th>
+                                        <th class="px-4 py-3">Size</th>
+                                        <th class="px-4 py-3">Giá</th>
+                                        <th class="px-4 py-3">Số lượng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($product->variants as $variant)
+                                        <tr class="border">
+                                            <!-- Ảnh biến thể -->
+                                            <td class="align-middle text-center border py-3 px-4">
+                                                @if ($variant->image)
+                                                    <img src="{{ asset('storage/' . $variant->image) }}" alt="Variant Image"
+                                                        style="width: 75px; height: auto;">
+                                                @else
+                                                    <span>Chưa có ảnh</span>
+                                                @endif
+                                            </td>
+
+                                            <!-- Màu sắc -->
+                                            <td class="align-middle border py-3 px-4">
+                                                {{ $variant->color }}
+                                            </td>
+
+                                            <!-- Size -->
+                                            <td class="align-middle border py-3 px-4">
+                                                {{ $variant->size }}
+                                            </td>
+
+                                            <!-- Giá -->
+                                            <td class="align-middle text-center border py-3 px-4">
+                                                {{ number_format($variant->price, 2) }} VNĐ
+                                            </td>
+
+                                            <!-- Số lượng -->
+                                            <td class="align-middle text-center border py-3 px-4">
+                                                {{ $variant->stock }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <p class="form-control-plaintext">{{ $product->description }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <p class="form-control-plaintext">{{ $product->category->name }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Quantity</label>
-                            <p class="form-control-plaintext">{{ $product->quantity }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <p class="form-control-plaintext">${{ number_format($product->price, 2) }}</p>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Image</label>
-                            <div>
-                                <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid"
-                                    alt="{{ $product->name }}">
-                            </div>
-                        </div>
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary">Edit Product</a>
-                        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Back to Products</a>
                     </div>
                 </div>
+
+                <!-- Nút quay lại -->
+                <div
+                    class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
+                    <div
+                        class="create-button px-2  w-20 text-center py-4 text-center transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                        <a href="{{ route('admin.products.index') }}"
+                            class="custom-border ">
+                            Quay lại
+                        </a>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </main>
-
-    <a href="#" class="theme-toggle">
-        <i class="fa-regular fa-moon"></i>
-        <i class="fa-regular fa-sun"></i>
-    </a>
-</div>
+    </div>
+</main>
 
 @endsection

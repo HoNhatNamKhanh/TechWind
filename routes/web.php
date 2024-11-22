@@ -69,7 +69,7 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 // Route user:
 Route::prefix('users')->name('users.')->group(function () {
-    // Hiển thị danh sách người dùng (Nếu cần)
+    // Hiển thị danh sách người fdùng (Nếu cần)
     Route::get('/', [UserController::class, 'index'])->name('index');
 
     // Hiển thị thông tin người dùng

@@ -9,22 +9,20 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-body px-0 pt-0 pb-2">
-                        <h3 class="text-lg py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chỉnh sửa người
+                        <h3 class="text-2xl py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Chỉnh sửa người
                             dùng</h3>
                         <form action="{{ route('admin.users.update', $user->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-
-                            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 variant">
 
                                 <!-- Email -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Email</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Email</span>
                                     <input type="email"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                        placeholder="Nhập email" name="email" value="{{ old('email', $user->email) }}"
-                                        required />
+                                        placeholder="Nhập email" name="email" value="{{ old('email', $user->email) }}" required readonly  />
                                     @if ($errors->has('email'))
                                         <p class="text-red-600 text-sm mt-1">{{ $errors->first('email') }}</p>
                                     @endif
@@ -32,7 +30,7 @@
 
                                 <!-- Name -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Tên người dùng</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Tên người dùng</span>
                                     <input type="text"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Nhập tên người dùng" name="name"
@@ -44,8 +42,7 @@
 
                                 <!-- Password (Leave blank to keep current) -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Mật khẩu (Để trống nếu không thay
-                                        đổi)</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Mật khẩu</span>
                                     <input type="password"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Nhập mật khẩu" name="password" />
@@ -56,7 +53,7 @@
 
                                 <!-- Password Confirmation -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Xác nhận mật khẩu</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Xác nhận mật khẩu</span>
                                     <input type="password"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Xác nhận mật khẩu" name="password_confirmation" />
@@ -68,7 +65,7 @@
 
                                 <!-- Role -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Quyền</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Quyền</span>
                                     <select
                                         class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         name="role" required>
@@ -84,7 +81,7 @@
 
                                 <!-- Address (User Meta) -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Địa chỉ</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Địa chỉ</span>
                                     <input type="text"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Nhập địa chỉ" name="address"
@@ -96,7 +93,7 @@
 
                                 <!-- Phone (User Meta) -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Số điện thoại</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Số điện thoại</span>
                                     <input type="text"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Nhập số điện thoại" name="phone"
@@ -108,7 +105,7 @@
 
                                 <!-- Image Upload -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Ảnh (tùy chọn)</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Ảnh (tùy chọn)</span>
                                     <input type="file" name="image" accept="image/*" id="image"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input" />
                                     @if ($errors->has('image'))
@@ -128,13 +125,11 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <div
-                                    class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
+                                
+                                <div class="mb-4 my-6 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
                                     <div
-                                        class="px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                        <button type="submit" class="w-full custom-border">
-                                            Cập nhật người dùng
-                                        </button>
+                                        class="create-button px-2 py-4 text-center w-20 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        <button type="submit" class="">Cập nhập</button>
                                     </div>
                                 </div>
 

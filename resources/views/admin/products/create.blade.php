@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-body px-0 pt-0 pb-2">
-                    <h3 class="text-lg py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Tạo sản phẩm mới
+                    <h3 class="text-2xl py-3 px-4 font-semibold text-gray-800 dark:text-gray-200">Tạo sản phẩm mới
                     </h3>
                     <form id="productForm" action="{{ route('admin.products.store') }}" method="POST"
                         enctype="multipart/form-data">
@@ -16,7 +16,7 @@
                             <div class="variant mb-4">
                                 <!-- Tên sản phẩm -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Tên sản phẩm</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Tên sản phẩm</span>
                                     <input type="text" name="name" id="name"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         required />
@@ -24,14 +24,14 @@
 
                                 <!-- Mô tả sản phẩm -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Mô tả</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Mô tả</span>
                                     <textarea name="description" id="description" rows="3"
                                         class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea"></textarea>
                                 </label>
 
                                 <!-- Danh mục sản phẩm -->
                                 <label class="block text-sm mb-4">
-                                    <span class="text-gray-700 dark:text-gray-400">Danh mục</span>
+                                    <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Danh mục</span>
                                     <select name="category_id" id="category_id"
                                         class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                                         required>
@@ -45,7 +45,7 @@
                             </div>
 
                             <!-- Các biến thể sản phẩm -->
-                            <h5 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Biến thể sản
+                            <h5 class="text-xl py-3  font-semibold text-gray-800 dark:text-gray-200 mb-4">Biến thể sản
                                 phẩm</h5>
                             <div id="variantContainer">
                                 <!-- Các biến thể sẽ được thêm vào khi nhấn nút "Thêm biến thể" -->

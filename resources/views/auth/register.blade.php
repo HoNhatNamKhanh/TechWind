@@ -47,24 +47,24 @@
                 <div
                     class="max-w-[400px] w-full m-auto p-6 bg-white dark:bg-slate-900 shadow-md dark:shadow-gray-800 rounded-md">
                     <a href="index.html"><img src="assets/images/logo-icon-64.png" class="mx-auto" alt="" /></a>
-                    <h5 class="my-6 text-xl font-semibold">Signup</h5>
+                    <h5 class="my-6 text-xl font-semibold text-center">Đăng ký</h5>
                     <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data"
                         class="text-start">
                         @csrf
                         <div class="grid grid-cols-1">
 
                             <div class="mb-4">
-                                <label class="font-semibold" for="RegisterName">Your Name:</label>
+                                <label class="font-semibold" for="RegisterName">Tên bạn:</label>
                                 <input id="RegisterName" type="text" name="name"
                                     class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                    placeholder="Harry" required />
+                                    placeholder="Tên" required />
                                 @error('name')
                                     <div class="text-red-600 text-sm">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-semibold" for="LoginEmail">Email Address:</label>
+                                <label class="font-semibold" for="LoginEmail">Địa chỉ Email:</label>
                                 <input id="LoginEmail" type="email" name="email"
                                     class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                     placeholder="name@example.com" required />
@@ -74,20 +74,20 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-semibold" for="LoginPassword">Password:</label>
+                                <label class="font-semibold" for="LoginPassword">Mật khẩu:</label>
                                 <input id="LoginPassword" type="password" name="password"
                                     class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                    placeholder="Password" required />
+                                    placeholder="Mật khẩu" required />
                                 @error('password')
                                     <div class="text-red-600 text-sm">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-4">
-                                <label class="font-semibold" for="ConfirmPassword">Confirm Password:</label>
+                                <label class="font-semibold" for="ConfirmPassword">Xác nhận mật khẩu:</label>
                                 <input id="ConfirmPassword" type="password" name="password_confirmation"
                                     class="form-input mt-3 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                    placeholder="Confirm Password" required />
+                                    placeholder="Xác nhận mật khẩu" required />
                                 @error('password_confirmation')
                                     <div class="text-red-600 text-sm">{{ $message }}</div>
                                 @enderror
@@ -98,8 +98,8 @@
                                     <input
                                         class="form-checkbox rounded border-gray-200 dark:border-gray-800 text-indigo-600 focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50 me-2"
                                         type="checkbox" value="" id="AcceptT&C" required />
-                                    <label class="form-check-label text-slate-400" for="AcceptT&C">I Accept
-                                        <a href="#" class="text-indigo-600">Terms And Conditions</a>
+                                    <label class="form-check-label text-slate-400" for="AcceptT&C">Tôi đồng ý
+                                        <a href="#" class="text-indigo-600">Điều khoản và Điều kiện</a>
                                     </label>
                                 </div>
                             </div>
@@ -107,13 +107,13 @@
                             <div class="mb-4">
                                 <input type="submit"
                                     class="py-2 px-5 inline-block tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full"
-                                    value="Register" />
+                                    value="Đăng ký" />
                             </div>
 
                             <div class="text-center">
-                                <span class="text-slate-400 me-2">Already have an account?</span>
+                                <span class="text-slate-400 me-2">Bạn đã có tài khoản?</span>
                                 <a href="{{ route('login') }}"
-                                    class="text-black dark:text-white font-bold inline-block">Sign in</a>
+                                    class="text-black dark:text-white font-bold inline-block">Đăng nhhập</a>
                             </div>
                         </div>
                     </form>

@@ -74,15 +74,20 @@
                         <i class="uil uil-search align-middle"></i>
                     </button>
                     <!-- Dropdown menu -->
-                    <div class="dropdown-menu absolute overflow-hidden end-0 m-0 mt-4 z-10 w-52 rounded-md bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden"
-                        onclick="event.stopPropagation();">
-                        <div class="relative">
-                            <i class="uil uil-search text-lg absolute top-[3px] end-3"></i>
-                            <input type="text" class="form-input h-9 pe-10 sm:w-44 w-36 border-0 focus:ring-0" name="s"
-                                id="searchItem" placeholder="Search..." />
+                    <form action="{{ route('shop.index') }}" method="GET">
+                        <div class="dropdown-menu absolute overflow-hidden end-0 m-0 mt-4 z-10 w-52 rounded-md bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 hidden"
+                            onclick="event.stopPropagation();">
+                            <div class="relative">
+                                <i class="uil uil-search text-lg absolute top-[3px] end-3"></i>
+                                <!-- Đổi tên tham số từ s thành search -->
+                                <input type="text" class="form-input h-9 pe-10 sm:w-44 w-36 border-0 focus:ring-0"
+                                    name="search" id="searchItem" placeholder="Search..."
+                                    value="{{ request()->input('search') }}" />
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </li>
+
 
                 <li class="dropdown inline-block relative">
                     <a href="{{route('cart')}}"
@@ -113,38 +118,72 @@
                         onclick="event.stopPropagation();">
                         <ul class="py-2 text-start" aria-labelledby="dropdownDefault">
                             @auth
-                            <!-- Show these links if the user is logged in -->
-                            <li>
-                                <a href="{{ route('users.show', Auth::user()->id) }}"
-                                    class="block py-1.5 px-4 hover:text-indigo-600">
-                                    <i class="uil uil-user align-middle me-1"></i> Account
-                                </a>
-                            </li>
+                            <<<<<<< HEAD
+                                <!-- Show these links if the user is logged in -->
+                                <li>
+                                    <a href="{{ route('users.show', Auth::user()->id) }}"
+                                        class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-user align-middle me-1"></i> Account
+                                    </a>
+                                </li>
 
-                            <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
-                            <li>
-                                <form action="{{ route('logout') }}" method="POST" class="inline">
-                                    @csrf
-                                    <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
-                                    </button>
-                                </form>
-                            </li>
-                            @endauth
+                                <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
+                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
+                                        </button>
+                                    </form>
+                                </li>
+                                @endauth
 
-                            @guest
-                            <!-- Show these links if the user is not logged in -->
-                            <li>
-                                <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Login
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Register
-                                </a>
-                            </li>
-                            @endguest
+                                @guest
+                                <!-- Show these links if the user is not logged in -->
+                                <li>
+                                    <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Register
+                                    </a>
+                                </li>
+                                =======
+                                <!-- Show these links if the user is logged in -->
+                                <li>
+                                    <a href="{{ route('users.show', Auth::user()->id) }}"
+                                        class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-user align-middle me-1"></i> Tài khoản
+                                    </a>
+                                </li>
+
+                                <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
+                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng xuất
+                                        </button>
+                                    </form>
+                                </li>
+                                @endauth
+
+                                @guest
+                                <!-- Show these links if the user is not logged in -->
+                                <li>
+                                    <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Nhập
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
+                                    </a>
+                                </li>
+                                >>>>>>> a2522aff8606e881e1abedf5da850cc4121244b2
+                                @endguest
                         </ul>
                     </div>
 
@@ -157,7 +196,7 @@
                 <ul class="navigation-menu">
                     <li><a href="{{ route('home') }}" class="sub-menu-item">Trang chủ</a></li>
                     <li class="has-submenu parent-menu-item">
-                        <a href="javascript:void(0)">Danh mục</a><span class="menu-arrow"></span>
+                        <a href="{{route('shop.index')}}">Danh mục</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             @foreach($chunkedCategories as $categoryGroup)
                             <div class="category-group">
@@ -186,7 +225,7 @@
                         <a href="{{ route('blog') }}" class="sub-menu-item">Blogs</a>
                     </li>
                     <li>
-                        <a href="{{ route('about') }}" class="sub-menu-item">About Us</a>
+                        <a href="{{ route('about') }}" class="sub-menu-item">Giới thiệu</a>
                     </li>
 
                     <li>
@@ -206,7 +245,7 @@
     <dialog id="WishList" class="rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <div class="relative h-auto md:w-[480px] w-300px">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 dark:border-gray-700">
-                <h3 class="font-bold text-lg">Wishlist</h3>
+                <h3 class="font-bold text-lg"> Danh Sách yêu thích</h3>
                 <form method="dialog">
                     <button class="size-6 flex justify-center items-center shadow dark:shadow-gray-800 rounded-md btn-ghost">
                         <i data-feather="x" class="size-4"></i>
@@ -253,11 +292,11 @@
                         <i class="uil uil-heart-break"></i>
                     </div>
                 </div>
-                <h4 class="text-xl font-semibold mt-6">Your wishlist is empty.</h4>
-                <p class="text-slate-400 my-3">Create your first wishlist request...</p>
-                <a href="#" class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">
-                    Create a new wishlist
-                </a>
+                <h4 class="text-xl font-semibold mt-6">Danh sách yêu thích của bạn đang trống.</h4>
+                <p class="text-slate-400 my-3">Tạo yêu cầu danh sách yêu thích đầu tiên của bạn...</p>
+                <a href="#"
+                    class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Tạo
+                    1 danh sách yêu thích mới</a>
                 @endif
             </div>
         </div>

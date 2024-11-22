@@ -4,24 +4,25 @@
 
 @section('content')
 <!-- Start Hero -->
-<section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800">
+<section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800 bg-cover bg-center"
+         style="background-image: url('https://cdn.shopify.com/s/files/1/0808/0067/files/category_banner_ip14pro_promax_desktop_1.jpg?v=1662594151');">
     <div class="container relative">
-        <div class="grid grid-cols-1 mt-14">
-            <h3 class="text-3xl leading-normal font-semibold"> Lọc sản phẩm</h3>
+        <div class="grid grid-cols-1 mt-14 ">
+            <h3 class="text-3xl leading-normal font-semibold text-black">SẢN PHẨM</h3>
         </div>
         <div class="relative mt-3">
             <ul class="tracking-[0.5px] mb-0 inline-block">
-                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600">
-                    <a href="index-shop.html">Techwind</a>
+                <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-200">
+                    <a href="index-shop.html" class="text-black">Techwind</a>
                 </li>
-                </li>
-                <li class="inline-block uppercase text-[13px] font-bold text-indigo-600" aria-current="page">
-
+                <li class="inline-block uppercase text-[13px] font-bold text-indigo-200" aria-current="page">
+                    <!-- Breadcrumb current page (Optional) -->
                 </li>
             </ul>
         </div>
     </div>
 </section>
+
 <!--end section-->
 <!-- End Hero -->
 
@@ -34,18 +35,18 @@
                 <form action="{{ route('shop.index') }}" method="GET">
                     <!-- Lọc theo từ khóa -->
                     <div>
-                        <label for="searchname" class="hidden font-semibold">Search</label>
+                        <label for="searchname" class="hidden font-semibold">Tìm kiếm</label>
                         <div class="relative">
                             <i data-feather="search" class="size-4 absolute top-3 start-3"></i>
                             <input name="search" id="searchname" type="text"
                                 class="form-input w-full py-2 px-3 h-10 ps-9 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                                placeholder="Search" value="{{ request()->input('search') }}" />
+                                placeholder="Tìm kiếm" value="{{ request()->input('search') }}" />
                         </div>
                     </div>
 
                     <!-- Lọc theo danh mục -->
                     <div class="mt-4">
-                        <label class="font-semibold">Categories</label>
+                        <label class="font-semibold">Danh Mục</label>
                         <div class="block mt-2">
 
                             <!-- Lặp qua các danh mục cha và con -->
@@ -83,7 +84,7 @@
                     <div class="mt-2">
                         <input type="submit"
                             class="py-2 px-5 inline-block tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full"
-                            value="Apply Filter" />
+                            value="Áp dụng bộ lọc" />
                     </div>
                 </form>
             </div>
@@ -97,8 +98,8 @@
             <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
                 <div class="lg:col-span-9 md:col-span-8">
                     <h3 class="text-xl leading-normal font-semibold">
-                        Showing {{ $products->firstItem() }}-{{ $products->lastItem() }} of {{ $products->total() }}
-                        results
+                        Hiển {{ $products->firstItem() }}-{{ $products->lastItem() }} của {{ $products->total() }}
+                        kết quả
                     </h3>
                 </div>
 
@@ -116,7 +117,7 @@
                         <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
                             class="w-full h-auto" />
                         @else
-                          <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}"/>
+                        <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}" />
                         @endif
 
                         <div class="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
@@ -216,12 +217,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-
-                            <p class="p-1"><label class="bg-red-500 rounded-sm p-1  ">KM</label> Trả góp 0% - Không phí</p>
-                            <p class="p-1"><label class="bg-red-500 rounded-sm p-1 ">KM</label> Ưu Đãi cho HSSV,Thầy cô</p>
-                        </div>
-                        <ul class="border-2 rounded-xl text-center">
+                       
+                        <ul class="border-2 rounded-xl text-center mt-2 ">
                             <li>
                                 <a href="{{ route('product.show', $product->id) }}">Xem thêm</a>
                             </li>

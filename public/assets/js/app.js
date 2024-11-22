@@ -427,19 +427,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div><strong>Email:</strong> ${order.email || "N/A"}</div>
                 <div><strong>Phone:</strong> ${order.phone || "N/A"}</div>
                 <div><strong>Address:</strong> ${order.address || "N/A"}</div>
-                <h4 class="text-sm mt-2"><strong>Status:</strong> ${
-                    order.status || "N/A"
-                }</h4>
+                <h4 class="text-sm mt-2">
+                    <strong>Status:</strong> 
+                    ${
+                        order.status === "cancelled"
+                            ? "Đã huỷ"
+                            : order.status === "completed"
+                            ? "Đã hoàn thành"
+                            : order.status === "pending"
+                            ? "Đang giao"
+                            : order.status || "N/A"
+                    }
+                </h4>
                 <h5><strong>Items:</strong></h5>
                 <table class="w-full text-start text-slate-500 dark:text-slate-400">
                     <thead class="text-sm uppercase bg-slate-50 dark:bg-slate-800">
                         <tr>
-                            <th class="px-4 py-2 text-start">Product</th>
-                            <th class="px-4 py-2 text-start">Color</th>
+                            <th class="px-4 py-2 text-start">Sản phẩm</th>
+                            <th class="px-4 py-2 text-start">Màu</th>
                             <th class="px-4 py-2 text-start">Size</th>
-                            <th class="px-4 py-2 text-start">Quantity</th>
-                            <th class="px-4 py-2 text-start">Price</th>
-                            <th class="px-4 py-2 text-start">Total Price</th>
+                            <th class="px-4 py-2 text-start">Số lượng</th>
+                            <th class="px-4 py-2 text-start">Giá</th>
+                            <th class="px-4 py-2 text-start">Tổng cộng</th>
                         </tr>
                     </thead>
                     <tbody>

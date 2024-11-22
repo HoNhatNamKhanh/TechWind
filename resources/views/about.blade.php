@@ -9,14 +9,14 @@
 <section class="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800">
     <div class="container relative">
         <div class="grid grid-cols-1 text-center mt-14">
-            <h3 class="text-3xl leading-normal font-semibold">About Us</h3>
+            <h3 class="text-3xl leading-normal font-semibold">Về chúng tôi</h3>
         </div><!--end grid-->
 
         <div class="relative text-center mt-3">
             <ul class="tracking-[0.5px] mb-0 inline-block">
                 <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600"><a href="{{ route('home') }}">Techwind</a></li>
                 <li class="inline-block text-base text-slate-950 dark:text-white mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
-                <li class="inline-block uppercase text-[13px] font-bold text-indigo-600" aria-current="page">About us</li>
+                <li class="inline-block uppercase text-[13px] font-bold text-indigo-600" aria-current="page">Giới thiệu</li>
             </ul>
         </div>
     </div><!--end container-->

@@ -108,8 +108,6 @@ class CartController extends Controller
 
         return response()->json(['message' => 'Sản phẩm đã được xóa khỏi giỏ hàng!']);
     }
-<<<<<<< HEAD
-=======
 
     // Phương thức tăng số lượng
     public function increase(Request $request, $id)
@@ -205,5 +203,4 @@ class CartController extends Controller
         ], 200);
     }
 
->>>>>>> 81eeebc95ad79786098f226d0f62d1cac343bf89
 }
