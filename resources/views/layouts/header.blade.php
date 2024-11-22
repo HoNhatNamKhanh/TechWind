@@ -206,7 +206,7 @@
     <dialog id="WishList" class="rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <div class="relative h-auto md:w-[480px] w-300px">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 dark:border-gray-700">
-                <h3 class="font-bold text-lg">Your Wishlist</h3>
+                <h3 class="font-bold text-lg">Wishlist</h3>
                 <form method="dialog">
                     <button class="size-6 flex justify-center items-center shadow dark:shadow-gray-800 rounded-md btn-ghost">
                         <i data-feather="x" class="size-4"></i>
@@ -225,19 +225,23 @@
                                 <p class="text-sm text-slate-400">${{ $product->price }}</p>
                             </div>
                         </div>
-                        <form action="{{ route('wishlist.remove', $product->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
-                                <i data-feather="trash-2" class="size-4"></i> Remove
-                            </button>
-                        </form>
-                        <form action="{{ route('cart.add', $product->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="text-green-600 hover:text-green-800 font-semibold">
-                                <i data-feather="shopping-cart" class="size-4"></i> Add to Cart
-                            </button>
-                        </form>
+                        <div class="flex space-x-4">
+                            <!-- Remove from Wishlist -->
+                            <form action="{{ route('wishlist.remove', $product->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
+                                    <i data-feather="trash-2" class="size-4"></i> Remove
+                                </button>
+                            </form>
+                            <!-- Add to Cart -->
+                            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="text-green-600 hover:text-green-800 font-semibold">
+                                    <i data-feather="shopping-cart" class="size-4"></i> Add to Cart
+                                </button>
+                            </form>
+                        </div>
                     </li>
                     <hr class="my-4">
                     @endforeach
@@ -251,7 +255,9 @@
                 </div>
                 <h4 class="text-xl font-semibold mt-6">Your wishlist is empty.</h4>
                 <p class="text-slate-400 my-3">Create your first wishlist request...</p>
-                <a href="#" class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Create a new wishlist</a>
+                <a href="#" class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">
+                    Create a new wishlist
+                </a>
                 @endif
             </div>
         </div>
