@@ -255,27 +255,30 @@
             <div class="p-6 text-center">
                 @if($wishlistProducts && count($wishlistProducts) > 0)
                 <ul class="space-y-4">
-                    @foreach($wishlistProducts as $product)
+                    @foreach($wishlistProducts as $item)
                     <li class="flex items-center justify-between">
                         <div class="flex items-center space-x-4">
-                            <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
+                            <img src="{{ $item['product']->image }}" alt="{{ $item['product']->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
                             <div>
-                                <p class="font-semibold text-lg">{{ $product->name }}</p>
-                                <p class="text-sm text-slate-400">${{ $product->price }}</p>
+                                <p class="font-semibold text-lg">{{ $item['product']->name }}</p>
+                                <p class="text-sm text-slate-400">Variant: {{ $item['variant']->name }}</p>
+                                <p class="text-sm text-slate-400">${{ $item['variant']->price }}</p>
                             </div>
                         </div>
                         <div class="flex space-x-4">
                             <!-- Remove from Wishlist -->
-                            <form action="{{ route('wishlist.remove', $product->id) }}" method="POST">
+                            <form action="{{ route('wishlist.remove', $item['product']->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
+                                <input type="hidden" name="variant_id" value="{{ $item['variant']->id }}">
                                 <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
                                     <i data-feather="trash-2" class="size-4"></i> Remove
                                 </button>
                             </form>
                             <!-- Add to Cart -->
-                            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                            <form action="{{ route('cart.add', $item['product']->id) }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="variant_id" value="{{ $item['variant']->id }}">
                                 <button type="submit" class="text-green-600 hover:text-green-800 font-semibold">
                                     <i data-feather="shopping-cart" class="size-4"></i> Add to Cart
                                 </button>
@@ -286,17 +289,8 @@
                     @endforeach
                 </ul>
                 @else
-                <div class="relative overflow-hidden text-transparent -m-3">
-                    <i data-feather="hexagon" class="size-32 fill-red-600/5 mx-auto"></i>
-                    <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-red-600 rounded-xl duration-500 text-4xl flex align-middle justify-center items-center">
-                        <i class="uil uil-heart-break"></i>
-                    </div>
-                </div>
                 <h4 class="text-xl font-semibold mt-6">Danh sách yêu thích của bạn đang trống.</h4>
                 <p class="text-slate-400 my-3">Tạo yêu cầu danh sách yêu thích đầu tiên của bạn...</p>
-                <a href="#"
-                    class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Tạo
-                    1 danh sách yêu thích mới</a>
                 @endif
             </div>
         </div>
