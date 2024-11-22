@@ -50,10 +50,10 @@ class CartController extends Controller
         // Lấy thông tin người dùng
         $user = auth()->user();
 
-        // Tìm sản phẩm và biến thể với findOrFail để tự động trả về lỗi 404 nếu không tìm thấy
-        $product = Product::findOrFail($id); // Tìm sản phẩm, sẽ tự động trả về 404 nếu không tồn tại
+        // Tìm sản phẩm và biến thể
+        $product = Product::findOrFail($id);
         $variantId = $request->input('variant_id');
-        $variant = $product->variants()->findOrFail($variantId); // Kiểm tra và lấy biến thể
+        $variant = $product->variants()->findOrFail($variantId);
 
         // Kiểm tra xem sản phẩm còn hàng không
         if ($variant->stock <= 0) {
@@ -69,9 +69,8 @@ class CartController extends Controller
             ->where('variant_id', $variantId)
             ->first();
 
-        // Nếu sản phẩm đã có trong giỏ hàng
         if ($cartItem) {
-            // **Loại bỏ giới hạn số lượng** - không cần kiểm tra maxQuantity nữa
+            // Nếu sản phẩm đã có trong giỏ hàng, tăng số lượng
             $cartItem->quantity++;
             $cartItem->save();
 
@@ -90,8 +89,13 @@ class CartController extends Controller
             'quantity' => 1,
         ]);
 
-        return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
+        return response()->json([
+            'success' => true,
+            'message' => 'Sản phẩm đã được thêm vào giỏ hàng.',
+            'cart_quantity' => 1 // Trả về số lượng sản phẩm trong giỏ
+        ]);
     }
+
 
 
     public function remove($id)

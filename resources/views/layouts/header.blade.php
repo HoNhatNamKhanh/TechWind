@@ -118,39 +118,6 @@
                         onclick="event.stopPropagation();">
                         <ul class="py-2 text-start" aria-labelledby="dropdownDefault">
                             @auth
-                            <<<<<<< HEAD
-                                <!-- Show these links if the user is logged in -->
-                                <li>
-                                    <a href="{{ route('users.show', Auth::user()->id) }}"
-                                        class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-user align-middle me-1"></i> Account
-                                    </a>
-                                </li>
-
-                                <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST" class="inline">
-                                        @csrf
-                                        <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
-                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
-                                        </button>
-                                    </form>
-                                </li>
-                                @endauth
-
-                                @guest
-                                <!-- Show these links if the user is not logged in -->
-                                <li>
-                                    <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Login
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Register
-                                    </a>
-                                </li>
-                                =======
                                 <!-- Show these links if the user is logged in -->
                                 <li>
                                     <a href="{{ route('users.show', Auth::user()->id) }}"
@@ -182,7 +149,6 @@
                                         <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
                                     </a>
                                 </li>
-                                >>>>>>> a2522aff8606e881e1abedf5da850cc4121244b2
                                 @endguest
                         </ul>
                     </div>
@@ -258,7 +224,7 @@
                     @foreach($wishlistProducts as $item)
                     <li class="flex items-center justify-between">
                         <div class="flex items-center space-x-4">
-                            <img src="{{ $item['product']->image }}" alt="{{ $item['product']->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
+                            <img src="{{ 'storage/'.$item['variant']->image }}" alt="{{ $item['product']->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
                             <div>
                                 <p class="font-semibold text-lg">{{ $item['product']->name }}</p>
                                 <p class="text-sm text-slate-400">Variant: {{ $item['variant']->color }}</p>
