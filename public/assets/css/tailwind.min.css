@@ -10128,3 +10128,6 @@ html[dir="rtl"] .tns-visually-hidden {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
+.text-yellow-500 {
+    color: #f59e0b; /* Màu vàng */
+}
