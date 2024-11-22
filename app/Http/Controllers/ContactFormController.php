@@ -19,7 +19,7 @@ class ContactFormController extends Controller
         ]);
 
         // Lấy địa chỉ email nhận (có thể lấy từ .env hoặc một địa chỉ cố định)
-        $toEmail = env('MAIL_TO_ADDRESS', 'z73chill@gmail.com');  // Địa chỉ nhận email từ .env hoặc giá trị mặc định
+        $toEmail = env('MAIL_TO_ADDRESS', 'honhatnamkhanh10b1@gmail.com');  // Địa chỉ nhận email từ .env hoặc giá trị mặc định
 
         // Tạo và gửi email
         Mail::to($toEmail)->send(new ContactFormMail(

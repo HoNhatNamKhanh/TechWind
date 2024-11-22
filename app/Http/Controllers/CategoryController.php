@@ -9,8 +9,9 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        // Lấy tham số category_id từ URL (nếu có)
-        $categoryId = $request->input('category_id');
+        // Lấy tham số category_id từ URL (có thể là một mảng)
+        $categoryIds = $request->input('category_id');  // Đây có thể là một mảng, nếu có nhiều category_id
+
         // Lấy tham số search từ URL (nếu có)
         $search = $request->input('search');
 
@@ -18,19 +19,18 @@ class CategoryController extends Controller
         $category = null;
         $productsQuery = Product::query();
 
-        if ($categoryId) {
-            // Lấy danh mục từ database
-            $category = Category::find($categoryId);
-
-            // Nếu danh mục tồn tại, lọc sản phẩm theo category_id
-            if ($category) {
-                $productsQuery = $category->products()->with('reviews');
+        // Nếu có category_id, lọc sản phẩm theo category_id
+        if ($categoryIds) {
+            // Kiểm tra xem $categoryIds có phải là mảng hay không
+            if (is_array($categoryIds)) {
+                $productsQuery = $productsQuery->whereIn('category_id', $categoryIds);
             } else {
-                return redirect()->route('shop.index')->with('error', 'Danh mục không tồn tại');
+                // Nếu là giá trị đơn, chỉ lọc theo category_id đó
+                $productsQuery = $productsQuery->where('category_id', $categoryIds);
             }
         }
 
-        // Nếu có tìm kiếm, lọc sản phẩm theo từ khóa tìm kiếm
+        // Nếu có tìm kiếm từ khóa, lọc sản phẩm theo tên
         if ($search) {
             $productsQuery = $productsQuery->where('name', 'like', '%' . $search . '%');
         }
@@ -52,4 +52,5 @@ class CategoryController extends Controller
         // Trả về view với các sản phẩm, danh mục và ratings
         return view('grid', compact('products', 'categories', 'category', 'search'));
     }
+
 }
