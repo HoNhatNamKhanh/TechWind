@@ -43,7 +43,7 @@
                                 placeholder="Tìm kiếm" value="{{ request()->input('search') }}" />
                         </div>
                     </div>
-
+                    
                     <!-- Lọc theo danh mục -->
                     <div class="mt-4">
                         <label class="font-semibold">Danh Mục</label>
