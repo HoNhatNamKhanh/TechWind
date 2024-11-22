@@ -113,37 +113,37 @@
                         onclick="event.stopPropagation();">
                         <ul class="py-2 text-start" aria-labelledby="dropdownDefault">
                             @auth
-                                <!-- Show these links if the user is logged in -->
-                                <li>
-                                    <a href="{{ route('users.show', Auth::user()->id) }}"
-                                        class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-user align-middle me-1"></i> Account
-                                    </a>
-                                </li>
+                            <!-- Show these links if the user is logged in -->
+                            <li>
+                                <a href="{{ route('users.show', Auth::user()->id) }}"
+                                    class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-user align-middle me-1"></i> Account
+                                </a>
+                            </li>
 
-                                <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST" class="inline">
-                                        @csrf
-                                        <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
-                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
-                                        </button>
-                                    </form>
-                                </li>
+                            <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" class="inline">
+                                    @csrf
+                                    <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Logout
+                                    </button>
+                                </form>
+                            </li>
                             @endauth
 
                             @guest
-                                <!-- Show these links if the user is not logged in -->
-                                <li>
-                                    <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Login
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Register
-                                    </a>
-                                </li>
+                            <!-- Show these links if the user is not logged in -->
+                            <li>
+                                <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Login
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Register
+                                </a>
+                            </li>
                             @endguest
                         </ul>
                     </div>
@@ -160,24 +160,24 @@
                         <a href="javascript:void(0)">Danh mục</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             @foreach($chunkedCategories as $categoryGroup)
-                                <div class="category-group">
-                                    @foreach($categoryGroup as $index => $category)
-                                        <li>
-                                            <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
-                                            @if($loop->last)
-                                                <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
-                                                <a href="{{ route('shop.index') }}" class="sub-menu-item">
-                                                    <p>Xem thêm danh mục</p>
-                                                </a>
-                                            @else
-                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                                    class="sub-menu-item">
-                                                    <p>{{ $category->name }}</p>
-                                                </a>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                </div>
+                            <div class="category-group">
+                                @foreach($categoryGroup as $index => $category)
+                                <li>
+                                    <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
+                                    @if($loop->last)
+                                    <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
+                                    <a href="{{ route('shop.index') }}" class="sub-menu-item">
+                                        <p>Xem thêm danh mục</p>
+                                    </a>
+                                    @else
+                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                        class="sub-menu-item">
+                                        <p>{{ $category->name }}</p>
+                                    </a>
+                                    @endif
+                                </li>
+                                @endforeach
+                            </div>
                             @endforeach
                         </ul>
                     </li>
@@ -190,7 +190,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="sub-menu-item">Liên hệ</a>
+                        <a href="{{ route('contact') }}" class="sub-menu-item">Liên hệ</a>
                     </li>
                 </ul>
                 <!--end navigation menu-->
@@ -203,32 +203,56 @@
     <!-- End Navbar -->
 
     <!-- Start Modal -->
-    <dialog id="WishList"
-        class="rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+    <dialog id="WishList" class="rounded-md shadow dark:shadow-gray-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <div class="relative h-auto md:w-[480px] w-300px">
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 dark:border-gray-700">
-                <h3 class="font-bold text-lg"> Wishlist</h3>
+                <h3 class="font-bold text-lg">Your Wishlist</h3>
                 <form method="dialog">
-                    <button
-                        class="size-6 flex justify-center items-center shadow dark:shadow-gray-800 rounded-md btn-ghost">
+                    <button class="size-6 flex justify-center items-center shadow dark:shadow-gray-800 rounded-md btn-ghost">
                         <i data-feather="x" class="size-4"></i>
                     </button>
                 </form>
             </div>
             <div class="p-6 text-center">
-
+                @if($wishlistProducts && count($wishlistProducts) > 0)
+                <ul class="space-y-4">
+                    @foreach($wishlistProducts as $product)
+                    <li class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
+                            <div>
+                                <p class="font-semibold text-lg">{{ $product->name }}</p>
+                                <p class="text-sm text-slate-400">${{ $product->price }}</p>
+                            </div>
+                        </div>
+                        <form action="{{ route('wishlist.remove', $product->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:text-red-800 font-semibold">
+                                <i data-feather="trash-2" class="size-4"></i> Remove
+                            </button>
+                        </form>
+                        <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="text-green-600 hover:text-green-800 font-semibold">
+                                <i data-feather="shopping-cart" class="size-4"></i> Add to Cart
+                            </button>
+                        </form>
+                    </li>
+                    <hr class="my-4">
+                    @endforeach
+                </ul>
+                @else
                 <div class="relative overflow-hidden text-transparent -m-3">
                     <i data-feather="hexagon" class="size-32 fill-red-600/5 mx-auto"></i>
-                    <div
-                        class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-red-600 rounded-xl duration-500 text-4xl flex align-middle justify-center items-center">
+                    <div class="absolute top-2/4 -translate-y-2/4 start-0 end-0 mx-auto text-red-600 rounded-xl duration-500 text-4xl flex align-middle justify-center items-center">
                         <i class="uil uil-heart-break"></i>
                     </div>
                 </div>
                 <h4 class="text-xl font-semibold mt-6">Your wishlist is empty.</h4>
                 <p class="text-slate-400 my-3">Create your first wishlist request...</p>
-                <a href="#"
-                    class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Create
-                    a new wishlist</a>
+                <a href="#" class="py-[5px] px-4 inline-block font-semibold tracking-wide align-middle duration-500 text-sm text-center bg-transparent hover:bg-indigo-600 border border-indigo-600 text-indigo-600 hover:text-white rounded-md mt-2">Create a new wishlist</a>
+                @endif
             </div>
         </div>
     </dialog>

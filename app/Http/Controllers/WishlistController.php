@@ -11,63 +11,55 @@ use Illuminate\Support\Facades\Session;
 class WishlistController extends Controller
 {
     // Thêm sản phẩm vào wishlist
-    public function add(Request $request, $id)
+    public function add($id)
     {
+        // Nếu người dùng đã đăng nhập, lưu vào cơ sở dữ liệu
         if (Auth::check()) {
             $userId = Auth::id();
-            $variantId = $request->input('variant_id'); // Lấy variant_id từ request
+            $wishlist = Wishlist::where('user_id', $userId)->where('product_id', $id)->first();
 
-            // Kiểm tra xem sản phẩm và biến thể đã có trong wishlist chưa
-            $wishlist = Wishlist::where('user_id', $userId)
-                ->where('product_id', $id)
-                ->where('variant_id', $variantId)
-                ->first();
-
+            // Kiểm tra xem sản phẩm đã có trong wishlist chưa
             if (!$wishlist) {
                 Wishlist::create([
                     'user_id' => $userId,
                     'product_id' => $id,
-                    'variant_id' => $variantId,
                 ]);
-                return back()->with('success', 'Product added to your wishlist!');
+                return redirect()->back()->with('success', 'Product added to your wishlist!');
             }
 
-            return back()->with('info', 'Product is already in your wishlist.');
+            return redirect()->back()->with('info', 'Product is already in your wishlist.');
         }
 
-        return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để thêm Wishlist.');
+        // Nếu người dùng chưa đăng nhập, lưu vào session
+        $wishlist = Session::get('wishlist', []);
+        if (!in_array($id, $wishlist)) {
+            $wishlist[] = $id; // Thêm sản phẩm vào wishlist
+            Session::put('wishlist', $wishlist);
+            return redirect()->back()->with('success', 'Product added to wishlist!');
+        }
+
+        return redirect()->back()->with('info', 'Product is already in your wishlist.');
     }
 
     // Hiển thị wishlist (dành cho người dùng đã đăng nhập và chưa đăng nhập)
     public function showWishlist()
     {
-        // Khởi tạo danh sách wishlist trống
-        $wishlistProducts = collect();
+        $wishlistProducts = [];
 
+        // Nếu người dùng đã đăng nhập
         if (Auth::check()) {
+            // Lấy tất cả sản phẩm từ wishlist của người dùng
             $userId = Auth::id();
-            $wishlistProducts = Wishlist::with(['product', 'product.variants'])
-                ->where('user_id', $userId)
-                ->get()
-                ->map(function ($wishlistItem) {
-                    return [
-                        'product' => $wishlistItem->product,
-                        'variant' => $wishlistItem->product->variants->firstWhere('id', $wishlistItem->variant_id),
-                    ];
-                });
+            $wishlistProductIds = Wishlist::where('user_id', $userId)->pluck('product_id');
+            $wishlistProducts = Product::whereIn('id', $wishlistProductIds)->get();
         } else {
+            // Nếu người dùng chưa đăng nhập, lấy wishlist từ session
             $wishlistIds = Session::get('wishlist', []);
-            $wishlistProducts = Product::with('variants')
-                ->whereIn('id', $wishlistIds)
-                ->get()
-                ->map(function ($product) {
-                    return ['product' => $product, 'variant' => null];
-                });
+            $wishlistProducts = Product::whereIn('id', $wishlistIds)->get();
         }
 
-        dd($wishlistProducts); // Debugging step
-
-        return view('layouts.header', compact('wishlistProducts'));
+        // Truyền dữ liệu vào view wishlist
+        return view('wishlist', compact('wishlistProducts'));
     }
 
     // Xóa sản phẩm khỏi wishlist
@@ -91,30 +83,5 @@ class WishlistController extends Controller
         }
 
         return back()->with('error', 'Product not found in your wishlist.');
-    }
-
-    public function migrateWishlistToDatabase()
-    {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $wishlistIds = Session::get('wishlist', []);
-
-            foreach ($wishlistIds as $id) {
-                // Kiểm tra xem sản phẩm đã có trong cơ sở dữ liệu chưa
-                if (!Wishlist::where('user_id', $user->id)->where('product_id', $id)->exists()) {
-                    Wishlist::create([
-                        'user_id' => $user->id,
-                        'product_id' => $id,
-                    ]);
-                }
-            }
-
-            // Xóa wishlist trong session sau khi migrate
-            Session::forget('wishlist');
-
-            return redirect()->route('wishlist.index')->with('success', 'Wishlist đã được chuyển vào tài khoản của bạn.');
-        }
-
-        return redirect()->route('login');
     }
 }

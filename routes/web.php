@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\ProductGridController;
 use App\Http\Controllers\ReviewController;
@@ -114,3 +115,8 @@ Route::get('checkout/success/{order}', function ($order) {
 
 // Route Category
 Route::get('/shop', [CategoryController::class, 'index'])->name('shop.index');
+
+// ContactContraoller
+Route::post('/send-message', [ContactFormController::class, 'sendMessage'])->name('send.message');
+
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
