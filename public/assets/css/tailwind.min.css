@@ -10131,3 +10131,43 @@ html[dir="rtl"] .tns-visually-hidden {
 .text-yellow-500 {
     color: #f59e0b; /* Màu vàng */
 }
+/* Định dạng cho button màu */
+.color-btn {
+    padding: 0.5rem 1rem; /* py-2 (padding trên và dưới), px-4 (padding trái và phải) */
+    margin: 0.25rem; /* m-1 (margins nhỏ xung quanh) */
+    border-radius: 0.375rem; /* rounded (bo góc) */
+    background-color: #93c5fd; /* bg-blue-300 (màu nền xanh dương nhạt) */
+    color: white; /* text-white (màu chữ trắng) */
+    font-weight: 500; /* Làm chữ đậm vừa phải */
+    display: inline-block; /* Đảm bảo các button nằm ngang */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Hiệu ứng chuyển màu nền và tạo hiệu ứng khi click */
+}
+
+/* Hover: đổi màu nền khi rê chuột vào */
+.color-btn:hover {
+    background-color: #60a5fa; /* hover:bg-blue-400 (màu nền xanh dương đậm hơn) */
+}
+
+/* Khi button đang được bấm (active) */
+.color-btn:active {
+    background-color: #3b82f6; /* Chọn màu nền đậm hơn khi bấm vào */
+    transform: scale(0.98); /* Hiệu ứng nén lại khi bấm (một chút phóng to hoặc thu nhỏ) */
+}
+
+/* Đảm bảo không có viền khi rê chuột */
+.color-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+.color-btn.selected {
+    background-color: #3b82f6; /* Thêm màu nền đậm khi chọn */
+    color: #fff; /* Chữ vẫn màu trắng */
+    font-weight: 600; /* Đậm hơn khi chọn */
+}
+/* Khi button màu được chọn (active) */
+.color-btn.active {
+    background-color: #3b82f6; /* Thêm màu nền đậm khi chọn */
+    color: #fff; /* Chữ vẫn màu trắng */
+    font-weight: 600; /* Đậm hơn khi chọn */
+}
+

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 
-Route::prefix('admin')->middleware(['auth', 'is_admin', 'verified'])->group(function () {
+Route::prefix('admin')->group(function () {
     // Dashboard Route
     Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.index');
 

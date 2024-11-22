@@ -93,33 +93,33 @@
                         </ul>
                     </div>
                     @if(auth()->check())
-                        <div class="grid lg:grid-cols-2 grid-cols-1 gap-[30px] mt-4">
-                            <!-- Size and Color Section -->
+                        <div class="grid grid-cols-1 gap-[30px] mt-4">
+                            <!-- Chọn Size -->
                             <div class="flex items-center">
-                                <h5 class="text-lg font-semibold me-2 min-w-[220px]">Chọn sản phẩm:</h5>
-                                <div class="w-full min-w-[220px]">
-                                    <select name="variant_id" id="variant"
-                                        class="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-500"
-                                        required>
-                                        <option class="" value="">Chọn size và màu</option>
-                                        @foreach ($product->variants as $variant)
-                                            <option value="{{ $variant->id }}" data-price="{{ $variant->price }}"
-                                                data-stock="{{ $variant->stock }}">
-                                                {{ $variant->size }} - {{ $variant->color }} -
-                                                ${{ number_format($variant->price, 2) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                <h5 class="text-lg font-semibold me-2 min-w-[220px]">Chọn kích thước:</h5>
+                                <div class="w-full min-w-[220px]" id="sizeButtons">
+                                    <!-- Các button size sẽ hiển thị ở đây -->
+                                    @foreach ($product->variants->unique('size') as $variant)
+                                        <button class="size-btn color-btn" data-size="{{ $variant->size }}">
+                                            {{ $variant->size }}
+                                        </button>
+                                    @endforeach
+                                </div>
+                            </div>
 
+                            <!-- Chọn Màu (sẽ được hiển thị khi chọn size) -->
+                            <div class="flex items-center">
+                                <h5 class="text-lg font-semibold me-2 min-w-[220px]">Chọn màu:</h5>
+                                <div id="colorButtons" class="w-full min-w-[220px]">
+                                    <!-- Các button màu sẽ hiển thị ở đây, mặc định ẩn -->
                                 </div>
                             </div>
                         </div>
 
-
-
+                        <!-- Form thêm vào giỏ hàng -->
                         <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-full">
                             @csrf
-                            <!-- Hidden Inputs for Variant ID and Quantity -->
+                            <!-- Các input ẩn để lưu trữ variant_id và số lượng -->
                             <input type="hidden" name="variant_id" id="variant_id" value="">
                             <input type="hidden" name="quantity" id="quantity_input" value="1">
 
@@ -132,9 +132,9 @@
                         </form>
                     @else
                         <p class="mt-4">Bạn cần <a href="{{ route('login') }}" class="text-red-600 underline">đăng nhập</a>
-                            để thêm vào giỏ
-                            hàng.</p>
+                            để thêm vào giỏ hàng.</p>
                     @endif
+
                 </div>
             </div>
         </div>
@@ -584,7 +584,52 @@
             }
             return starsHtml;
         }
+        // Lấy tất cả các variant của sản phẩm
+        const variants = @json($product->variants);
+        const sizeButtonsContainer = document.getElementById('sizeButtons');
+        const colorButtonsContainer = document.getElementById('colorButtons');
+        const variantIdInput = document.getElementById('variant_id');
 
+        // Lắng nghe sự kiện click vào các button size
+        sizeButtonsContainer.addEventListener('click', function (e) {
+            if (e.target && e.target.classList.contains('size-btn')) {
+                // Bỏ lớp 'selected' khỏi tất cả các button size
+                const allSizeButtons = document.querySelectorAll('.size-btn');
+                allSizeButtons.forEach(button => button.classList.remove('selected'));
+
+                // Thêm lớp 'selected' vào button được chọn
+                e.target.classList.add('selected');
+
+                // Xử lý chọn size
+                const selectedSize = e.target.getAttribute('data-size');
+
+                // Làm trống các button màu cũ
+                colorButtonsContainer.innerHTML = '';
+
+                // Lọc các variant theo size đã chọn
+                const sizeVariants = variants.filter(variant => variant.size === selectedSize);
+
+                // Hiển thị các button màu cho size đã chọn
+                sizeVariants.forEach(variant => {
+                    const button = document.createElement('button');
+                    button.textContent = variant.color;
+                    button.classList.add('color-btn');
+                    button.addEventListener('click', function () {
+                        // Loại bỏ trạng thái 'active' của tất cả các button màu
+                        const allColorButtons = document.querySelectorAll('.color-btn');
+                        allColorButtons.forEach(colorBtn => colorBtn.classList.remove('active'));
+
+                        // Thêm trạng thái 'active' vào button màu đã chọn
+                        button.classList.add('active');
+
+                        // Cập nhật variant_id khi chọn màu
+                        variantIdInput.value = variant.id;
+                    });
+
+                    colorButtonsContainer.appendChild(button);
+                });
+            }
+        });
     </script>
 
 </section>
