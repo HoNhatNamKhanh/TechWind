@@ -1,228 +1,229 @@
 <!-- Footer Start -->
-<div  class="p-10">
- <footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200 rounded-xl ">
-    <div class="container relative">
-        <div class="grid grid-cols-12">
-            <div class="col-span-12">
-                <div class="py-[60px] px-0">
-                    <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
-                        <div class="lg:col-span-3 md:col-span-12">
-                            <a href="#" class="text-[22px] focus:outline-none">
-                                <img src="assets/images/logo-light.png" alt="" />
-                            </a>
-                            <p class="mt-6 text-gray-300">
-                                TendWind Shop - Nơi cung cấp các sản phẩm công nghệ tiên tiến, giúp bạn trải nghiệm sự
-                                đổi mới trong từng sản phẩm.
+<div class="p-10">
+    <footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200 rounded-xl ">
+        <div class="container relative">
+            <div class="grid grid-cols-12">
+                <div class="col-span-12">
+                    <div class="py-[60px] px-0">
+                        <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
+                            <div class="lg:col-span-3 md:col-span-12">
+                                <a href="#" class="text-[22px] focus:outline-none">
+                                    <img src="assets/images/logo-light.png" alt="" />
+                                </a>
+                                <p class="mt-6 text-gray-300">
+                                    TendWind Shop - Nơi cung cấp các sản phẩm công nghệ tiên tiến, giúp bạn trải nghiệm
+                                    sự
+                                    đổi mới trong từng sản phẩm.
 
-                            </p>
-                            <ul class="list-none mt-6">
-                                <li class="inline">
-                                    <a href="https://1.envato.market/techwind" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-shopping-cart align-middle" title="Buy Now"></i></a>
-                                </li>
-                                <li class="inline">
-                                    <a href="https://dribbble.com/shreethemes" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-dribbble align-middle" title="dribbble"></i></a>
-                                </li>
-                                <li class="inline">
-                                    <a href="https://www.behance.net/shreethemes" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-behance" title="Behance"></i></a>
-                                </li>
-                                <li class="inline">
-                                    <a href="http://linkedin.com/company/shreethemes" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-linkedin" title="Linkedin"></i></a>
-                                </li>
-                                <li class="inline">
-                                    <a href="https://www.facebook.com/shreethemes" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-facebook-f align-middle" title="facebook"></i></a>
-                                </li>
-                                <li class="inline">
-                                    <a href="https://www.instagram.com/shreethemes/" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-instagram align-middle" title="instagram"></i></a>
-                                </li>
-                                <li class="inline">
-                                    <a href="https://twitter.com/shreethemes" target="_blank"
-                                        class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
-                                            class="uil uil-twitter align-middle" title="twitter"></i></a>
-                                </li>
-                            </ul>
-                            <!--end icon-->
-                        </div>
-                        <!--end col-->
+                                </p>
+                                <ul class="list-none mt-6">
+                                    <li class="inline">
+                                        <a href="https://1.envato.market/techwind" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-shopping-cart align-middle" title="Buy Now"></i></a>
+                                    </li>
+                                    <li class="inline">
+                                        <a href="https://dribbble.com/shreethemes" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-dribbble align-middle" title="dribbble"></i></a>
+                                    </li>
+                                    <li class="inline">
+                                        <a href="https://www.behance.net/shreethemes" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-behance" title="Behance"></i></a>
+                                    </li>
+                                    <li class="inline">
+                                        <a href="http://linkedin.com/company/shreethemes" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-linkedin" title="Linkedin"></i></a>
+                                    </li>
+                                    <li class="inline">
+                                        <a href="https://www.facebook.com/shreethemes" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-facebook-f align-middle" title="facebook"></i></a>
+                                    </li>
+                                    <li class="inline">
+                                        <a href="https://www.instagram.com/shreethemes/" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-instagram align-middle" title="instagram"></i></a>
+                                    </li>
+                                    <li class="inline">
+                                        <a href="https://twitter.com/shreethemes" target="_blank"
+                                            class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border-gray-800 rounded-md border hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-600"><i
+                                                class="uil uil-twitter align-middle" title="twitter"></i></a>
+                                    </li>
+                                </ul>
+                                <!--end icon-->
+                            </div>
+                            <!--end col-->
 
-                        <div class="lg:col-span-6 md:col-span-12">
-                            <h5 class="tracking-[1px] text-gray-100 font-semibold">
-                                Danh mục chính
-                            </h5>
+                            <div class="lg:col-span-6 md:col-span-12">
+                                <h5 class="tracking-[1px] text-gray-100 font-semibold">
+                                    Danh mục chính
+                                </h5>
 
-                            <div class="grid md:grid-cols-12 grid-cols-1">
-                                <div class="md:col-span-4">
-                                    <ul class="list-none footer-list mt-6">
-                                        @foreach($footerCategories->slice(0, 5) as $category)  <!-- Hiển thị 5 danh mục đầu tiên -->
-                                            <li class="mt-[10px]">
-                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                                    class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out">
-                                                    <i class="uil uil-angle-right-b"></i>{{ $category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                <div class="grid md:grid-cols-12 grid-cols-1">
+                                    <div class="md:col-span-4">
+                                        <ul class="list-none footer-list mt-6">
+                                            @foreach($footerCategories->slice(0, 5) as $category)  <!-- Hiển thị 5 danh mục đầu tiên -->
+                                                <li class="mt-[10px]">
+                                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out">
+                                                        <i class="uil uil-angle-right-b"></i>{{ $category->name }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <!--end col-->
+
+                                    <div class="md:col-span-4">
+                                        <ul class="list-none footer-list mt-6">
+                                            @foreach($footerCategories->slice(5, 5) as $category)  <!-- Hiển thị 5 danh mục tiếp theo -->
+                                                <li class="mt-[10px]">
+                                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out">
+                                                        <i class="uil uil-angle-right-b"></i>{{ $category->name }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <!--end col-->
+
+                                    <div class="md:col-span-4">
+                                        <ul class="list-none footer-list mt-6">
+                                            @foreach($footerCategories->slice(10, 5) as $category)  <!-- Hiển thị 5 danh mục tiếp theo -->
+                                                <li class="mt-[10px]">
+                                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
+                                                        class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out">
+                                                        <i class="uil uil-angle-right-b"></i>{{ $category->name }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <!--end col-->
                                 </div>
-                                <!--end col-->
 
-                                <div class="md:col-span-4">
-                                    <ul class="list-none footer-list mt-6">
-                                        @foreach($footerCategories->slice(5, 5) as $category)  <!-- Hiển thị 5 danh mục tiếp theo -->
-                                            <li class="mt-[10px]">
-                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                                    class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out">
-                                                    <i class="uil uil-angle-right-b"></i>{{ $category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <!--end col-->
 
-                                <div class="md:col-span-4">
-                                    <ul class="list-none footer-list mt-6">
-                                        @foreach($footerCategories->slice(10, 5) as $category)  <!-- Hiển thị 5 danh mục tiếp theo -->
-                                            <li class="mt-[10px]">
-                                                <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                                    class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out">
-                                                    <i class="uil uil-angle-right-b"></i>{{ $category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <!--end col-->
                             </div>
 
-
-                        </div>
-
-                        <div class="lg:col-span-3 md:col-span-4">
-                            <h5 class="tracking-[1px] text-gray-100 font-semibold">
-                                Bản tin
-                            </h5>
-                            <p class="mt-6">
-                                Đăng ký nhận các mẹo mới nhất qua email.
-                            </p>
-                            <form>
-                                <div class="grid grid-cols-1">
-                                    <div class="my-3">
-                                        <label class="form-label">Nhập email của bạn
-                                            <span class="text-red-600">*</span></label>
-                                        <div class="form-icon relative mt-2">
-                                            <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
-                                            <input type="email"
-                                                class="form-input ps-12 rounded w-full py-2 px-3 h-10 bg-gray-800 border-0 text-gray-100 focus:shadow-none focus:ring-0 placeholder:text-gray-200"
-                                                placeholder="Email" name="email" required="" />
+                            <div class="lg:col-span-3 md:col-span-4">
+                                <h5 class="tracking-[1px] text-gray-100 font-semibold">
+                                    Bản tin
+                                </h5>
+                                <p class="mt-6">
+                                    Đăng ký nhận các mẹo mới nhất qua email.
+                                </p>
+                                <form>
+                                    <div class="grid grid-cols-1">
+                                        <div class="my-3">
+                                            <label class="form-label">Nhập email của bạn
+                                                <span class="text-red-600">*</span></label>
+                                            <div class="form-icon relative mt-2">
+                                                <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
+                                                <input type="email"
+                                                    class="form-input ps-12 rounded w-full py-2 px-3 h-10 bg-gray-800 border-0 text-gray-100 focus:shadow-none focus:ring-0 placeholder:text-gray-200"
+                                                    placeholder="Email" name="email" required="" />
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <button type="submit" id="submitsubscribe" name="send"
-                                        class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">
-                                        Đăng kí
-                                    </button>
-                                </div>
-                            </form>
+                                        <button type="submit" id="submitsubscribe" name="send"
+                                            class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">
+                                            Đăng kí
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--end col-->
                         </div>
-                        <!--end col-->
+                        <!--end grid-->
+                    </div>
+                    <!--end col-->
+                </div>
+            </div>
+            <!--end grid-->
+
+            <div class="grid grid-cols-1">
+                <div class="py-[30px] px-0 border-t border-slate-800">
+                    <div class="grid lg:grid-cols-4 md:grid-cols-2">
+                        <div class="flex items-center lg:justify-center">
+                            <i class="uil uil-truck align-middle text-lg mb-0 me-2"></i>
+                            <h6 class="mb-0 font-medium">Giao hàng miễn phí</h6>
+                        </div>
+                        <!--end content-->
+
+                        <div class="flex items-center lg:justify-center">
+                            <i class="uil uil-archive align-middle text-lg mb-0 me-2"></i>
+                            <h6 class="mb-0 font-medium">Giao hàng không tiếp xúc</h6>
+                        </div>
+                        <!--end content-->
+
+                        <div class="flex items-center lg:justify-center">
+                            <i class="uil uil-transaction align-middle text-lg mb-0 me-2"></i>
+                            <h6 class="mb-0 font-medium">Đảm bảo hoàn tiền</h6>
+                        </div>
+                        <!--end content-->
+
+                        <div class="flex items-center lg:justify-center">
+                            <i class="uil uil-shield-check align-middle text-lg mb-0 me-2"></i>
+                            <h6 class="mb-0 font-medium">Thanh toán an toàn</h6>
+                        </div>
+                        <!--end content-->
                     </div>
                     <!--end grid-->
                 </div>
-                <!--end col-->
-            </div>
-        </div>
-        <!--end grid-->
-
-        <div class="grid grid-cols-1">
-            <div class="py-[30px] px-0 border-t border-slate-800">
-                <div class="grid lg:grid-cols-4 md:grid-cols-2">
-                    <div class="flex items-center lg:justify-center">
-                        <i class="uil uil-truck align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Giao hàng miễn phí</h6>
-                    </div>
-                    <!--end content-->
-
-                    <div class="flex items-center lg:justify-center">
-                        <i class="uil uil-archive align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Giao hàng không tiếp xúc</h6>
-                    </div>
-                    <!--end content-->
-
-                    <div class="flex items-center lg:justify-center">
-                        <i class="uil uil-transaction align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Đảm bảo hoàn tiền</h6>
-                    </div>
-                    <!--end content-->
-
-                    <div class="flex items-center lg:justify-center">
-                        <i class="uil uil-shield-check align-middle text-lg mb-0 me-2"></i>
-                        <h6 class="mb-0 font-medium">Thanh toán an toàn</h6>
-                    </div>
-                    <!--end content-->
-                </div>
-                <!--end grid-->
-            </div>
-            <!--end-->
-        </div>
-        <!--end grid-->
-    </div>
-    <!--end container-->
-
-    <div class="py-[30px] px-0 border-t border-slate-800">
-        <div class="container relative text-center">
-            <div class="grid md:grid-cols-2 items-center">
-                <div class="md:text-start text-center">
-                    <p class="mb-0">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        Techwind. Design with
-                        <i class="mdi mdi-heart text-red-600"></i> by
-                        <a href="https://shreethemes.in/" target="_blank" class="text-reset">kietkhanhhoang</a>.
-                    </p>
-                </div>
-
-                <ul class="list-none md:text-end text-center mt-6 md:mt-0">
-                    <li class="inline">
-                        <a href="#"><img src="assets/images/payments/american-ex.png" class="max-h-6 inline"
-                                title="American Express" alt="" /></a>
-                    </li>
-                    <li class="inline">
-                        <a href="#"><img src="assets/images/payments/discover.png" class="max-h-6 inline"
-                                title="Discover" alt="" /></a>
-                    </li>
-                    <li class="inline">
-                        <a href="#"><img src="assets/images/payments/master-card.png" class="max-h-6 inline"
-                                title="Master Card" alt="" /></a>
-                    </li>
-                    <li class="inline">
-                        <a href="#"><img src="assets/images/payments/paypal.png" class="max-h-6 inline" title="Paypal"
-                                alt="" /></a>
-                    </li>
-                    <li class="inline">
-                        <a href="#"><img src="assets/images/payments/visa.png" class="max-h-6 inline" title="Visa"
-                                alt="" /></a>
-                    </li>
-                </ul>
+                <!--end-->
             </div>
             <!--end grid-->
         </div>
         <!--end container-->
-   </div>
-</footer>
- </div>
+
+        <div class="py-[30px] px-0 border-t border-slate-800">
+            <div class="container relative text-center">
+                <div class="grid md:grid-cols-2 items-center">
+                    <div class="md:text-start text-center">
+                        <p class="mb-0">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            Techwind. Design with
+                            <i class="mdi mdi-heart text-red-600"></i> by
+                            <a href="https://shreethemes.in/" target="_blank" class="text-reset">kietkhanhhoang</a>.
+                        </p>
+                    </div>
+
+                    <ul class="list-none md:text-end text-center mt-6 md:mt-0">
+                        <li class="inline">
+                            <a href="#"><img src="assets/images/payments/american-ex.png" class="max-h-6 inline"
+                                    title="American Express" alt="" /></a>
+                        </li>
+                        <li class="inline">
+                            <a href="#"><img src="assets/images/payments/discover.png" class="max-h-6 inline"
+                                    title="Discover" alt="" /></a>
+                        </li>
+                        <li class="inline">
+                            <a href="#"><img src="assets/images/payments/master-card.png" class="max-h-6 inline"
+                                    title="Master Card" alt="" /></a>
+                        </li>
+                        <li class="inline">
+                            <a href="#"><img src="assets/images/payments/paypal.png" class="max-h-6 inline"
+                                    title="Paypal" alt="" /></a>
+                        </li>
+                        <li class="inline">
+                            <a href="#"><img src="assets/images/payments/visa.png" class="max-h-6 inline" title="Visa"
+                                    alt="" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <!--end grid-->
+            </div>
+            <!--end container-->
+        </div>
+    </footer>
+</div>
 
 
 <!--end footer-->
@@ -277,10 +278,13 @@
 
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // Ngừng việc gửi form thông thường
+
+            // Lấy form chứa nút bấm
             const form = this.closest('form');
             const formData = new FormData(form);
 
+            // Gửi dữ liệu qua fetch
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
@@ -290,12 +294,20 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    // Hiển thị pop-up thông báo
-                    showPopUp('Thông báo', data.message); // Tùy chỉnh tiêu đề và nội dung
+                    // Xử lý phản hồi thành công hoặc lỗi
+                    if (data.success) {
+                        showPopUp('Thông báo', data.message); // Hiển thị thông báo thành công
+                    } else {
+                        showPopUp('Lỗi', data.message); // Hiển thị thông báo lỗi
+                    }
                 })
-                .catch(error => showPopUp('Lỗi', 'Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng. Xin vui lòng thử lại.'));
+                .catch(error => {
+                    // Xử lý các lỗi mạng hoặc lỗi khi gọi fetch
+                    showPopUp('Lỗi', 'Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng. Xin vui lòng thử lại.');
+                });
         });
     });
+
 
     $(document).ready(function () {
         // Xóa sản phẩm trong giỏ hàng
@@ -378,7 +390,7 @@
         // Cập nhật giá trị của trường quantity
         document.getElementById('quantity').value = this.value;
     });
-    
+
 
 </script>
 
