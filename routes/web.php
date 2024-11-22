@@ -41,7 +41,7 @@ Route::post('products/{product}/review', [ReviewController::class, 'submitReview
 Route::get('/products', [ProductGridController::class, 'index'])->name('products.grid');
 
 //Route cho cart
-Route::post('cart/add/{id}', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
+Route::post('cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/view', [CartController::class, 'view']);
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');

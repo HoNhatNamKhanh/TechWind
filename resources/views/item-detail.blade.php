@@ -109,10 +109,14 @@
 
                             <!-- Chọn Màu (sẽ được hiển thị khi chọn size) -->
                             <div class="flex items-center">
-                                <h5 class="text-lg font-semibold me-2 min-w-[220px]">Chọn màu:</h5>
-                                <div id="colorButtons" class="w-full min-w-[220px]">
-                                    <!-- Các button màu sẽ hiển thị ở đây, mặc định ẩn -->
-                                </div>
+                                <div id="colorLabel" class="text-lg font-semibold me-2 min-w-[220px]"
+                                    style="display: none;"></div>
+                                <!-- Chữ "Chọn màu" -->
+                                <div id="colorButtons" class="w-full min-w-[220px]" style="display: none;"></div>
+                                <!-- Các button màu sẽ hiển thị ở đây -->
+                            </div>
+                            <div id="priceContainer" class="mt-4" style="display: none;">
+                                <h5 class="text-lg font-semibold">Giá: <span id="productPrice"></span></h5>
                             </div>
                         </div>
 
@@ -585,9 +589,12 @@
             return starsHtml;
         }
         // Lấy tất cả các variant của sản phẩm
-        const variants = @json($product->variants);
+        const variants = @json($product->variants); // Dữ liệu các variants của sản phẩm
         const sizeButtonsContainer = document.getElementById('sizeButtons');
         const colorButtonsContainer = document.getElementById('colorButtons');
+        const colorLabel = document.getElementById('colorLabel');
+        const priceContainer = document.getElementById('priceContainer');
+        const productPrice = document.getElementById('productPrice');
         const variantIdInput = document.getElementById('variant_id');
 
         // Lắng nghe sự kiện click vào các button size
@@ -609,6 +616,10 @@
                 // Lọc các variant theo size đã chọn
                 const sizeVariants = variants.filter(variant => variant.size === selectedSize);
 
+                // Tạo và thêm phần "Chọn màu"
+                colorLabel.textContent = 'Chọn màu:';
+                colorLabel.style.display = 'block'; // Hiển thị chữ "Chọn màu"
+
                 // Hiển thị các button màu cho size đã chọn
                 sizeVariants.forEach(variant => {
                     const button = document.createElement('button');
@@ -624,12 +635,19 @@
 
                         // Cập nhật variant_id khi chọn màu
                         variantIdInput.value = variant.id;
-                    });
 
+                        // Cập nhật giá khi chọn màu
+                        productPrice.textContent = new Intl.NumberFormat().format(variant.price) + " đ"; // Hiển thị giá với định dạng
+                        priceContainer.style.display = 'block'; // Hiển thị phần giá
+                    });
                     colorButtonsContainer.appendChild(button);
                 });
+
+                // Hiển thị phần chọn màu
+                colorButtonsContainer.style.display = 'flex'; // Hiển thị các button màu
             }
         });
+
     </script>
 
 </section>
