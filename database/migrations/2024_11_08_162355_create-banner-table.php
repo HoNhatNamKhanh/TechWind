@@ -15,7 +15,23 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail');
             $table->string('name');
+            $table->timestamps(); // Thêm cột created_at và updated_at
+
         });
+        DB::table('banners')->insert([
+            [
+                'thumbnail' => 'banner.jpg',
+                'name' => 'Banner 1',
+            ],
+            [
+                'thumbnail' => 'banner.jpg',
+                'name' => 'Banner 2',
+            ],
+            [
+                'thumbnail' => 'banner.jpg',
+                'name' => 'Banner 3',
+            ],
+        ]);
     }
 
     /**

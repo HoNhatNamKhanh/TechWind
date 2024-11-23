@@ -4,7 +4,6 @@
 @section('content')
 <main class="h-full overflow-y-auto">
     <div class="container px-6 mx-auto grid">
-
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-body px-0 pt-0 pb-2">

@@ -56,8 +56,10 @@ Route::prefix('admin')->group(function () {
         'destroy' => 'admin.orders.destroy',
     ]);
 
-    // Banner Routes
-    Route::get('banners', [BannerController::class, 'index'])->name('admin.banner.index');  // List all banners
-    Route::get('banners/{id}/edit', [BannerController::class, 'edit'])->name('admin.banner.edit'); // Edit a banner
-    Route::put('banners/{id}', [BannerController::class, 'update'])->name('admin.banner.update'); // Update banner
+    // Hiển thị danh sách banner
+    Route::get('banners', [BannerController::class, 'index'])->name('admin.banner.index');
+
+    // Cập nhật banner
+    Route::put('banners/{id}', [BannerController::class, 'update'])->name('admin.banner.update');
+
 });
