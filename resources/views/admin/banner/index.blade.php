@@ -21,7 +21,7 @@
                         @method('PUT')
 
                         <!-- Banner name input -->
-                        <input type="text" name="name" value="{{ $banners->first()->name }}"
+                        <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input my-4" type="text" name="name" value="{{ $banners[2]->name }}"
                             id="banner-name-{{ $banners->first()->id }}" placeholder="Enter banner name">
 
                         <!-- Thumbnail input for file -->
@@ -52,7 +52,9 @@
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="old_thumbnail" value="{{ $banners[1]->thumbnail }}">
-                        <input type="text" name="name" value="{{ $banners[1]->name }}"
+                        <input
+                            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input my-4"
+                            type="text" name="name" value="{{ $banners[2]->name }}"
                             id="banner-name-{{ $banners[1]->id }}" placeholder="Enter banner name">
                         <input type="file" name="thumbnail" id="thumbnail-{{ $banners[1]->id }}" class="file-input"
                             onchange="previewImage({{ $banners[1]->id }})">
@@ -76,7 +78,7 @@
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="old_thumbnail" value="{{ $banners[2]->thumbnail }}">
-                        <input type="text" name="name" value="{{ $banners[2]->name }}"
+                        <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input my-4" type="text" name="name" value="{{ $banners[2]->name }}"
                             id="banner-name-{{ $banners[2]->id }}" placeholder="Enter banner name">
                         <input type="file" name="thumbnail" id="thumbnail-{{ $banners[2]->id }}" class="file-input"
                             onchange="previewImage({{ $banners[2]->id }})">

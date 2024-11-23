@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'phone' => ['nullable', 'regex:/^(0|\+84)[1-9][0-9]{8}$/'], // Thêm validation cho phone
             'address' => ['nullable', 'string', 'max:255'], // Thêm validation cho address
             'role' => ['nullable', 'in:user,admin'], // Chỉ chấp nhận user hoặc admin
-            'image' => ['nullable', 'string'], // Image có thể là null hoặc string URL
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation rules
 
         ];
     }

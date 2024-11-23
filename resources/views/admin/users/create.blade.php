@@ -106,17 +106,13 @@
                                     <p class="text-red-600 text-sm mt-1">{{ $errors->first('image') }}</p>
                                 @endif
                             </label>
-                            
+
                             <!-- Image Preview -->
                             <div id="image-preview" class="mt-2">
-                                @if($user->userMeta->image)
-                                    <!-- If the user has an image, display it -->
-                                    <img id="preview-image" src="{{ asset('storage/' . $user->image) }}" alt="Image Preview"
-                                        class="w-32 h-32 object-cover rounded-md" />
-                                @else
-                                    <!-- If no image, display a placeholder or nothing -->
-                                    <img id="preview-image" src="#" alt="Image Preview" class="hidden w-32 h-32 object-cover rounded-md" />
-                                @endif
+
+                                <!-- If no image, display a placeholder or nothing -->
+                                <img id="preview-image" src="#" alt="Image Preview"
+                                    class="hidden w-32 h-32 object-cover rounded-md" />
                             </div>
 
 
