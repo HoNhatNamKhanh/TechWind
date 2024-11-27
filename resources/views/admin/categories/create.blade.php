@@ -52,9 +52,9 @@
                                     class="hidden w-32 h-32 object-cover rounded-md" />
                             </div>
 
-                            <div class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
+                            <div class="mb-4 text-lg font-semibold text-white dark:text-gray-300 border-gray-300 dark:border-gray-600 mt-2">
                                 <div
-                                    class="create-button px-2 py-4 text-center w-20 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                    class="create-button px-2 py-2 text-center w-20 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                     <button type="submit" class="">Tạo danh mục</button>
                                 </div>
                             </div>
