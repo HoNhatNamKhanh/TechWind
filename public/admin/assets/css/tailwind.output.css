@@ -1752,7 +1752,7 @@ video {
     gap: 1rem;
 }
 .create-button {
-    background: rgba(66, 225, 92, 0.5);
+    background: #4c51bf;
     border-radius: 5px;
 }
 .add-button {
