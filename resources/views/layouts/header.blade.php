@@ -168,15 +168,14 @@
                             <div class="category-group">
                                 @foreach($categoryGroup as $index => $category)
                                 <li>
-                                    <!-- Kiểm tra xem đây có phải là phần tử cuối cùng trong nhóm không -->
-                                    @if($loop->last)
+                                    <!-- Kiểm tra nếu đây là phần tử cuối cùng trong nhóm cuối cùng -->
+                                    @if($loop->parent->last && $loop->last)
                                     <!-- Thay thế phần tử cuối cùng bằng "Xem thêm" -->
                                     <a href="{{ route('shop.index') }}" class="sub-menu-item">
                                         <p>Xem thêm danh mục</p>
                                     </a>
                                     @else
-                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}"
-                                        class="sub-menu-item">
+                                    <a href="{{ route('shop.index', ['category_id' => $category->id]) }}" class="sub-menu-item">
                                         <p>{{ $category->name }}</p>
                                     </a>
                                     @endif
