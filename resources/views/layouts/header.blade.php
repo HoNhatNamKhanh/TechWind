@@ -187,9 +187,9 @@
                         </ul>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="{{ route('blog') }}" class="sub-menu-item">Blogs</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="{{ route('about') }}" class="sub-menu-item">Giới thiệu</a>
                     </li>

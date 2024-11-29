@@ -54,16 +54,16 @@
                                 <div
                                     class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
                                     <div
-                                        class="add-button px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        class="add-button px-2 py-3 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                         <button type="button" class=" custom-border" id="addVariant">Thêm
                                             biến
                                             thể</button>
                                     </div>
                                 </div>
                                 <div
-                                    class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
+                                    class="mb-4 text-lg font-semibold text-white dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
                                     <div
-                                        class=" create-button px-2 py-4 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                        class=" create-button px-2 py-3 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                         <button type="submit" class=" custom-border">Tạo sản phẩm</button>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
             <input type="number" name="variant_stock[]" min="0" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 form-input" required />
         </label>
         <div class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600">
-            <div class="delete-button px-2 py-4 text-center w-20 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+            <div class="delete-button px-2 py-3 text-center w-20 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                 <button type="button" class=" delete-variant">Xoá biến thể</button>
             </div>
         </div>

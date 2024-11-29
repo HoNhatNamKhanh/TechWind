@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title', 'Trang Admin')
     </title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Google Fonts -->
     <link
@@ -14,6 +15,8 @@
     
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/tailwind.output.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+
     
     <!-- Alpine.js -->
     <script
@@ -37,7 +40,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       defer
     ></script>
-    
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/tailwind.css') }}" />
     <!-- Local JS - Charts -->
     <script src="{{ asset('admin/assets/js/charts-lines.js') }}" defer></script>
     <script src="{{ asset('admin/assets/js/charts-pie.js') }}" defer></script>

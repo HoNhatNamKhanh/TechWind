@@ -1,8 +1,8 @@
 <!-- Overlay (for mobile) -->
 <aside class=" radius-aside mr-4 z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
     <div class="py-4 text-gray-500 dark:text-gray-400">
-        <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-            Techwind
+        <a class="" href="#">
+            <img src="http://127.0.0.1:8000/assets/images/logo-dark.png" alt="" width="100px" class="ml-6">
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -20,8 +20,6 @@
                 </a>
             </li>
         </ul>
-
-
         <!-- Categories Menu -->
         <ul>
             <li class="relative px-6 py-3">
@@ -31,9 +29,7 @@
                     <span class="inline-flex items-center">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                            </path>
+                            <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                         </svg>
                         <span class="ml-4">Danh mục</span>
                     </span>
@@ -72,9 +68,8 @@
                     <span class="inline-flex items-center">
                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                            </path>
+                            <path d="M5 8h14l1 10H4L5 8z" />
+                            <path d="M9 8V6a3 3 0 016 0v2" />
                         </svg>
                         <span class="ml-4">Sản phẩm</span>
                     </span>
@@ -111,11 +106,10 @@
                     class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     @click="toggleUsersMenu" aria-haspopup="true">
                     <span class="inline-flex items-center">
-                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                            </path>
+                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 12a5 5 0 100-10 5 5 0 000 10zm-7 8a7 7 0 0114 0H3z"
+                                clip-rule="evenodd" />
                         </svg>
                         <span class="ml-4">Người dùng</span>
                     </span>
@@ -153,13 +147,11 @@
                     class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     @click="toggleOrdersMenu" aria-haspopup="true">
                     <span class="inline-flex items-center">
-                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
-                            </path>
+                        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M9 2.5H6a2 2 0 00-2 2v15a2 2 0 002 2h12a2 2 0 002-2v-15a2 2 0 00-2-2h-3M9 2.5v3h6v-3M9 2.5h6M9 11h6M9 15h4" />
                         </svg>
-                        <span class="ml-4">Orders</span>
+                        <span class="ml-4">Đơn hàng</span>
                     </span>
                     <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"

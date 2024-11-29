@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     // Dashboard Route
     Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.index');
 
@@ -56,8 +56,10 @@ Route::prefix('admin')->group(function () {
         'destroy' => 'admin.orders.destroy',
     ]);
 
-    // Banner Routes
-    Route::get('banners', [BannerController::class, 'index'])->name('admin.banner.index');  // List all banners
-    Route::get('banners/{id}/edit', [BannerController::class, 'edit'])->name('admin.banner.edit'); // Edit a banner
-    Route::put('banners/{id}', [BannerController::class, 'update'])->name('admin.banner.update'); // Update banner
+    // Hiển thị danh sách banner
+    Route::get('banners', [BannerController::class, 'index'])->name('admin.banner.index');
+
+    // Cập nhật banner
+    Route::put('banners/{id}', [BannerController::class, 'update'])->name('admin.banner.update');
+
 });
