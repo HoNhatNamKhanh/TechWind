@@ -118,38 +118,38 @@
                         onclick="event.stopPropagation();">
                         <ul class="py-2 text-start" aria-labelledby="dropdownDefault">
                             @auth
-                                <!-- Show these links if the user is logged in -->
-                                <li>
-                                    <a href="{{ route('users.show', Auth::user()->id) }}"
-                                        class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-user align-middle me-1"></i> Tài khoản
-                                    </a>
-                                </li>
+                            <!-- Show these links if the user is logged in -->
+                            <li>
+                                <a href="{{ route('users.show', Auth::user()->id) }}"
+                                    class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-user align-middle me-1"></i> Tài khoản
+                                </a>
+                            </li>
 
-                                <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST" class="inline">
-                                        @csrf
-                                        <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
-                                            <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng xuất
-                                        </button>
-                                    </form>
-                                </li>
-                                @endauth
+                            <li class="border-t border-gray-100 dark:border-gray-800 my-2"></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" class="inline">
+                                    @csrf
+                                    <button type="submit" class="block py-1.5 px-4 hover:text-indigo-600">
+                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng xuất
+                                    </button>
+                                </form>
+                            </li>
+                            @endauth
 
-                                @guest
-                                <!-- Show these links if the user is not logged in -->
-                                <li>
-                                    <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Nhập
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
-                                        <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
-                                    </a>
-                                </li>
-                                @endguest
+                            @guest
+                            <!-- Show these links if the user is not logged in -->
+                            <li>
+                                <a href="{{ route('login') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Nhập
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}" class="block py-1.5 px-4 hover:text-indigo-600">
+                                    <i class="uil uil-sign-out-alt align-middle me-1"></i> Đăng Ký
+                                </a>
+                            </li>
+                            @endguest
                         </ul>
                     </div>
 
@@ -242,7 +242,7 @@
                                 </button>
                             </form>
                             <!-- Add to Cart -->
-                            <form action="{{ route('cart.add', $item['product']->id) }}" method="POST">
+                            <form action="{{ route('wishlist.to.cart', $item['product']->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="variant_id" value="{{ $item['variant']->id }}">
                                 <button type="submit" class="text-green-600 hover:text-green-800 font-semibold">
