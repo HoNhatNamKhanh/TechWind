@@ -41,7 +41,8 @@
                     @foreach ($product->variants as $variant)
                         <div class="tiny-slide">
                             @if ($variant->image)
-                                <img src="{{  $variant->image }}"
+                                <img src="{{ asset('storage/' .  $variant->image) }}"
+                                
                                     class="rounded-md shadow dark:shadow-gray-800"
                                     alt="{{ $product->name }} - {{ $variant->name }}" />
                             @else

@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <!-- Order Modal -->
-                    <div id="order-modal"
+                    <div  class="hidden" id="order-modal"
                         class="fixed inset-0 flex justify-center items-center bg-gradient-to-b from-transparent to-black z-50 ">
                         <div
                             class="bg-white p-6 rounded-md sm:w-full sm:custom-sm md:w-full md:custom-md lg:w-1/2 lg:custom-lg xl:w-1/4 xl:custom-xl">
