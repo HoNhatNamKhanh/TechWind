@@ -6,6 +6,8 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
@@ -194,4 +196,30 @@ class CartController extends Controller
         ], 200);
     }
 
+    public function wishlistToCart(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        // Tìm sản phẩm và biến thể trong wishlist
+        $wishlistItem = Wishlist::where('user_id', $user->id)
+            ->where('product_id', $id)
+            ->where('variant_id', $request->input('variant_id'))
+            ->first();
+
+        if (!$wishlistItem) {
+            return redirect()->back()->with('error', 'Sản phẩm không tồn tại trong wishlist.');
+        }
+
+        // Thêm vào giỏ hàng
+        $user->cart()->create([
+            'product_id' => $wishlistItem->product_id,
+            'variant_id' => $wishlistItem->variant_id,
+            'quantity' => 1,
+        ]);
+
+        // Xóa khỏi wishlist
+        $wishlistItem->delete();
+
+        return redirect()->back()->with('success', 'Sản phẩm đã được chuyển sang giỏ hàng.');
+    }
 }
