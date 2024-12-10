@@ -16,7 +16,7 @@ class ContactFormMail extends Mailable
 
     public function __construct($name, $email, $subject, $comments)
     {
-        $this->name = $name;
+            $this->name = $name;
         $this->email = $email;
         $this->subject = $subject;
         $this->comments = $comments;

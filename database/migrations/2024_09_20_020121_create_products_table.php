@@ -16,11 +16,9 @@ return new class extends Migration {
             $table->text(column: 'description');
             $table->integer('view')->default(0); // Default view count
             $table->string('status');
-
+            $table->string('des');
             $table->unsignedBigInteger('category_id');  // Dùng kiểu dữ liệu unsignedBigInteger
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');  // Khoá ngoại với cascade khi xóa category
-
-
             $table->timestamps();
         });
     }

@@ -19,15 +19,16 @@
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
-
     <!-- Css -->
     <link href="{{ asset('assets/libs/tiny-slider/tiny-slider.css') }}" rel="stylesheet" />
+    
     <!-- Main Css -->
     <link href="{{ asset('assets/libs/%40iconscout/unicons/css/line.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('assets/libs/%40mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+
 </head>
 
 <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900 bg-gray-100">
@@ -224,7 +225,7 @@
                     @foreach($wishlistProducts as $item)
                     <li class="flex items-center justify-between">
                         <div class="flex items-center space-x-4">
-                            <img src="{{ 'storage/'.$item['variant']->image }}" alt="{{ $item['product']->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
+                            <img src="{{ $item['variant']->image }}" alt="{{ $item['product']->name }}" class="w-24 h-auto rounded shadow dark:shadow-gray-800">
                             <div>
                                 <p class="font-semibold text-lg">{{ $item['product']->name }}</p>
                                 <p class="text-sm text-slate-400">Variant: {{ $item['variant']->color }}</p>

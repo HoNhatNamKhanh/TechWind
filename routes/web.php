@@ -78,6 +78,9 @@ Route::prefix('users')->name('users.')->group(function () {
 Route::get('/orders/{id}', [OrderController::class, 'showOrderDetails'])->name('orders.show');
 Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
+Route::get('/checkout/success', function () {
+    return view('checkout.success');
+})->name('checkout.success');
 
 
 

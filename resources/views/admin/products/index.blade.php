@@ -52,7 +52,7 @@
                                         @endif
                                         <td class="align-middle text-center border px-4 py-3">
                                             @if ($variant->image)
-                                                <img src="{{ asset('storage/' . $variant->image) }}" alt="Variant Image"
+                                                <img src="{{ $variant->image }}" alt="Variant Image"
                                                     style="width: 75px; height: auto;">
                                             @else
                                                 <span>No Image</span>

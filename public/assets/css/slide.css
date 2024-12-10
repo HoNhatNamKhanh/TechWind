@@ -1,0 +1,34 @@
+#grid {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#slider {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.group:hover img {
+    transform: scale(1.1);
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    #slider .md\\:w-1\\/3 {
+        flex-basis: 100%;
+    }
+}

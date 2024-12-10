@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'contact')
+@section('title', 'Liên hệ')
 
 @section('content')
-
 <section class="relative table w-full py-36 bg-[url('../../assets/images/company/aboutus.html')] bg-center bg-no-repeat bg-cover">
     <div class="absolute inset-0 bg-black opacity-75"></div>
     <div class="container relative">
-        <div class="grid grid-cols-1 pb-8 text-center mt-10">
+        <div class="grid grid-colss-1 pb-8 text-center mt-10">
             <h3 class="md:text-4xl text-3xl md:leading-normal tracking-wide leading-normal font-medium text-white">Liên hệ chúng tôi</h3>
         </div><!--end grid-->
     </div><!--end container-->
-
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
         <ul class="tracking-[0.5px] mb-0 inline-block">
             <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="index.html">Techwind</a></li>
@@ -28,7 +26,6 @@
     </div>
 </div>
 <!-- End Hero -->
-
 <!-- Start Section-->
 <section class="relative md:py-24 py-16">
     <div class="container relative">
@@ -37,41 +34,33 @@
                 <div class="size-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto">
                     <i class="uil uil-phone"></i>
                 </div>
-
                 <div class="content mt-7">
                     <h5 class="title h5 text-xl font-medium">Số điện thoại</h5>
                     <p class="text-slate-400 mt-3">Trình tự bây giờ là để nhiều chiến dịch và lợi ích</p>
-
                     <div class="mt-5">
                         <a href="tel:(+84)52534-468-854" class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">+152 534-468-854</a>
                     </div>
                 </div>
             </div>
-
             <div class="text-center px-6 mt-6">
                 <div class="size-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto">
                     <i class="uil uil-envelope"></i>
                 </div>
-
                 <div class="content mt-7">
                     <h5 class="title h5 text-xl font-medium">Email</h5>
                     <p class="text-slate-400 mt-3">Có gì thắc mắc xin liên hệ chúng tôi ở email này</p>
-
                     <div class="mt-5">
                         <a href="khanhhoangkiet@gmail.com" class="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">contact@example.com</a>
                     </div>
                 </div>
             </div>
-
             <div class="text-center px-6 mt-6">
                 <div class="size-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800 mx-auto">
                     <i class="uil uil-map-marker"></i>
                 </div>
-
                 <div class="content mt-7">
                     <h5 class="title h5 text-xl font-medium">Địa chỉ</h5>
                     <p class="text-slate-400 mt-3">Thành Phố Huế <br> Thừa Thiên Huế, Việt Nam</p>
-
                     <div class="mt-5">
                         <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
                             data-type="iframe" class="video-play-icon read-more lightbox relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out">Xem trên Google map</a>
@@ -80,18 +69,15 @@
             </div>
         </div><!--end grid-->
     </div><!--end container-->
-
     <div class="container relative md:mt-24 mt-16">
         <div class="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
             <div class="lg:col-span-7 md:col-span-6">
                 <img src="assets/images/contact.svg" alt="">
             </div>
-
             <div class="lg:col-span-5 md:col-span-6">
                 <div class="lg:ms-5">
                     <div class="bg-white dark:bg-slate-900 rounded-md shadow dark:shadow-gray-800 p-6">
                         <h3 class="mb-6 text-2xl leading-normal font-medium">Hãy liên lạc với chúng tôi!</h3>
-
                         <form method="POST" action="{{ route('send.message') }}" name="myForm" id="myForm" onsubmit="return validateForm()">
                             @csrf <!-- CSRF protection token -->
                             <p class="mb-0" id="error-msg"></p>
@@ -106,7 +92,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="lg:col-span-6 mb-5">
                                     <div class="text-start">
                                         <label for="email" class="font-semibold">Email của bạn:</label>
@@ -117,7 +102,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="grid grid-cols-1">
                                 <div class="mb-5">
                                     <div class="text-start">
@@ -128,7 +112,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="mb-5">
                                     <div class="text-start">
                                         <label for="comments" class="font-semibold">Câu hỏi của bạn:</label>
@@ -148,7 +131,6 @@
     </div><!--end container-->
 </section><!--end section-->
 <!-- End Section-->
-
 <div class="container-fluid relative">
     <div class="grid grid-cols-1">
         <div class="w-full leading-[0] border-0">
@@ -159,7 +141,6 @@
                 allowfullscreen>
             </iframe>
         </div>
-
     </div><!--end grid-->
 </div><!--end container-->
 @endsection

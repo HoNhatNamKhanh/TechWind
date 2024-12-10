@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout Success')
+@section('title', 'Thanh toán thành công')
 
 @section('content')
     <section class="relative md:py-24 py-16">

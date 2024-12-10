@@ -265,7 +265,7 @@
     </a>
 </div>
 <!-- LTR & RTL Mode Code -->
-
+<script src="{{ asset('assets\js\slide.js') }}"></script>
 <!-- JAVASCRIPTS -->
 <script src="{{ asset('assets/libs/shufflejs/shuffle.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jarallax/jarallax.min.js') }}"></script>

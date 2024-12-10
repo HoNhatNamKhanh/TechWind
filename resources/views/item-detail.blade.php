@@ -32,7 +32,6 @@
 </section>
 <!--end section-->
 <!-- End Hero -->
-
 <!-- Start -->
 <section class="relative md:py-24 py-16">
     <div class="container">
@@ -42,7 +41,7 @@
                     @foreach ($product->variants as $variant)
                         <div class="tiny-slide">
                             @if ($variant->image)
-                                <img src="{{ asset('storage/' . $variant->image) }}"
+                                <img src="{{  $variant->image }}"
                                     class="rounded-md shadow dark:shadow-gray-800"
                                     alt="{{ $product->name }} - {{ $variant->name }}" />
                             @else
@@ -53,7 +52,6 @@
                     @endforeach
                 </div>
             </div>
-
             <div class="lg:col-span-7 md:col-span-6">
                 <div class="lg:ms-6">
                     <h5 class="text-2xl font-semibold">{{ $product->name }}</h5>
@@ -74,8 +72,6 @@
                     </div>
                     <div class="mt-4">
                         <h5 class="text-lg font-semibold">Mô tả :</h5>
-
-
                         <ul class="list-none text-slate-400 mt-4 bg-white p-5 rounded-xl">
                             <p class="text-slate-400 mt-2">{{ $product->description }}</p>
                             <li class="mb-1 flex">
@@ -106,7 +102,6 @@
                                     @endforeach
                                 </div>
                             </div>
-
                             <!-- Chọn Màu (sẽ được hiển thị khi chọn size) -->
                             <div class="flex items-center">
                                 <div id="colorLabel" class="text-lg font-semibold me-2 min-w-[220px]"
@@ -119,7 +114,6 @@
                                 <h5 class="text-lg font-semibold">Giá: <span id="productPrice"></span></h5>
                             </div>
                         </div>
-
                         <!-- Form thêm vào giỏ hàng -->
                         <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-full">
                             @csrf
@@ -142,7 +136,6 @@
                 </div>
             </div>
         </div>
-
         <!--end grid-->
         <div class="max-w-4xl mx-auto my-8 p-6 bg-white rounded-lg  mt-10">
             <div class="space-y-4">
@@ -155,7 +148,6 @@
                     </svg>
                     <span class="text-gray-700">Miễn phí vận chuyển toàn quốc</span>
                 </div>
-
                 <div class="flex items-center space-x-2">
                     <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor" aria-hidden="true">
@@ -165,7 +157,6 @@
                     </svg>
                     <span class="text-gray-700">Bảo hành 12 tháng chính hãng</span>
                 </div>
-
                 <div class="flex items-center space-x-2">
                     <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor" aria-hidden="true">
@@ -175,7 +166,6 @@
                     </svg>
                     <span class="text-gray-700">1 đổi 1 trong 30 ngày đầu nếu có lỗi phần cứng do nhà sản xuất</span>
                 </div>
-
                 <div class="flex items-center space-x-2">
                     <svg class="h-6 w-6 text-teal-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                         fill="currentColor" aria-hidden="true">
@@ -187,8 +177,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="grid md:grid-cols-12 grid-cols-1 mt-10 gap-[30px]">
             <div class="lg:col-span-3 md:col-span-5">
                 <div class="sticky top-20">
@@ -221,7 +209,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="lg:col-span-9 md:col-span-7">
                 <div id="myTabContent" class="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md">
                     <div class="" id="description" role="tabpanel" aria-labelledby="profile-tab">
@@ -229,7 +216,6 @@
                             {{ $product->description }}
                         </p>
                     </div>
-
                     <div class="hidden" id="addinfo" role="tabpanel" aria-labelledby="addinfo-tab">
                         <table class="w-full text-start">
                             <tbody>
@@ -245,7 +231,6 @@
                                         @endforeach
                                     </td>
                                 </tr>
-
                                 <tr class="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-700">
                                     <td class="font-semibold py-4">Giá</td>
                                     <td class="text-slate-400 py-4">
@@ -292,7 +277,6 @@
                                             </p>
                                         </div>
                                     </div>
-
                                     <!-- Đánh giá sao -->
                                     <div class="flex items-center">
                                         @for($i = 1; $i <= 5; $i++)
@@ -300,7 +284,6 @@
                                                 class="mdi mdi-star{{ $i <= $review->rating ? '' : '-outline' }} text-yellow-500"></i>
                                         @endfor
                                     </div>
-
                                     <!-- Bình luận -->
                                     <p class="mt-3 text-gray-700">{{ $review->comment }}</p>
                                 </div>
@@ -315,7 +298,6 @@
                                 action="{{ route('review.store', ['product' => $product->id]) }}">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-
                                 <!-- Đánh giá sao -->
                                 <ul class="list-none inline-block text-orange-400">
                                     <li class="inline star" data-value="1"><i class="mdi mdi-star text-lg"></i></li>
@@ -324,14 +306,11 @@
                                     <li class="inline star" data-value="4"><i class="mdi mdi-star text-lg"></i></li>
                                     <li class="inline star" data-value="5"><i class="mdi mdi-star text-lg"></i></li>
                                 </ul>
-
                                 <ul class="list-none inline-block text-orange-400">
                                     <li class="inline text-slate-400 font-semibold" id="rating-value">0 (0)</li>
                                 </ul>
-
                                 <!-- Hidden input để lưu rating -->
                                 <input type="hidden" id="rating" name="rating" value="0">
-
                                 <div class="grid lg:grid-cols-12 lg:gap-6">
                                     <!-- Tên người dùng (điền sẵn từ tài khoản người dùng) -->
                                     <div class="lg:col-span-6 mb-5">
@@ -340,7 +319,6 @@
                                             class="form-input w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                                             value="{{ Auth::user()->name }}" readonly />
                                     </div>
-
                                     <!-- Email người dùng (điền sẵn từ tài khoản người dùng) -->
                                     <div class="lg:col-span-6 mb-5">
                                         <label for="email" class="font-semibold">Your Email:</label>
@@ -349,7 +327,6 @@
                                             value="{{ Auth::user()->email }}" readonly />
                                     </div>
                                 </div>
-
                                 <div class="grid grid-cols-1 mb-5">
                                     <label for="comments" class="font-semibold">Your Comment:</label>
                                     <textarea name="comment" id="comments"
@@ -444,7 +421,6 @@
                                 </ul>
                             @endif
                         </div>
-
                         <div class="mt-4">
                             <a href="{{ route('product.show', $product->id) }}"
                                 class="hover:text-indigo-600 text-lg font-semibold">{{ $product->name }}</a>
@@ -476,7 +452,6 @@
             </div>
         </div>
     </section>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const reviewForms = document.querySelectorAll('form[id^="review-form-"]'); // Lấy tất cả các form có id bắt đầu bằng 'review-form-'
@@ -509,7 +484,6 @@
                         });
                     });
                 });
-
                 // Xử lý form submit
                 reviewForm.addEventListener('submit', function (event) {
                     event.preventDefault(); // Ngừng việc gửi form theo cách mặc định
@@ -549,7 +523,6 @@
                                 stars.forEach(starItem => {
                                     starItem.classList.remove('text-yellow-500'); // Reset màu sao
                                 });
-
                                 // Cập nhật bình luận mới ngay lập tức
                                 const newReviewHtml = `
                                     <div class="review-item mb-6 p-4 border-b border-gray-200">
@@ -579,7 +552,6 @@
                 });
             });
         });
-
         // Hàm tạo HTML cho sao đánh giá
         function generateStarsHtml(rating) {
             let starsHtml = '';
@@ -629,20 +601,16 @@
                         // Loại bỏ trạng thái 'active' của tất cả các button màu
                         const allColorButtons = document.querySelectorAll('.color-btn');
                         allColorButtons.forEach(colorBtn => colorBtn.classList.remove('active'));
-
                         // Thêm trạng thái 'active' vào button màu đã chọn
                         button.classList.add('active');
-
                         // Cập nhật variant_id khi chọn màu
                         variantIdInput.value = variant.id;
-
                         // Cập nhật giá khi chọn màu
                         productPrice.textContent = new Intl.NumberFormat().format(variant.price) + " đ"; // Hiển thị giá với định dạng
                         priceContainer.style.display = 'block'; // Hiển thị phần giá
                     });
                     colorButtonsContainer.appendChild(button);
                 });
-
                 // Hiển thị phần chọn màu
                 colorButtonsContainer.style.display = 'flex'; // Hiển thị các button màu
             }

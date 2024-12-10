@@ -58,7 +58,6 @@
                                     </p>
                                 @endif
                             </label>
-
                             <!-- Role -->
                             <label class="block text-sm mb-4">
                                 <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Quyền</span>
@@ -74,7 +73,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ $errors->first('role') }}</p>
                                 @endif
                             </label>
-
                             <!-- Address (User Meta) -->
                             <label class="block text-sm mb-4">
                                 <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Địa chỉ</span>
@@ -85,7 +83,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ $errors->first('address') }}</p>
                                 @endif
                             </label>
-
                             <!-- Phone (User Meta) -->
                             <label class="block text-sm mb-4">
                                 <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Số điện thoại</span>
@@ -96,7 +93,6 @@
                                     <p class="text-red-600 text-sm mt-1">{{ $errors->first('phone') }}</p>
                                 @endif
                             </label>
-
                             <!-- Image Upload -->
                             <label class="block text-sm mb-4">
                                 <span class="text-xl py-3 text-gray-700 dark:text-gray-400">Ảnh (tùy chọn)</span>

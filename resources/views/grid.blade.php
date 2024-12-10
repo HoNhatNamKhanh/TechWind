@@ -143,7 +143,7 @@
                     <div
                         class="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
                         @if ($product->variants->isNotEmpty())
-                        <img src="{{ asset('storage/' . $product->variants[0]->image) }}" alt="{{ $product->name }}"
+                        <img src="{{ $product->variants[0]->image }}" alt="{{ $product->name }}"
                             class="w-full h-auto" />
                         @else
                         <img src="{{ asset('images/default-thumbnail.jpg') }}" alt="{{ $product->name }}" />
@@ -167,8 +167,8 @@
                                 @endif
                                 @if(auth()->check())
                                 <button type="submit" data-product-id="{{ $product->id }}"
-                                    class="add-to-cart mt-2 py-2 px-5 inline-block font-semibold tracking-wide border border-transparent duration-500 text-base text-center bg-slate-900 hover:bg-slate-700 text-white w-full rounded-md shadow-md hover:shadow-lg transition">
-                                    Add to Cart
+                                    class="add-to-cart mt-2 py-2 px-5 inline-block font-semibold tracking-wide border border-transparent duration-500 text-base text-center bg-slate-900 hover:bg-red-600 text-white w-full rounded-md shadow-md hover:shadow-lg transition">
+                                    Thêm vào giỏ hàng
                                 </button>
                                 @endif
                             </form>
@@ -212,9 +212,9 @@
                             class="hover:text-indigo-600 text-lg font-semibold">{{ $product->name }}</a>
                         <div class="flex justify-between items-center mt-1">
                             @if ($product->variants->isNotEmpty())
-                            <p class="text-green-600">${{ number_format($product->variants[0]->price, 2) }}</p>
+                            <p class="text-red-600 font-bold">{{ number_format($product->variants[0]->price, 2) }}đ</p>
                             @else
-                            <p class="text-red-600">Price not available</p>
+                            <p class="text-red-600 font-bold">Price not available</p>
                             @endif
                             <!-- Hiển thị phần đánh giá sao -->
                             <div class="product-rating mt-2">

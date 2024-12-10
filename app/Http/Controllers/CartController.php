@@ -25,10 +25,12 @@ class CartController extends Controller
             // Nếu giỏ hàng trống
             return view('cart', compact('cartItems'))->with('error', 'Giỏ hàng của bạn trống!');
         }
-
         // Tính toán subtotal, taxes và total
         $subtotal = $cartItems->sum(function ($item) {
-            return $item->variant->price * $item->quantity;
+            if ($item->variant) {
+                return $item->variant->price * $item->quantity;
+            }
+            return 0; // Trường hợp variant bị null
         });
         $taxes = $subtotal * 0.1; // Giả sử thuế là 10%
         $total = $subtotal + $taxes;
@@ -46,10 +48,8 @@ class CartController extends Controller
                 'message' => 'Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.'
             ], 401); // Trả về JSON với mã lỗi 401
         }
-
         // Lấy thông tin người dùng
         $user = auth()->user();
-
         // Tìm sản phẩm và biến thể
         $product = Product::findOrFail($id);
         $variantId = $request->input('variant_id');
@@ -62,7 +62,6 @@ class CartController extends Controller
                 'message' => 'Sản phẩm này hiện tại đã hết hàng.'
             ], 400); // Trả về thông báo hết hàng với mã lỗi 400
         }
-
         // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
         $cartItem = Cart::where('user_id', $user->id)
             ->where('product_id', $product->id)
@@ -80,7 +79,6 @@ class CartController extends Controller
                 'cart_quantity' => $cartItem->quantity
             ]);
         }
-
         // Nếu sản phẩm chưa có trong giỏ, thêm sản phẩm mới vào giỏ hàng
         Cart::create([
             'user_id' => $user->id,
@@ -88,16 +86,12 @@ class CartController extends Controller
             'variant_id' => $variantId,
             'quantity' => 1,
         ]);
-
         return response()->json([
             'success' => true,
             'message' => 'Sản phẩm đã được thêm vào giỏ hàng.',
             'cart_quantity' => 1 // Trả về số lượng sản phẩm trong giỏ
         ]);
     }
-
-
-
     public function remove($id)
     {
         $user = auth()->user();
@@ -128,27 +122,20 @@ class CartController extends Controller
             \Log::error("Cart item not found for user {$user->id}, item ID: {$id}");
             return response()->json(['error' => true, 'message' => 'Sản phẩm không có trong giỏ hàng!'], 404);
         }
-
         // Tăng số lượng sản phẩm trong giỏ hàng
         $cartItem->quantity++;
         $cartItem->save();
-
         // Tính lại subtotal (tổng giá trị giỏ hàng trước thuế)
         $subtotal = Cart::where('user_id', $user->id)
             ->join('variants', 'carts.variant_id', '=', 'variants.id')
             ->sum(DB::raw('carts.quantity * variants.price'));
-
         // Giả sử thuế là 10%
         $taxes = $subtotal * 0.1;
-
         // Tính tổng giỏ hàng sau thuế
         $total = $subtotal + $taxes;
-
         // Tính lại giá của sản phẩm hiện tại (item price = unit price * quantity)
         $itemPrice = $cartItem->variant->price * $cartItem->quantity;
-
         \Log::info("Increase successful for item ID: {$id}. New subtotal: {$subtotal}, taxes: {$taxes}, total: {$total}");
-
         // Trả về thông tin giỏ hàng đã được cập nhật
         return response()->json([
             'error' => false,

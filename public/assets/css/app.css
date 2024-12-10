@@ -2,7 +2,6 @@
 select, .variant-option {
     color: black; /* Mặc định màu đen cho văn bản */
 }
-
 /* Khi trong chế độ Dark Mode, đổi màu chữ thành trắng */
 body.dark-mode select, body.dark-mode .variant-option {
     color: white;
@@ -32,3 +31,93 @@ body.dark-mode select, body.dark-mode .variant-option {
 .bg-banner{
     background-image: url(../images/banners/banner.jpg);
 }
+/* Global Styles */
+.body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Slider Styles */
+  .slider-container {
+    position: relative;
+    width: 80%;
+    max-width: 1300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #000;
+  }
+  
+  .slides {
+    display: flex;
+    width: 300%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    flex: 1;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  button.prev {
+    left: 10px;
+  }
+  button.next {
+    right: 10px;
+  }
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  /* Banner Styles */
+  .banners {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1180px;
+    margin-top: 20px;
+    gap: 20px;
+  }
+  .banner {
+    flex: 1;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .banner-1 {
+    background-color: #1E90FF;
+  }
+  
+  .banner-2 {
+    background-color: #32CD32;
+  }
+  

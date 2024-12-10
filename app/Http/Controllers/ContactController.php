@@ -12,4 +12,5 @@ class ContactController extends Controller
         $products = Product::all();
         return view('contact', compact('products'));
     }
+    
 }

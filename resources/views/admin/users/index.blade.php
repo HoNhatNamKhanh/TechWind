@@ -52,17 +52,7 @@
                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                         @foreach($users as $user)
                         <tr class="text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                                <span class="font-semibold text-sm">{{ $user->id }}</span>
-                            </td>
-                            <td class="px-4 py-3">
-                                <img src="{{ asset('storage/' . $user->userMeta->image ?? '') }}" alt="{{ $user->name }}">
-                            </td>
-                            <td class="px-4 py-3">
-                                <a href="{{ route('admin.users.show', $user->id) }}">
-                                    <span class="font-semibold text-sm">{{ $user->name }}</span>
-                                </a>
-                            </td>
+                            
 
                             <td class="px-4 py-3 text-sm">
                                 <span class="text-xs font-semibold text-secondary">{{ $user->email }}</span>

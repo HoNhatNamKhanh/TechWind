@@ -19,7 +19,7 @@ class ProductDetailController extends Controller
         // Lấy các sản phẩm liên quan (cùng category)
         $relatedProducts = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
-            ->take(4)
+            ->take(5)
             ->get();
 
         // Trả về view với các dữ liệu cần thiết

@@ -2022,7 +2022,7 @@ video {
     gap: 30 !important;
 }
 .gap-\[30px\] {
-    gap: 30px !important;
+    gap: 10px !important;
 }
 .gap-x-\[30px\] {
     -webkit-column-gap: 30px !important;
@@ -8304,7 +8304,7 @@ html[dir="rtl"] .tns-visually-hidden {
         grid-column: span 5 / span 5 !important;
     }
     .md\:col-span-6 {
-        grid-column: span 6 / span 6 !important;
+        grid-column: span 8 / span 8 !important;
     }
     .md\:col-span-7 {
         grid-column: span 7 / span 7 !important;

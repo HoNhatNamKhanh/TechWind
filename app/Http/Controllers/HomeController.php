@@ -14,21 +14,17 @@ class HomeController extends Controller
     public function index()
     {
         $banners = Banner::limit(3)->get();
-
         // Lấy 8 sản phẩm mới nhất với variants
-        $products = Product::with('variants', 'reviews')->orderBy('created_at', 'desc')->take(8)->get();
+        $products = Product::with('variants', 'reviews')->orderBy('created_at', 'desc')->take(10)->get();
         foreach ($products as $product) {
             // Tính toán biến thể rẻ nhất
             $product->cheapestVariant = $product->variants->sortBy('price')->first();
-
             // Tính toán trung bình rating
             $reviews = $product->reviews;
             $averageRating = $reviews->avg('rating'); // Trung bình rating
             $product->averageRating = $averageRating;
             $product->reviewCount = $reviews->count(); // Số lượng đánh giá
         }
-
-
         $ratingProducts = Product::with('variants', 'reviews')
             ->get() // Lấy tất cả sản phẩm
             ->each(function ($product) {
@@ -39,7 +35,7 @@ class HomeController extends Controller
                 $product->reviewCount = $reviews->count();
             })
             ->sortByDesc('averageRating') // Sắp xếp theo rating giảm dần
-            ->take(4); // Lấy 4 sản phẩm có rating cao nhất
+            ->take(5); // Lấy 4 sản phẩm có rating cao nhất
         // Tính toán trung bình rating cho sản phẩm phổ biến
         foreach ($ratingProducts as $product) {
             $reviews = $product->reviews;
@@ -61,7 +57,7 @@ class HomeController extends Controller
         // Lấy 4 sản phẩm cap nhap mới nhất với variants
         $recentProducts = Product::with('variants', 'reviews')
             ->orderBy('updated_at', 'desc')  // Sắp xếp theo ngày cập nhật (hoặc có thể theo lượt xem)
-            ->take(4)  // Lấy 4 sản phẩm có hoạt động gần đây
+            ->take(5)  // Lấy 4 sản phẩm có hoạt động gần đây
             ->get();;
 
         // Tính toán trung bình rating cho sản phẩm gần đây
@@ -85,18 +81,15 @@ class HomeController extends Controller
         // Chuyển dữ liệu thành mảng thích hợp cho biểu đồ
         $months = [];
         $earningsData = [];
-
         // Chuẩn hóa tháng và doanh thu
         foreach ($monthlySales as $sale) {
             $months[] = $sale->year . '-' . str_pad($sale->month, 2, '0', STR_PAD_LEFT); // Chuẩn hóa tháng (2023-01, 2023-02)
             $earningsData[] = $sale->total_revenue;
         }
-
         // Kiểm tra nếu không có sản phẩm nào
         if ($products->isEmpty() && $ratingProducts->isEmpty() && $recentProducts->isEmpty()) {
             return view('home')->with('message', 'No products available at the moment.');
         }
-
         // Trả về view với dữ liệu
         return view('home', compact(
             'products',
