@@ -79,10 +79,11 @@ Route::prefix('users')->name('users.')->group(function () {
 Route::get('/orders/{id}', [OrderController::class, 'showOrderDetails'])->name('orders.show');
 Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
-Route::get('/checkout/success', function () {
-    return view('checkout.success');
-})->name('checkout.success');
 
+// Route hiển thị trang thành công sau khi thanh toán
+Route::get('checkout/success/{order}', function ($order) {
+    return view('checkout-success', compact('order'));
+})->name('checkout.success');
 
 
 // Route cập nhật địa chỉ người dùng
@@ -112,10 +113,7 @@ Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 // Route xử lý thanh toán và tạo đơn hàng
 Route::post('checkout', [CheckoutController::class, 'create'])->name('checkout.create');
 
-// Route hiển thị trang thành công sau khi thanh toán
-Route::get('checkout/success/{order}', function ($order) {
-    return view('checkout-success', compact('order'));
-})->name('checkout.success');
+
 
 // Route Category
 Route::get('/shop', [CategoryController::class, 'index'])->name('shop.index');
