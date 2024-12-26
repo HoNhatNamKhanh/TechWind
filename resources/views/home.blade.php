@@ -43,36 +43,26 @@
 <!-- End Home -->
 <!-- Start -->
 <section class="relative  ">
-    <div class="relative ">
         <div class="relative w-full max-w-4xl mx-auto mt-10">
             <!-- Slider Wrapper -->
             <!-- Slider Section -->
             <div class="body ">
-                <div class="slider-container ">
-                    <div class="slides">
-                        @if(isset($banners[0]))
-                        <div class="slide">
-                            <img src="{{ asset('storage/' . $banners[0]->thumbnail) }}" alt="">
-                        </div>
-                        @endif
-                    </div>
-                    <button class="prev">❮</button>
-                    <button class="next">❯</button>
-                </div>
-
                 <!-- Banner Section -->
+            <div class=" p-10 relative mt-10 mb-16 ">
+
                 <div class="banners">
-                    @if(isset($banners[1]))
+                    @if(isset($banners[0]))
                     <div class="banner banner-1">
                         <img src="{{ asset('storage/' . $banners[1]->thumbnail) }}" class="group-hover:scale-110 duration-500" alt="Beanies" />
                     </div>
                     @endif
-                    @if(isset($banners[2]))
+                    @if(isset($banners[1]))
                     <div class="banner banner-2">
                         <img src="{{ asset('storage/' . $banners[2]->thumbnail) }}" class="group-hover:scale-110 duration-500" alt="Beanies" />
                     </div>
                     @endif
                 </div>
+            </div>
             </div>
             <div class="container relative mt-10">
                 <div class="grid grid-cols-1 items-center">
@@ -336,14 +326,14 @@
                     <div class="md:text-start text-left">
                         <h1
                             class="font-bold text-black lg:leading-normal leading-normal text-4xl lg:text-5xl mb-4 text-center">
-                            Vocher giảm tới 30% <br />
-                            Cho đơn hàng đầu tiên
+                            Trải nghiệm mua sắm tuyệt vời ngay từ  <br />
+                            đơn hàng đầu tiên!
                         </h1>
                         <p class="text-black/70 text-xl text-center">
                             Bắt đầu shopping nào ! nhiều ưu đãi đang chờ bạn
                         </p>
                         <div class="mt-6 text-center">
-                            <a href="{{ route('products.grid') }}"
+                            <a href="{{ route('shop.index') }}"
                                 class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2">
                                 <i class="mdi mdi-cart-outline"></i> Mua Ngay
                             </a>

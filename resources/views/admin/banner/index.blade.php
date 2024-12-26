@@ -7,38 +7,7 @@
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800 variant">
         <div id="grid" class="grid-b">
 
-            <!-- Banner 1 -->
-            <div class="banner large-banner">
-                <div class="group">
-                    <label for="thumbnail-{{ $banners->first()->id }}">
-                        <img src="{{ asset('storage/' . $banners->first()->thumbnail) }}"
-                            alt="{{ $banners->first()->name }}" id="banner-image-{{ $banners->first()->id }}">
-                    </label>
-                    <!-- Form submission using Laravel controller -->
-                    <form action="{{ route('admin.banner.update', $banners->first()->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-
-                        <!-- Banner name input -->
-                        <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input my-4" type="text" name="name" value="{{ $banners[2]->name }}"
-                            id="banner-name-{{ $banners->first()->id }}" placeholder="Enter banner name">
-
-                        <!-- Thumbnail input for file -->
-                        <input type="file" name="thumbnail" id="thumbnail-{{ $banners->first()->id }}"
-                            class="file-input" onchange="previewImage({{ $banners->first()->id }})">
-
-                        <!-- Hidden input to preserve the old thumbnail if not changed -->
-                        <input type="hidden" name="old_thumbnail" value="{{ $banners->first()->thumbnail }}">
-
-                        <!-- Submit button -->
-                        <div
-                            class="create-button px-2 py-4 text-center transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <button type="submit">Cập nhật</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+           
 
             <!-- Banner 2 -->
             <div class="banner">
